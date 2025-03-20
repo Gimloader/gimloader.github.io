@@ -1,0 +1,16 @@
+{
+    "plugin": [
+        "typedoc-plugin-merge-modules",
+        "typedoc-plugin-markdown"
+    ],
+    "out": "./tmp",
+    "entryPoints": ["../Gimloader/src/content/api/**.ts"],
+    "mergeModulesRenameDefaults": true,
+    "readme": "none",
+    "tsconfig": "../Gimloader/tsconfig.json",
+    "disableSources": true,
+    "hideBreadcrumbs": true,
+    "hidePageHeader": true,
+    "parametersFormat": "table",
+    "excludeExternals": true
+}
