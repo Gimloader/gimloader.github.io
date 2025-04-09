@@ -3,8 +3,11 @@ title: ClickTP
 description: A Gimloader plugin that lets you teleport to where you click
 ---
 
-import ButtonInstall from '../../../components/ButtonInstall.svelte';
+import ButtonInstall from "$components/ButtonInstall.svelte";
+import DesyncWarning from "$components/DesyncWarning.astro";
 
-With ClickTP installed, Ctrl+Click anywhere in 2d gamemodes to teleport to your cursor. This only happens client-side, others will not see you teleport.
+<DesyncWarning />
+
+With ClickTP installed, Ctrl+Click anywhere in 2d gamemodes to teleport to your cursor. If you are in the creative editor this will be reflected for others.
 
 <ButtonInstall client:only="svelte" name="ClickTP" url="https://raw.githubusercontent.com/Gimloader/client-plugins/main/plugins/ClickTP.js" />
