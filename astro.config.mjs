@@ -11,6 +11,15 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
     site: 'https://gimloader.github.io',
     integrations: [starlight({
+        head: [
+            {
+                tag: "meta",
+                attrs: {
+                    name: "google-site-verification",
+                    content: "GBX_OqgXVVQhd3z1AjX5jnNND1-k9xX6NAhhTqh8hko"
+                }
+            }
+        ],
         plugins: [starlightSidebarTopics([
             {
                 label: 'Usage',
