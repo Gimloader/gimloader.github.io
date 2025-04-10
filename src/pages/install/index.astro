@@ -1,8 +1,20 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import '../../lib/app.css'
 import Install from "$components/Install.svelte";
 ---
 
-<Layout>
-    <Install client:only="svelte" />
-</Layout>
+
+<html lang="en" class="h-full dark">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/icon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Install | Gimloader</title>
+	</head>
+	<body class="h-full">
+		<slot />
+	</body>
+</html>
+
+<Install client:only="svelte" />
