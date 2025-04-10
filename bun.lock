@@ -4,6 +4,7 @@
     "": {
       "name": "gimloader-docs",
       "dependencies": {
+        "@astrojs/sitemap": "^3.3.0",
         "@astrojs/starlight": "^0.31.0",
         "@astrojs/svelte": "^7.0.3",
         "@astrojs/tailwind": "^5.1.4",

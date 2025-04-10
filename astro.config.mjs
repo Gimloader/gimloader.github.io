@@ -5,6 +5,8 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
     site: 'https://gimloader.github.io',
@@ -93,5 +95,5 @@ export default defineConfig({
             ThemeSelect: './src/components/ThemeSelect.astro'
         },
         customCss: ['./src/lib/starlight.css']
-    }), svelte(), tailwind()]
+    }), svelte(), tailwind(), sitemap()]
 });
