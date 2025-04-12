@@ -1,51 +1,42 @@
 <script lang="ts">
-    let { name, url }: { name: string, url: string } = $props();
+    import Installer from "src/lib/installer/installer.svelte";
 
-    let ready = $state(false);
-    let alreadyInstalled = $state(false);
+    Installer.init();
+
+    let { name, url }: { name: string, url: string } = $props();
     let installing: Promise<void> | null = $state(null);
 
-    if(document.readyState === "complete") check();
-    else window.addEventListener("load", check);
-
-    async function check() {
-        if(!(window as any).GLInstall) return;
-        
-        if((window as any).GLGet(name)) {
-            alreadyInstalled = true;
-        }
-
-        ready = true;
-    }
-
     function install() {
-        if(installing) return;
+        if(!Installer.ready || installing) return;
 
         installing = new Promise<void>(async (res, rej) => {
             try {
                 let resp = await fetch(url);
-                let text = await resp.text();
-    
-                installing = (window as any).GLInstall(text);
+                let script = await resp.text();
+
+                await Installer.install(script);
+
                 res();
-            } catch (e) { rej (e) }
+            } catch {
+                rej();
+            }
         });
     }
 </script>
 
-{#if ready}
+{#if Installer.ready}
     <div class="wrap pt-[65px]">
-        <button onclick={install} class="w-full">
+        <button class="w-full" onclick={install}>
             {#if installing}
                 {#await installing}
                     Installing...
-                {:then} 
+                {:then}
                     Installed!
                 {:catch}
                     Error installing
                 {/await}
             {:else}
-                {#if alreadyInstalled}
+                {#if Installer.plugins.has(name)}
                     Reinstall Plugin
                 {:else}
                     Install Plugin

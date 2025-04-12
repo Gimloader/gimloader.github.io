@@ -3,19 +3,15 @@ import '../../lib/app.css'
 import Install from "$components/Install.svelte";
 ---
 
-
 <html lang="en" class="h-full dark">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/png" href="/icon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-        <meta name="google-site-verification" content="GBX_OqgXVVQhd3z1AjX5jnNND1-k9xX6NAhhTqh8hko" />
 		<title>Install | Gimloader</title>
 	</head>
 	<body class="h-full">
-		<slot />
+		<Install client:only="svelte" />
 	</body>
 </html>
-
-<Install client:only="svelte" />

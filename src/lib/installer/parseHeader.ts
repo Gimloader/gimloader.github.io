@@ -1,12 +1,39 @@
-export default function parseHeader(code: string) {
-    let headers: Record<string, string | null> = {
+import type { LibHeaders, PluginHeaders } from "./types/headers.js";
+
+export function parsePluginHeader(code: string): PluginHeaders {
+    const basePluginHeaders: PluginHeaders = {
         name: "Unnamed Plugin",
         description: "No description provided",
         author: "Unknown Author",
         version: null,
-        reloadRequired: "false"
+        reloadRequired: "false",
+        isLibrary: "false",
+        downloadUrl: null,
+        needsLib: [],
+        optionalLib: [],
+        hasSettings: "false",
+        webpage: null
     };
-    
+
+    return parseHeader<PluginHeaders>(code, basePluginHeaders);
+}
+
+export function parseLibHeader(code: string): LibHeaders {
+    const baseLibHeaders: LibHeaders = {
+        name: 'Unnamed Library',
+        description: 'No description provided',
+        author: 'Unknown Author',
+        version: null,
+        downloadUrl: null,
+        isLibrary: "false",
+        reloadRequired: "false",
+        webpage: null
+    }
+
+    return parseHeader<LibHeaders>(code, baseLibHeaders);
+}
+
+export function parseHeader<T>(code: string, headers: T): T {    
     // parse the JSDoc header at the start (if it exists)
     let closingIndex = code.indexOf('*/');
     if(!(code.trimStart().startsWith('/**')) || closingIndex === -1) {
@@ -46,11 +73,16 @@ export default function parseHeader(code: string) {
     }
 
     for(let i = 0; i < validAtIndexes.length; i++) {
-        let chunk = text.slice(validAtIndexes[i] + 1, validAtIndexes[i + 1] || text.length);
-        let key = chunk.slice(0, chunk.indexOf(' ') || chunk.length);
+        let chunk = text.slice(validAtIndexes[i] + 1, validAtIndexes[i + 1] ?? text.length);
+        let spaceIndex = chunk.indexOf(' ');
+        let key = chunk.slice(0, spaceIndex !== -1 ? spaceIndex : chunk.length);
         let value = chunk.slice(key.length).trim();
 
-        headers[key] = value;
+        if(Array.isArray(headers[key])) {
+            headers[key].push(value);
+        } else {
+            headers[key] = value;
+        }
     }
 
     return headers;
