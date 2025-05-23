@@ -17,8 +17,9 @@ All scripts must begin with a header to declare things such as name, description
 | webpage | No | No | A webpage where users can get more information about the script. |
 | reloadRequired | No | No | Whether the page needs to reload after a script is installed for it to work. Set to `true` for always, set to `ingame` for only when a game is currently active |
 | hasSettings | No | Yes | Whether a plugin has a settings menu, used to show it does when it's disabled |
-| needsLib | No | Yes | Any libraries the plugin needs to be enabled to work. Formatted like `[Name] \| [Url]`, can be repeated |
-| optionalLib | No | Yes | The same as needsLib, but the plugin will still work without these and will not try to automatically download them. |
+| needsLib | No | No | Any libraries the script needs to be enabled to work. Formatted like `[Name] \| [Url]`, can be repeated |
+| optionalLib | No | No | The same as needsLib, but the script will still work without these and will not try to automatically download them. |
+| syncEval | No | No | Whether to synchronously `eval` the script rather than `import`ing it. This requires that you use commonjs module.exports syntax instead of esm exports. |
 | isLibrary | No** | No | Libraries must include this header so that clueless users don't accidentally install them as a plugin. |
 
 <small>
