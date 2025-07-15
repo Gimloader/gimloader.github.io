@@ -72,6 +72,12 @@ Gets the headers of a library, such as version, author, and description
 
 > **downloadUrl**: `string`
 
+##### hasSettings
+
+> **hasSettings**: `string`
+
+Only available for plugins
+
 ##### isLibrary
 
 > **isLibrary**: `string`
@@ -80,9 +86,21 @@ Gets the headers of a library, such as version, author, and description
 
 > **name**: `string`
 
+##### needsLib
+
+> **needsLib**: `string`[]
+
+##### optionalLib
+
+> **optionalLib**: `string`[]
+
 ##### reloadRequired
 
 > **reloadRequired**: `string`
+
+##### syncEval
+
+> **syncEval**: `string`
 
 ##### version
 

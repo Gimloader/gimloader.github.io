@@ -62,7 +62,6 @@ export default defineConfig({
                                 label: 'Scoped Api',
                                 items: [
                                     'api/scopedapi',
-                                    'api/scopedparcel',
                                     'api/scopedhotkeys',
                                     'api/scopednet',
                                     'api/scopedui',
@@ -76,7 +75,6 @@ export default defineConfig({
                                 label: 'Unscoped Api',
                                 items: [
                                     'api/api',
-                                    'api/parcel',
                                     'api/hotkeys',
                                     'api/net',
                                     'api/ui',

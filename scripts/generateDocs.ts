@@ -7,6 +7,8 @@ execSync('npx typedoc');
 let dir = join('tmp', 'classes');
 let pages = fs.readdirSync(dir);
 
+pages = pages.filter(page => !page.toLowerCase().includes("parcel"));
+
 // Remove Api at the end
 for(let i = 0; i < pages.length; i++) {
     let page = pages[i];

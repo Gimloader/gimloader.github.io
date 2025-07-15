@@ -29,13 +29,13 @@ net.on("send:*", () => {})
 
 #### Get Signature
 
-> **get** **isHost**(): `any`
+> **get** **isHost**(): `boolean`
 
 Whether the user is the one hosting the current game
 
 ##### Returns
 
-`any`
+`boolean`
 
 ***
 

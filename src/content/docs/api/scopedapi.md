@@ -94,14 +94,6 @@ This function is not available for libraries
 
 ***
 
-### parcel
-
-> **parcel**: `Readonly`\<[`ScopedParcelApi`](/api/scopedparcel)\>
-
-Functions used to modify Gimkit's internal modules
-
-***
-
 ### patcher
 
 > **patcher**: `Readonly`\<[`ScopedPatcherApi`](/api/scopedpatcher)\>

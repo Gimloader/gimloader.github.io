@@ -56,14 +56,6 @@ and functions to send general requests
 
 ***
 
-### parcel
-
-> `static` **parcel**: `Readonly`\<[`ParcelApi`](/api/parcel)\>
-
-Functions used to modify Gimkit's internal modules
-
-***
-
 ### patcher
 
 > `static` **patcher**: `Readonly`\<[`PatcherApi`](/api/patcher)\>

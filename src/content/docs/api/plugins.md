@@ -76,6 +76,8 @@ Gets the headers of a plugin, such as version, author, and description
 
 > **hasSettings**: `string`
 
+Only available for plugins
+
 ##### isLibrary
 
 > **isLibrary**: `string`
@@ -95,6 +97,10 @@ Gets the headers of a plugin, such as version, author, and description
 ##### reloadRequired
 
 > **reloadRequired**: `string`
+
+##### syncEval
+
+> **syncEval**: `string`
 
 ##### version
 
