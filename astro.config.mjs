@@ -69,6 +69,7 @@ export default defineConfig({
                                     'api/scopedpatcher',
                                     'api/libs',
                                     'api/plugins',
+                                    'api/rewriter'
                                 ]
                             },
                             {
@@ -82,6 +83,7 @@ export default defineConfig({
                                     'api/patcher',
                                     'api/libs',
                                     'api/plugins',
+                                    'api/scopedrewriter'
                                 ]
                             }
                         ]

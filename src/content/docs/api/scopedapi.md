@@ -134,6 +134,14 @@ Methods for getting info on plugins
 
 ***
 
+### rewriter
+
+> **rewriter**: `Readonly`\<[`ScopedRewriterApi`](/api/scopedrewriter)\>
+
+Functions to edit Gimkit's code
+
+***
+
 ### storage
 
 > **storage**: `Readonly`\<[`ScopedStorageApi`](/api/scopedstorage)\>

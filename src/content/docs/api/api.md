@@ -96,6 +96,14 @@ Methods for getting info on plugins
 
 ***
 
+### rewriter
+
+> `static` **rewriter**: `Readonly`\<[`RewriterApi`](/api/rewriter)\>
+
+Functions to edit Gimkit's code
+
+***
+
 ### storage
 
 > `static` **storage**: `Readonly`\<[`StorageApi`](/api/storage)\>
