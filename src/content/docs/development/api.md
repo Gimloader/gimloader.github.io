@@ -31,7 +31,7 @@ api.openSettingsMenu(() => api.UI.showModal(...))
 
 ## Important API Elements
 
-Obviously, the entire API can't be included here. See the docs for the [scoped](../api/scopedapi) and [unscoped](../api/scoped) apis if you want that. Below are some of the things that will be most useful to a new dev.
+Obviously, the entire API can't be included here. See the docs for the [scoped](/api/scopedapi) and [unscoped](/api/api) apis if you want that. Below are some of the things that will be most useful to a new dev.
 
 ### GL.stores
 
