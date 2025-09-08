@@ -92,7 +92,7 @@ pages.push("ScopedApi.md");
 for(let page of pages) {
     let text = fs.readFileSync(join(dir, page)).toString();
 
-    let title;
+    let title: string;
     if(page === "Api.md" || page === "ScopedApi.md") {
         text = text.slice(text.indexOf("\n") + 1);
         if(page === "Api.md") title = "Unscoped Api";
@@ -100,9 +100,9 @@ for(let page of pages) {
 
         if(page === "Api.md") {
             text = "The api is accessible via the global variable `GL`. " +
-            "Scripts are also able to use a [scoped API](./scopedapi) which automatically handles cleanup by creating a `new GL()`\n" + text;
+            "Scripts are also encouraged to use the [scoped API](./scopedapi) which automatically handles cleanup. The scoped api is available with the script-specific `api` variable.\n" + text;
         } else {
-            text = "A scoped api can be created with `new GL()` within a plugin or library.\n" + text;
+            text = "A scoped api is available to all scripts with the `api` variable.\n" + text;
         }
     } else {
         let name = page.toLowerCase().replace("scoped", "").replace(".md", "");

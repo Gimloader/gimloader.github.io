@@ -3,11 +3,11 @@ title: The Gimloader Api
 description: An overview of the Gimloader api
 ---
 
-The Gimloader API is accessible through the global `GL` object. It contains many tools that are useful for making scripts.
+The Gimloader API is accessible through the script-specific `api` variable, or the global `GL` variable. It contains many tools that are useful for making scripts.
 
 ## Scoped vs. Unscoped
 
-It is recommended that you use the scoped api for your script, as it will automatically handle cleaning up any changes that have been made when the script is disabled. The global api requires using an id for cleanup, which can be cumbersome. In order to create a scoped API, simply run `const api = new GL()` within a script.
+It is recommended that you use the scoped api for your script, as it will automatically handle cleaning up any changes that have been made when the script is disabled. The global api requires using an id for cleanup, which can be cumbersome. Scoped apis are available for all scripts via the `api` variable.
 
 ```js
 // Unscoped
@@ -18,13 +18,11 @@ export function onStop() {
 }
 
 // Scoped
-const api = new GL();
 api.UI.addStyles("#thing { color: red }")
 ```
 
 When using the scoped api, rather than exporting `onStop` and `openSettingsMenu` it is recommended that you use `api.onStop` and `api.openSettingsMenu`, like so:
 ```js
-const api = new GL();
 api.onStop(() => console.log("Stopping!"));
 api.openSettingsMenu(() => api.UI.showModal(...))
 ```

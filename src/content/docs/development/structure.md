@@ -66,7 +66,6 @@ export function sayHi() {
 /**
  * @needsLib MyLib
  */
-const api = new GL();
 const myLib = api.lib("MyLib");
 
 myLib.sayHi();
