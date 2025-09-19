@@ -1,0 +1,39 @@
+---
+import type { MDXInstance } from "astro";
+
+const { type, prefix } = Astro.props;
+interface Props {
+    type: "plugins" | "libraries";
+    prefix: string;
+}
+
+let pages: MDXInstance<Record<string, any>>[];
+
+if(type === "libraries") pages = Object.values(import.meta.glob(`../content/docs/libraries/**.md`, { eager: true }));
+else pages = Object.values(import.meta.glob(`../content/docs/plugins/**.mdx`, { eager: true }));
+
+const capitalize = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+---
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>        
+        {pages.map((p) => (
+            <tr>
+                <td>
+                    <a href={`/${type}/${p.file.split("/").pop()?.replace(".mdx", "").replace(".md", "")}`}>
+                        {p.frontmatter.title}
+                    </a>
+                </td>
+                <td>{capitalize(p.frontmatter.description.replace(prefix, ""))}</td>
+            </tr> 
+        ))}
+    </tbody>
+</table>

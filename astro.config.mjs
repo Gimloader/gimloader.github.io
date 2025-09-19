@@ -56,6 +56,11 @@ export default defineConfig({
                         ]
                     },
                     {
+                        label: "Official Libraries",
+                        collapsed: true,
+                        autogenerate: { directory: "libraries" }
+                    },
+                    {
                         label: "Docs",
                         items: [
                             {
@@ -74,6 +79,7 @@ export default defineConfig({
                             },
                             {
                                 label: 'Unscoped Api',
+                                collapsed: true,
                                 items: [
                                     'api/api',
                                     'api/hotkeys',
