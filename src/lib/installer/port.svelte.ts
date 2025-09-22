@@ -13,6 +13,7 @@ export default new class Port extends EventEmitter {
     firstCallback: StateCallback;
     subsequentCallback: StateCallback;
     disconnected = $state(false);
+    unavailable = $state(false);
     pendingMessages = new Map<string, (response?: any) => void>();
     runtime: typeof chrome.runtime;
     signKeyRes: (key: CryptoKey) => void;
@@ -22,19 +23,31 @@ export default new class Port extends EventEmitter {
         this.firstCallback = callback;
         this.subsequentCallback = subsequentCallback;
 
-        if(typeof chrome === "undefined") {
-            window.addEventListener("message", (e) => {
-                if(e.data?.source !== "gimloader-in") return;
-                if(e.data?.type === "portDisconnected") {
-                    this.firstMessage = true;
-                    this.disconnected = true;
-                    return;
-                }
+        if(typeof chrome === "undefined" || !chrome?.runtime?.connect) {
+            // If we're on chrome we'll instantly know that there is no connection
+            if(isFirefox) {
+                let unavailableTimeout = setTimeout(() => {
+                    this.unavailable = true
+                }, 1000);
 
-                this.onMessage(e.data);
-            });
+                window.addEventListener("message", (e) => {
+                    if(e.data?.source !== "gimloader-in") return;
+                    if(e.data?.type === "portDisconnected") {
+                        this.firstMessage = true;
+                        this.disconnected = true;
+                        return;
+                    }
+    
+                    this.onMessage(e.data);
 
-            window.postMessage({ source: "gimloader-out", json: '{"type": "ready"}' });
+                    clearTimeout(unavailableTimeout);
+                    this.unavailable = false;
+                });
+    
+                window.postMessage({ source: "gimloader-out", json: '{"type": "ready"}' });
+            } else {
+                this.unavailable = true;
+            }
         } else {
             if(isFirefox) {
                 this.port = chrome.runtime.connect();
