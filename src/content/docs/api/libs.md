@@ -2,7 +2,7 @@
 title: Libs Api
 description: Documentation for the Libs Api
 ---
-# [GL](./api).libs
+# [GL](../api).libs
 
 ## Accessors
 

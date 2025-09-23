@@ -2,7 +2,7 @@
 title: Scoped Rewriter Api
 description: Documentation for the Scoped Rewriter Api
 ---
-# [ScopedApi](./scopedapi).rewriter
+# [ScopedApi](../scopedapi).rewriter
 
 The rewriter API allows you to modify the bundled code of Gimkit in order to expose values
 or change certain behaviors. Due to the unpredictable nature of bundling, you cannot assume that variable names
@@ -60,7 +60,7 @@ A string representing the code to access the shared value.
 
 > **removeSharedById**(`id`): `void`
 
-Removes the shared value with a certain id created by [createShared](ScopedRewriter#createshared)
+Removes the shared value with a certain id created by [createShared](#createshared)
 
 #### Parameters
 

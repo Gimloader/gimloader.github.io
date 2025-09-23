@@ -2,7 +2,7 @@
 title: Scoped Hotkeys Api
 description: Documentation for the Scoped Hotkeys Api
 ---
-# [ScopedApi](./scopedapi).hotkeys
+# [ScopedApi](../scopedapi).hotkeys
 
 ## Accessors
 

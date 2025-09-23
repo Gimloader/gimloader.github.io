@@ -2,7 +2,7 @@
 title: Rewriter Api
 description: Documentation for the Rewriter Api
 ---
-# [GL](./api).rewriter
+# [GL](../api).rewriter
 
 The rewriter API allows you to modify the bundled code of Gimkit in order to expose values
 or change certain behaviors. Due to the unpredictable nature of bundling, you cannot assume that variable names
@@ -80,7 +80,7 @@ Removes all hooks created by a certain plugin
 
 > **removeShared**(`pluginName`): `void`
 
-Removes all values created by [createShared](Rewriter#createshared) by a certain plugin
+Removes all values created by [createShared](#createshared) by a certain plugin
 
 #### Parameters
 
@@ -98,7 +98,7 @@ Removes all values created by [createShared](Rewriter#createshared) by a certain
 
 > **removeSharedById**(`pluginName`, `id`): `void`
 
-Removes the shared value with a certain id created by [createShared](Rewriter#createshared)
+Removes the shared value with a certain id created by [createShared](#createshared)
 
 #### Parameters
 

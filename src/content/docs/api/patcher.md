@@ -2,7 +2,7 @@
 title: Patcher Api
 description: Documentation for the Patcher Api
 ---
-# [GL](./api).patcher
+# [GL](../api).patcher
 
 ## Methods
 

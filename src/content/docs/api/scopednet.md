@@ -2,7 +2,7 @@
 title: Scoped Net Api
 description: Documentation for the Scoped Net Api
 ---
-# [ScopedApi](./scopedapi).net
+# [ScopedApi](../scopedapi).net
 
 The net api extends [EventEmitter2](https://github.com/EventEmitter2/EventEmitter2)
 and uses wildcards with ":" as a delimiter.

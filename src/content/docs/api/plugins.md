@@ -2,7 +2,7 @@
 title: Plugins Api
 description: Documentation for the Plugins Api
 ---
-# [GL](./api).plugins
+# [GL](../api).plugins
 
 ## Accessors
 

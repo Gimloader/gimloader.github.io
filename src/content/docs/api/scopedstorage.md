@@ -2,7 +2,7 @@
 title: Scoped Storage Api
 description: Documentation for the Scoped Storage Api
 ---
-# [ScopedApi](./scopedapi).storage
+# [ScopedApi](../scopedapi).storage
 
 ## Methods
 

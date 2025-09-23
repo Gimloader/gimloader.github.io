@@ -2,7 +2,7 @@
 title: Net Api
 description: Documentation for the Net Api
 ---
-# [GL](./api).net
+# [GL](../api).net
 
 The net api extends [EventEmitter2](https://github.com/EventEmitter2/EventEmitter2)
 and uses wildcards with ":" as a delimiter.
@@ -71,7 +71,7 @@ Which type of server the client is currently connected to
 
 > **offLoad**(`id`): `void`
 
-Cancels any calls to [onLoad](Net#onload) with the same id
+Cancels any calls to [onLoad](#onload) with the same id
 
 #### Parameters
 

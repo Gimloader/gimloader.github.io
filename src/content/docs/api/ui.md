@@ -2,7 +2,7 @@
 title: UI Api
 description: Documentation for the UI Api
 ---
-# [GL](./api).ui
+# [GL](../api).ui
 
 ## Methods
 

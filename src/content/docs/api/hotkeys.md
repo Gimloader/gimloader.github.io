@@ -2,7 +2,7 @@
 title: Hotkeys Api
 description: Documentation for the Hotkeys Api
 ---
-# [GL](./api).hotkeys
+# [GL](../api).hotkeys
 
 ## Accessors
 
