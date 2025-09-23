@@ -1,8 +1,8 @@
 <script lang="ts">
     import Installer from 'src/lib/installer/installer.svelte';
     import { parsePluginHeader } from 'src/lib/installer/parseHeader';
+    import Port from 'src/lib/installer/port.svelte';
     import type { PluginHeaders } from 'src/lib/installer/types/headers';
-    import { onMount } from 'svelte';
     import Highlight from 'svelte-highlight';
     import javascript from 'svelte-highlight/languages/javascript';
     import onedark from 'svelte-highlight/styles/onedark';
@@ -11,13 +11,6 @@
 
     const searchParams = new URLSearchParams(window.location.search);
     const installUrl = searchParams.get('installUrl');
-
-    let gimloaderMissing = $state(false);
-
-    // way more time that is needed, it's usually 50ms at most
-    onMount(() => setTimeout(() => {
-        if(!Installer.ready) gimloaderMissing = true;
-    }, 1500));
 
     function fetchScript() {
         return new Promise<{ script: string, headers: PluginHeaders }>(async (res, rej) => {
@@ -63,46 +56,7 @@
                 <pre>{installError}</pre>
             {:else}
                 {#if installUrl}
-                    {#if !gimloaderMissing}
-                        {#await fetchScript()}
-                            <p>Loading script...</p>
-                        {:then { script, headers }}
-                            <div class="flex flex-col h-full">
-                                <h1 class="w-full text-center font-bold text-5xl">
-                                    {headers.name}
-                                    {#if headers.version}
-                                        <span class="text-xl font-normal">v{headers.version}</span>
-                                    {/if}
-                                </h1>
-                                <h2 class="text-3xl w-full text-center">
-                                    By {headers.author}
-                                </h2>
-                                <p class="w-full text-center">
-                                    {headers.description}
-                                </p>
-                                <div class="overflow-y-auto mt-3 rounded-md">
-                                    <Highlight language={javascript} code={script} />
-                                </div>
-                                <button onclick={() => install(script)}
-                                class="bg-green-700 rounded-full mt-3 p-1">
-                                    {#if installing}
-                                        {#await installing}
-                                            Installing...
-                                        {/await}
-                                    {:else}
-                                        {Installer.plugins.has(headers.name) ? "Reinstall" : "Install"}
-                                    {/if}
-                                </button>
-                            </div>
-                        {:catch error}
-                            <h1 class="text-5xl font-bold w-full text-center">
-                                Error Loading Script
-                            </h1>
-                            <p class="pt-3 text-xl">
-                                {error.message}
-                            </p>
-                        {/await}
-                    {:else}
+                    {#if Port.unavailable}
                         <h1 class="text-5xl font-bold w-full text-center">
                             Gimloader Not Found
                         </h1>
@@ -114,6 +68,49 @@
                             </a>
                             to install it.
                         </p>
+                    {:else}
+                        {#await fetchScript()}
+                            <p>Loading script...</p>
+                        {:then { script, headers }}
+                            {#if !Installer.ready}
+                                <p>Waiting for Gimloader...</p>
+                            {:else}
+                                <div class="flex flex-col h-full">
+                                    <h1 class="w-full text-center font-bold text-5xl">
+                                        {headers.name}
+                                        {#if headers.version}
+                                            <span class="text-xl font-normal">v{headers.version}</span>
+                                        {/if}
+                                    </h1>
+                                    <h2 class="text-3xl w-full text-center">
+                                        By {headers.author}
+                                    </h2>
+                                    <p class="w-full text-center">
+                                        {headers.description}
+                                    </p>
+                                    <div class="overflow-y-auto mt-3 rounded-md">
+                                        <Highlight language={javascript} code={script} />
+                                    </div>
+                                    <button onclick={() => install(script)}
+                                    class="bg-green-700 rounded-full mt-3 p-1">
+                                        {#if installing}
+                                            {#await installing}
+                                                Installing...
+                                            {/await}
+                                        {:else}
+                                            {Installer.plugins.has(headers.name) ? "Reinstall" : "Install"}
+                                        {/if}
+                                    </button>
+                                </div>
+                            {/if}
+                        {:catch error}
+                            <h1 class="text-5xl font-bold w-full text-center">
+                                Error Loading Script
+                            </h1>
+                            <p class="pt-3 text-xl">
+                                {error.message}
+                            </p>
+                        {/await}
                     {/if}
                 {:else}
                     <h1 class="text-5xl font-bold w-full text-center">

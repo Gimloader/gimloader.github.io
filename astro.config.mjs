@@ -3,13 +3,13 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import svelte from '@astrojs/svelte';
-import tailwind from '@astrojs/tailwind';
-
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://gimloader.github.io',
+
     integrations: [starlight({
         head: [
             {
@@ -98,9 +98,9 @@ export default defineConfig({
             }
         ])],
         title: 'Gimloader',
-        social: {
-            github: 'https://github.com/Gimloader/Gimloader',
-        },
+        social: [
+            { icon: "github", label: "Github", href: "https://github.com/Gimloader/Gimloader" }
+        ],
         favicon: '/icon.svg',
         logo: {
             src: './public/icon.svg'
@@ -110,5 +110,8 @@ export default defineConfig({
             ThemeSelect: './src/components/ThemeSelect.astro'
         },
         customCss: ['./src/lib/starlight.css']
-    }), svelte(), tailwind(), sitemap()]
+    }), svelte(), sitemap()],
+    vite: {
+        plugins: [tailwindcss()]
+    }
 });
