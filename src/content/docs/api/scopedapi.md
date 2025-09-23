@@ -17,15 +17,9 @@ Functions to listen for key combinations
 
 ### lib()
 
-> **lib**: \<`T`\>(`name`) => `T` = `Api.libs.get`
+> **lib**: (`name`) => `any` = `Api.libs.get`
 
 Gets the exported values of a library
-
-#### Type Parameters
-
-| Type Parameter | Default type |
-| ------ | ------ |
-| `T` | `any` |
 
 #### Parameters
 
@@ -35,7 +29,7 @@ Gets the exported values of a library
 
 #### Returns
 
-`T`
+`any`
 
 ***
 
@@ -49,7 +43,7 @@ Methods for getting info on libraries
 
 ### net
 
-> **net**: `Readonly`\<[`ScopedNetApi`](/api/scopednet) & `Connection`\>
+> **net**: `Readonly`\<[`ScopedNetApi`](/api/scopednet)\>
 
 Ways to interact with the current connection to the server,
 and functions to send general requests
@@ -104,15 +98,9 @@ Functions for intercepting the arguments and return values of functions
 
 ### plugin()
 
-> **plugin**: \<`T`\>(`name`) => `T` = `Api.plugins.get`
+> **plugin**: (`name`) => `any` = `Api.plugins.get`
 
 Gets the exported values of a plugin, if it has been enabled
-
-#### Type Parameters
-
-| Type Parameter | Default type |
-| ------ | ------ |
-| `T` | `any` |
 
 #### Parameters
 
@@ -122,7 +110,7 @@ Gets the exported values of a plugin, if it has been enabled
 
 #### Returns
 
-`T`
+`any`
 
 ***
 

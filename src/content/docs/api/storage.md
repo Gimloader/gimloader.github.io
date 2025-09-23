@@ -2,7 +2,7 @@
 title: Storage Api
 description: Documentation for the Storage Api
 ---
-# [GL](./api).storage
+# [GL](/api/api).storage
 
 ## Methods
 

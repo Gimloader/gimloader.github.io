@@ -1,8 +1,8 @@
 ---
-title: Plugins Api
-description: Documentation for the Plugins Api
+title: Scoped Libs Api
+description: Documentation for the Scoped Libs Api
 ---
-# [GL](/api/api).plugins
+# [ScopedApi](/api/scopedapi).libs
 
 ## Accessors
 
@@ -12,7 +12,7 @@ description: Documentation for the Plugins Api
 
 > **get** **list**(): `string`[]
 
-A list of all the plugins installed
+A list of all the libraries installed
 
 ##### Returns
 
@@ -24,7 +24,7 @@ A list of all the plugins installed
 
 > **get**(`name`): `any`
 
-Gets the exported values of a plugin, if it has been enabled
+Gets the exported values of a library
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Gets the exported values of a plugin, if it has been enabled
 
 > **getHeaders**(`name`): `object`
 
-Gets the headers of a plugin, such as version, author, and description
+Gets the headers of a library, such as version, author, and description
 
 #### Parameters
 
@@ -110,7 +110,7 @@ Only available for plugins
 
 > **isEnabled**(`name`): `boolean`
 
-Whether a plugin exists and is enabled
+Gets whether or not a plugin is installed and enabled
 
 #### Parameters
 

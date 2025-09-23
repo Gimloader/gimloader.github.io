@@ -2,7 +2,7 @@
 title: Scoped Rewriter Api
 description: Documentation for the Scoped Rewriter Api
 ---
-# [ScopedApi](./scopedapi).rewriter
+# [ScopedApi](/api/scopedapi).rewriter
 
 The rewriter API allows you to modify the bundled code of Gimkit in order to expose values
 or change certain behaviors. Due to the unpredictable nature of bundling, you cannot assume that variable names

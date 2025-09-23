@@ -2,7 +2,7 @@
 title: Scoped UI Api
 description: Documentation for the Scoped UI Api
 ---
-# [ScopedApi](./scopedapi).ui
+# [ScopedApi](/api/scopedapi).ui
 
 ## Methods
 

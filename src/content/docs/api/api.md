@@ -2,7 +2,7 @@
 title: Unscoped Api
 description: Documentation for the Unscoped Api
 ---
-The api is accessible via the global variable `GL`. Scripts are also encouraged to use the [scoped API](./scopedapi) which automatically handles cleanup. The scoped api is available with the script-specific `api` variable.
+The api is accessible via the global variable `GL`. Scripts are also encouraged to use the [scoped API](/api/scopedapi) which automatically handles cleanup. The scoped api is available with the script-specific `api` variable.
 ## Properties
 
 
@@ -17,15 +17,9 @@ Functions to listen for key combinations
 
 ### lib()
 
-> `static` **lib**: \<`T`\>(`name`) => `T`
+> `static` **lib**: (`name`) => `any`
 
 Gets the exported values of a library
-
-#### Type Parameters
-
-| Type Parameter | Default type |
-| ------ | ------ |
-| `T` | `any` |
 
 #### Parameters
 
@@ -35,7 +29,7 @@ Gets the exported values of a library
 
 #### Returns
 
-`T`
+`any`
 
 ***
 
@@ -49,7 +43,7 @@ Methods for getting info on libraries
 
 ### net
 
-> `static` **net**: `Readonly`\<[`NetApi`](/api/net) & `Connection`\>
+> `static` **net**: `Readonly`\<[`NetApi`](/api/net)\>
 
 Ways to interact with the current connection to the server,
 and functions to send general requests
@@ -66,15 +60,9 @@ Functions for intercepting the arguments and return values of functions
 
 ### plugin()
 
-> `static` **plugin**: \<`T`\>(`name`) => `T`
+> `static` **plugin**: (`name`) => `any`
 
 Gets the exported values of a plugin, if it has been enabled
-
-#### Type Parameters
-
-| Type Parameter | Default type |
-| ------ | ------ |
-| `T` | `any` |
 
 #### Parameters
 
@@ -84,7 +72,7 @@ Gets the exported values of a plugin, if it has been enabled
 
 #### Returns
 
-`T`
+`any`
 
 ***
 

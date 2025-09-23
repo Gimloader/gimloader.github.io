@@ -2,7 +2,7 @@
 title: Scoped Net Api
 description: Documentation for the Scoped Net Api
 ---
-# [ScopedApi](./scopedapi).net
+# [ScopedApi](/api/scopedapi).net
 
 The net api extends [EventEmitter2](https://github.com/EventEmitter2/EventEmitter2)
 and uses wildcards with ":" as a delimiter.
@@ -57,13 +57,13 @@ The room that the client is connected to, or null if there is no connection
 
 #### Get Signature
 
-> **get** **type**(): `"Blueboat"` \| `"Colyseus"` \| `"None"`
+> **get** **type**(): `ConnectionType`
 
 Which type of server the client is currently connected to
 
 ##### Returns
 
-`"Blueboat"` \| `"Colyseus"` \| `"None"`
+`ConnectionType`
 
 ## Methods
 

@@ -85,8 +85,12 @@ for(let i = 0; i < sections.length; i++) {
 
 fs.writeFileSync(join(dir, "Api.md"), unscopedText);
 fs.writeFileSync(join(dir, "ScopedApi.md"), scopedText);
+fs.writeFileSync(join(dir, "ScopedLibs.md"), fs.readFileSync(join(dir, "Libs.md")).toString());
+fs.writeFileSync(join(dir, "ScopedPlugins.md"), fs.readFileSync(join(dir, "Plugins.md")).toString());
 
 pages.push("ScopedApi.md");
+pages.push("ScopedLibs.md");
+pages.push("ScopedPlugins.md");
 
 // Replace Class: with breadcrumbs
 for(let page of pages) {
@@ -100,17 +104,18 @@ for(let page of pages) {
 
         if(page === "Api.md") {
             text = "The api is accessible via the global variable `GL`. " +
-            "Scripts are also encouraged to use the [scoped API](./scopedapi) which automatically handles cleanup. The scoped api is available with the script-specific `api` variable.\n" + text;
+            "Scripts are also encouraged to use the [scoped API](/api/scopedapi) which automatically handles cleanup. " +
+            "The scoped api is available with the script-specific `api` variable.\n" + text;
         } else {
             text = "A scoped api is available to all scripts with the `api` variable.\n" + text;
         }
     } else {
         let name = page.toLowerCase().replace("scoped", "").replace(".md", "");
         if(page.startsWith("Scoped")) {
-            text = `# [ScopedApi](./scopedapi).${name}` + 
+            text = `# [ScopedApi](/api/scopedapi).${name}` + 
                 text.slice(text.indexOf("\n"));
         } else {
-            text = `# [GL](./api).${name}` + 
+            text = `# [GL](/api/api).${name}` + 
                 text.slice(text.indexOf("\n"));
         }
 

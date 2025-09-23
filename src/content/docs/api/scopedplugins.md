@@ -1,8 +1,8 @@
 ---
-title: Plugins Api
-description: Documentation for the Plugins Api
+title: Scoped Plugins Api
+description: Documentation for the Scoped Plugins Api
 ---
-# [GL](/api/api).plugins
+# [ScopedApi](/api/scopedapi).plugins
 
 ## Accessors
 

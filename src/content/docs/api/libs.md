@@ -2,7 +2,7 @@
 title: Libs Api
 description: Documentation for the Libs Api
 ---
-# [GL](./api).libs
+# [GL](/api/api).libs
 
 ## Accessors
 
@@ -22,15 +22,9 @@ A list of all the libraries installed
 
 ### get()
 
-> **get**\<`T`\>(`name`): `T`
+> **get**(`name`): `any`
 
 Gets the exported values of a library
-
-#### Type Parameters
-
-| Type Parameter | Default type |
-| ------ | ------ |
-| `T` | `any` |
 
 #### Parameters
 
@@ -40,7 +34,7 @@ Gets the exported values of a library
 
 #### Returns
 
-`T`
+`any`
 
 ***
 

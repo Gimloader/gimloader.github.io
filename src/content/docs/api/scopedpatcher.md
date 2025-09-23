@@ -2,7 +2,7 @@
 title: Scoped Patcher Api
 description: Documentation for the Scoped Patcher Api
 ---
-# [ScopedApi](./scopedapi).patcher
+# [ScopedApi](/api/scopedapi).patcher
 
 ## Methods
 
