@@ -20,6 +20,7 @@ All scripts must begin with a header to declare things such as name, description
 | needsLib | No | No | Any libraries the script needs to be enabled to work. Formatted like `[Name] \| [Url]`, can be repeated |
 | optionalLib | No | No | The same as needsLib, but the script will still work without these and will not try to automatically download them. |
 | syncEval | No | No | Whether to synchronously `eval` the script rather than `import`ing it. This requires that you use commonjs module.exports syntax instead of esm exports. |
+| gamemode | No | No | Automatically limits `api.net.onLoad` to only firing in certain gamemodes by default. See below for details on gamemode ids. Case insensitive, can be repeated. |
 | isLibrary | No** | No | Libraries must include this header so that clueless users don't accidentally install them as a plugin. |
 
 <small>
@@ -42,8 +43,20 @@ All scripts must begin with a header to declare things such as name, description
  * @isLibrary false
  * @needsLib QuickSettings | https://raw.githubusercontent.com/Gimloader/client-plugins/refs/heads/main/libraries/QuickSettings/build/QuickSettings.js
  * @optionalLib CommandLine | https://raw.githubusercontent.com/Blackhole927/gimkitmods/main/libraries/CommandLine/CommandLine.js
+ * @gamemode dontLookDown
  */
 ```
+
+## The @gamemode header
+
+Whenever a game loads Gimloader will attempt to determine an id for the gamemode that is being played. The rules are as follows:
+
+1. The gamemode id is sent by the server for 1d modes
+2. The gamemode id is determined based off the music file path for official 2d modes
+3. The gamemode id is set to "creative" if the map is not published
+4. Otherwise the gamemode id is "unknown".
+
+There are also special ids, such as "2d" and "1d" for all 2d/1d gamemodes respectively. A full list of ids, as of the time of writing, can be found [here](/development/gamemodes).
 
 ## Exports
 

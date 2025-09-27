@@ -66,6 +66,10 @@ Gets the headers of a plugin, such as version, author, and description
 
 > **downloadUrl**: `string`
 
+##### gamemode
+
+> **gamemode**: `string`[]
+
 ##### hasSettings
 
 > **hasSettings**: `string`

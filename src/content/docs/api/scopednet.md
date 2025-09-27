@@ -25,6 +25,20 @@ net.on("send:*", () => {})
 
 ## Accessors
 
+### gamemode
+
+#### Get Signature
+
+> **get** **gamemode**(): `string`
+
+The id of the gamemode the player is currently playing
+
+##### Returns
+
+`string`
+
+***
+
 ### isHost
 
 #### Get Signature
@@ -69,15 +83,17 @@ Which type of server the client is currently connected to
 
 ### onLoad()
 
-> **onLoad**(`callback`): () => `void`
+> **onLoad**(`callback`, `gamemode`?): () => `void`
 
-Runs a callback when the game is loaded, or runs it immediately if the game has already loaded
+Runs a callback when the game is loaded, or runs it immediately if the game has already loaded.
+If the @gamemode header is set the callback will only fire if the gamemode matches one of the provided gamemodes.
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `callback` | (`type`) => `void` |
+| `callback` | (`type`, `gamemode`) => `void` |
+| `gamemode`? | `string` \| `string`[] |
 
 #### Returns
 

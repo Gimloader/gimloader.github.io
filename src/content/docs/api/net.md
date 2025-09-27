@@ -25,6 +25,20 @@ net.on("send:*", () => {})
 
 ## Accessors
 
+### gamemode
+
+#### Get Signature
+
+> **get** **gamemode**(): `string`
+
+The id of the gamemode the player is currently playing
+
+##### Returns
+
+`string`
+
+***
+
 ### isHost
 
 #### Get Signature
@@ -87,7 +101,7 @@ Cancels any calls to [onLoad](Net#onload) with the same id
 
 ### onLoad()
 
-> **onLoad**(`id`, `callback`): () => `void`
+> **onLoad**(`id`, `callback`, `gamemode`?): () => `void`
 
 Runs a callback when the game is loaded, or runs it immediately if the game has already loaded
 
@@ -96,7 +110,8 @@ Runs a callback when the game is loaded, or runs it immediately if the game has 
 | Parameter | Type |
 | ------ | ------ |
 | `id` | `string` |
-| `callback` | (`type`) => `void` |
+| `callback` | (`type`, `gamemode`) => `void` |
+| `gamemode`? | `string` \| `string`[] |
 
 #### Returns
 
