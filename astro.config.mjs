@@ -106,8 +106,8 @@ export default defineConfig({
             src: './public/icon.svg'
         },
         components: {
-            ThemeProvider: './src/components/ThemeProvider.astro',
-            ThemeSelect: './src/components/ThemeSelect.astro'
+            ThemeProvider: './src/components/docs/ThemeProvider.astro',
+            ThemeSelect: './src/components/docs/ThemeSelect.astro'
         },
         customCss: ['./src/lib/starlight.css']
     }), svelte(), sitemap()],

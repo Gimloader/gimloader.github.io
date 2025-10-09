@@ -6,7 +6,9 @@
     "baseUrl": ".",
     "strict": false,
     "paths": {
-      "$components/*": ["./src/components/*"]
+      "$components/*": ["./src/components/*"],
+      "$lib/*": ["./src/lib/*"],
+      "$layouts/*": ["./src/layouts/*"]
     }
   }
 }
