@@ -10,7 +10,7 @@ Desync is utility library that stops synchronizing the player's position with th
 
 ```js
 /**
- * @needsLib Desync | https://raw.githubusercontent.com/Gimloader/client-plugins/main/libraries/Desync.js
+ * @needsLib Desync | https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/libraries/Desync.js
  */
 
 // Stop the player from being moved by the server

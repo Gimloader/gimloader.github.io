@@ -41,7 +41,7 @@ All scripts must begin with a header to declare things such as name, description
  * @reloadRequired ingame
  * @hasSettings true
  * @isLibrary false
- * @needsLib QuickSettings | https://raw.githubusercontent.com/Gimloader/client-plugins/refs/heads/main/libraries/QuickSettings/build/QuickSettings.js
+ * @needsLib QuickSettings | https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/libraries/QuickSettings.js
  * @optionalLib CommandLine | https://raw.githubusercontent.com/Blackhole927/gimkitmods/main/libraries/CommandLine/CommandLine.js
  * @gamemode dontLookDown
  */

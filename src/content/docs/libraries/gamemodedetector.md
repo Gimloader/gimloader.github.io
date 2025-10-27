@@ -13,7 +13,7 @@ The currently detected gamemodes are the following:
 
 ```js
 /**
- * @needsLib GamemodeDetector | https://raw.githubusercontent.com/Gimloader/client-plugins/main/libraries/GamemodeDetector.js
+ * @needsLib GamemodeDetector | https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/libraries/GamemodeDetector.js
  */
 
 // Get the current gamemode

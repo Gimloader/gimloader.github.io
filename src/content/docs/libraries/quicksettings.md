@@ -10,7 +10,7 @@ QuickSettings exposes an easy api to add a settings menu to your plugin. Setting
 
 ```js
 /**
- * @needsLib QuickSettings | https://raw.githubusercontent.com/Gimloader/client-plugins/refs/heads/main/libraries/QuickSettings/build/QuickSettings.js
+ * @needsLib QuickSettings | https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/libraries/QuickSettings.js
  */
 
 // Create a settings menu that this plugin can use

@@ -9,7 +9,7 @@ DLDUtils is built on top of [Desync](/libraries/desync) to make Don't Look Down 
 
 ```js
 /**
- * @needsLib DLDUtils | https://raw.githubusercontent.com/Gimloader/client-plugins/main/libraries/DLDUtils.js
+ * @needsLib DLDUtils | https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/libraries/DLDUtils.js
  */
 
 const DLDUtils = api.lib("DLDUtils");
