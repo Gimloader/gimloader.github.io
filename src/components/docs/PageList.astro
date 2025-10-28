@@ -9,8 +9,9 @@ interface Props {
 
 let pages: MDXInstance<Record<string, any>>[];
 
-if(type === "libraries") pages = Object.values(import.meta.glob(`../content/docs/libraries/**.md`, { eager: true }));
-else pages = Object.values(import.meta.glob(`../content/docs/plugins/**.mdx`, { eager: true }));
+if(type === "libraries") pages = Object.values(import.meta.glob(`../../content/docs/libraries/**.md`, { eager: true }));
+else pages = Object.values(import.meta.glob(`../../content/docs/plugins/**.mdx`, { eager: true }));
+if(pages.length === 0) throw new Error(`No pages found for type: ${type}`);
 
 const capitalize = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
