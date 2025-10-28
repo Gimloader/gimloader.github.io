@@ -99,7 +99,8 @@ export default defineConfig({
         ])],
         title: 'Gimloader',
         social: [
-            { icon: "github", label: "Github", href: "https://github.com/Gimloader/Gimloader" }
+            { icon: "github", label: "Github", href: "https://github.com/Gimloader/Gimloader" },
+            { icon: "discord", label: "Discord", href: "https://discord.gg/qG3zrETuMH" }
         ],
         favicon: '/icon.svg',
         logo: {
