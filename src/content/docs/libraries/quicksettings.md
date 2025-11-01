@@ -48,7 +48,7 @@ const settings = api.lib("QuickSettings")("MyPlugin", [
         options: [
             "Easy",
             "Medium",
-            "Hard
+            "Hard"
         ],
         default: "Medium"
     }
