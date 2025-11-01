@@ -4,7 +4,7 @@ description: A Gimloader library that makes it easy to make a settings menu for 
 next: false
 ---
 
-QuickSettings exposes an easy api to add a settings menu to your plugin. Settings are automatically saved when changed. The supported elements are `heading`, `boolean`, `number`, and `text`. All options can be seen below.
+QuickSettings exposes an easy api to add a settings menu to your plugin. Settings are automatically saved when changed. The supported elements are `heading`, `boolean`, `number`, `text`, and `dropdown`. All options can be seen below.
 
 ## Usage
 
@@ -40,6 +40,17 @@ const settings = api.lib("QuickSettings")("MyPlugin", [
         title: "Your name",
         maxLength: 18,
         default: "Josh"
+    },
+    {
+        type: "dropdown",
+        id: "difficulty",
+        title: "Difficulty",
+        options: [
+            "Easy",
+            "Medium",
+            "Hard
+        ],
+        default: "Medium"
     }
 ]);
 
@@ -47,11 +58,13 @@ const settings = api.lib("QuickSettings")("MyPlugin", [
 settings.listen("bool", (val) => console.log("bool changed to", val));
 settings.listen("num", (val) => console.log("num changed to", val));
 settings.listen("name", (val) => console.log("name changed to", val));
+settings.listen("difficulty", (val) => console.log("difficulty changed to", val));
 
 // Get the value of settings
 console.log("The boolean is", settings.bool);
 console.log("The number is", settings.num);
 console.log("The name is", settings.name);
+console.log("The difficulty is", settings.difficulty);
 
 // Register the openSettingsMenu function
 api.openSettingsMenu(settings.openSettingsMenu);
