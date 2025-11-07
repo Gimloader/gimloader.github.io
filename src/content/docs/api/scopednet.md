@@ -1,6 +1,6 @@
 ---
-title: Scoped Net Api
-description: Documentation for the Scoped Net Api
+title: Net Api
+description: Documentation for the Net Api
 ---
 # [ScopedApi](/api/scopedapi).net
 

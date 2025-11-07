@@ -1,6 +1,6 @@
 ---
-title: Rewriter Api
-description: Documentation for the Rewriter Api
+title: Global Rewriter Api
+description: Documentation for the Global Rewriter Api
 ---
 # [GL](/api/api).rewriter
 

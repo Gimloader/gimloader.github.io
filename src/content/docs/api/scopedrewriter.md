@@ -1,6 +1,6 @@
 ---
-title: Scoped Rewriter Api
-description: Documentation for the Scoped Rewriter Api
+title: Rewriter Api
+description: Documentation for the Rewriter Api
 ---
 # [ScopedApi](/api/scopedapi).rewriter
 

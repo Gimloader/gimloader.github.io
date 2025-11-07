@@ -1,6 +1,6 @@
 ---
-title: Patcher Api
-description: Documentation for the Patcher Api
+title: Global Patcher Api
+description: Documentation for the Global Patcher Api
 ---
 # [GL](/api/api).patcher
 

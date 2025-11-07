@@ -1,6 +1,6 @@
 ---
-title: Net Api
-description: Documentation for the Net Api
+title: Global Net Api
+description: Documentation for the Global Net Api
 ---
 # [GL](/api/api).net
 

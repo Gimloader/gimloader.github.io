@@ -1,6 +1,6 @@
 ---
-title: UI Api
-description: Documentation for the UI Api
+title: Global UI Api
+description: Documentation for the Global UI Api
 ---
 # [GL](/api/api).ui
 

@@ -23,6 +23,7 @@ const inheritedRegex = /\n#### Inherited from\n\n.*\n/g;
 
 for(let page of pages) {
     let text = fs.readFileSync(join(dir, page)).toString();
+    text = text.replace("PluginSettings", "[`Pluginsettings`](/api/settings)");
 
     // remove the constructor/extends message
     while(text.includes("\n## Extends") || text.includes("\n## Constructors")) {
@@ -120,7 +121,8 @@ for(let page of pages) {
         }
 
         title = page.replace(".md", "") + " Api";
-        title = title.replace("Scoped", "Scoped ");
+        if(!title.includes("Scoped")) title = "Global " + title;
+        else title = title.replace("Scoped", "");
     }
 
     let prevNone = page === "ScopedApi.md" ? "\nprev: false" : "";

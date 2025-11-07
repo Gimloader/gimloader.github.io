@@ -1,6 +1,6 @@
 ---
-title: Scoped Patcher Api
-description: Documentation for the Scoped Patcher Api
+title: Patcher Api
+description: Documentation for the Patcher Api
 ---
 # [ScopedApi](/api/scopedapi).patcher
 

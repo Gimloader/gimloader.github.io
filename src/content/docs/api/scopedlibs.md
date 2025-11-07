@@ -1,6 +1,6 @@
 ---
-title: Scoped Libs Api
-description: Documentation for the Scoped Libs Api
+title: Libs Api
+description: Documentation for the Libs Api
 ---
 # [ScopedApi](/api/scopedapi).libs
 
@@ -57,6 +57,10 @@ Gets the headers of a library, such as version, author, and description
 ##### author
 
 > **author**: `string`
+
+##### deprecated
+
+> **deprecated**: `string`
 
 ##### description
 

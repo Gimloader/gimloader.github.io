@@ -73,6 +73,7 @@ export default defineConfig({
                                     'api/scopedstorage',
                                     'api/scopedpatcher',
                                     'api/scopedrewriter',
+                                    'api/settings',
                                     'api/scopedlibs',
                                     'api/scopedplugins'
                                 ]

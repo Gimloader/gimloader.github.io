@@ -1,6 +1,6 @@
 ---
-title: Scoped Storage Api
-description: Documentation for the Scoped Storage Api
+title: Storage Api
+description: Documentation for the Storage Api
 ---
 # [ScopedApi](/api/scopedapi).storage
 

@@ -1,6 +1,6 @@
 ---
-title: Hotkeys Api
-description: Documentation for the Hotkeys Api
+title: Global Hotkeys Api
+description: Documentation for the Global Hotkeys Api
 ---
 # [GL](/api/api).hotkeys
 

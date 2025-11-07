@@ -1,6 +1,6 @@
 ---
-title: Storage Api
-description: Documentation for the Storage Api
+title: Global Storage Api
+description: Documentation for the Global Storage Api
 ---
 # [GL](/api/api).storage
 

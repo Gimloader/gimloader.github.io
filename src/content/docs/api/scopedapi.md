@@ -130,6 +130,14 @@ Functions to edit Gimkit's code
 
 ***
 
+### settings
+
+> **settings**: `[`Pluginsettings`](/api/settings)`
+
+A utility for creating persistent settings menus, only available to plugins
+
+***
+
 ### storage
 
 > **storage**: `Readonly`\<[`ScopedStorageApi`](/api/scopedstorage)\>
@@ -194,10 +202,10 @@ Gimkit's internal reactDom instance
 
 #### Get Signature
 
-> **get** **stores**(): `any`
+> **get** **stores**(): `Stores`
 
 A variety of gimkit internal objects available in 2d gamemodes
 
 ##### Returns
 
-`any`
+`Stores`

@@ -1,6 +1,6 @@
 ---
-title: Scoped Hotkeys Api
-description: Documentation for the Scoped Hotkeys Api
+title: Hotkeys Api
+description: Documentation for the Hotkeys Api
 ---
 # [ScopedApi](/api/scopedapi).hotkeys
 

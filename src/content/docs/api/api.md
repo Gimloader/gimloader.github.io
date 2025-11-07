@@ -158,10 +158,10 @@ Gimkit's internal reactDom instance
 
 #### Get Signature
 
-> **get** `static` **stores**(): `any`
+> **get** `static` **stores**(): `Stores`
 
 A variety of Gimkit internal objects available in 2d gamemodes
 
 ##### Returns
 
-`any`
+`Stores`
