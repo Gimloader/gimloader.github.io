@@ -81,6 +81,54 @@ Which type of server the client is currently connected to
 
 ## Methods
 
+### modifyFetchRequest()
+
+> **modifyFetchRequest**(`id`, `path`, `callback`): () => `void`
+
+Runs a callback when a request is made that matches a certain path (can have wildcards)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
+| `path` | `string` |
+| `callback` | (`options`) => `any` |
+
+#### Returns
+
+`Function`
+
+##### Returns
+
+`void`
+
+***
+
+### modifyFetchResponse()
+
+> **modifyFetchResponse**(`id`, `path`, `callback`): () => `void`
+
+Runs a callback when a response is recieved for a request under a certain path (can have wildcards)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
+| `path` | `string` |
+| `callback` | (`response`) => `any` |
+
+#### Returns
+
+`Function`
+
+##### Returns
+
+`void`
+
+***
+
 ### offLoad()
 
 > **offLoad**(`id`): `void`
@@ -137,6 +185,42 @@ Sends a message to the server on a specific channel
 | ------ | ------ |
 | `channel` | `string` |
 | `message` | `any` |
+
+#### Returns
+
+`void`
+
+***
+
+### stopModifyRequest()
+
+> **stopModifyRequest**(`id`): `void`
+
+Stops any modifications made by [modifyFetchRequest](Net#modifyfetchrequest) with the same id
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
+
+#### Returns
+
+`void`
+
+***
+
+### stopModifyResponse()
+
+> **stopModifyResponse**(`id`): `void`
+
+Stops any modifications made by [modifyFetchResponse](Net#modifyfetchresponse) with the same id
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 #### Returns
 

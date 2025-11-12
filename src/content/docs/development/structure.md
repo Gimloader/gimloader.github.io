@@ -9,18 +9,18 @@ All scripts must begin with a header to declare things such as name, description
 
 | Name | Required* | Plugin Only? | Purpose |
 | ---- | --------- | ------------ | ------- |
-| name | Yes | No | The script's name |
-| description | Yes | No | A description of what the script does |
-| author | Yes | No | Who made the script |
-| version | No | No | What version the script is on, used for updates |
-| downloadUrl | No | No | Where a raw version of the script be found, used for updates |
+| name | Yes | No | The script's name. |
+| description | Yes | No | A description of what the script does. |
+| author | Yes | No | Who made the script. |
+| version | No | No | What version the script is on, used for updates. |
+| downloadUrl | No | No | Where a raw version of the script be found, used for updates. |
 | webpage | No | No | A webpage where users can get more information about the script. |
-| reloadRequired | No | No | Whether the page needs to reload after a script is installed for it to work. Set to `true` for always, set to `ingame` for only when a game is currently active |
-| hasSettings | No | Yes | Whether a plugin has a settings menu, used to show it does when it's disabled |
-| needsLib | No | No | Any libraries the script needs to be enabled to work. Formatted like `[Name] \| [Url]`, can be repeated |
+| reloadRequired | No | No | Whether the page needs to reload after a script is installed for it to work. Set to `true` for always, set to `ingame` for only when a game is currently active. |
+| hasSettings | No | Yes | Whether a plugin has a settings menu, used to show it does when it's disabled. |
+| needsLib | No | No | Any libraries the script needs to be enabled to work. Formatted like `[Name] \| [Url]`, can be repeated. |
 | optionalLib | No | No | The same as needsLib, but the script will still work without these and will not try to automatically download them. |
-| syncEval | No | No | Whether to synchronously `eval` the script rather than `import`ing it. This requires that you use commonjs module.exports syntax instead of esm exports. |
 | gamemode | No | No | Automatically limits `api.net.onLoad` to only firing in certain gamemodes by default. See below for details on gamemode ids. Case insensitive, can be repeated. |
+| changelog | No | No | A message to display when the script is updated to the current version. Can be repeated. |
 | isLibrary | No** | No | Libraries must include this header so that clueless users don't accidentally install them as a plugin. |
 
 <small>
@@ -44,6 +44,7 @@ All scripts must begin with a header to declare things such as name, description
  * @needsLib QuickSettings | https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/libraries/QuickSettings.js
  * @optionalLib CommandLine | https://raw.githubusercontent.com/Blackhole927/gimkitmods/main/libraries/CommandLine/CommandLine.js
  * @gamemode dontLookDown
+ * @changelog New thing has been added
  */
 ```
 

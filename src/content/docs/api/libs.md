@@ -58,6 +58,10 @@ Gets the headers of a library, such as version, author, and description
 
 > **author**: `string`
 
+##### changelog
+
+> **changelog**: `string`[]
+
 ##### deprecated
 
 > **deprecated**: `string`
@@ -99,10 +103,6 @@ Only available for plugins
 ##### reloadRequired
 
 > **reloadRequired**: `string`
-
-##### syncEval
-
-> **syncEval**: `string`
 
 ##### version
 
