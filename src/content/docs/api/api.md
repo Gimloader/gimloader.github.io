@@ -7,6 +7,14 @@ The api is accessible via the global variable `GL`. Scripts are also encouraged 
 
 
 
+### commands
+
+> `static` **commands**: `Readonly`\<[`CommandsApi`](/api/commands)\>
+
+Functions for adding commands to the command palette
+
+***
+
 ### hotkeys
 
 > `static` **hotkeys**: `Readonly`\<[`HotkeysApi`](/api/hotkeys)\>

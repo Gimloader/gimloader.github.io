@@ -7,6 +7,14 @@ A scoped api is available to all scripts with the `api` variable.
 
 ## Properties
 
+### commands
+
+> **commands**: `Readonly`\<[`ScopedCommandsApi`](/api/scopedcommands)\>
+
+Functions for adding commands to the command palette
+
+***
+
 ### hotkeys
 
 > **hotkeys**: `Readonly`\<[`ScopedHotkeysApi`](/api/scopedhotkeys)\>
