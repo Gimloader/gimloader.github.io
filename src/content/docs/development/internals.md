@@ -18,5 +18,6 @@ In order to be able to effectively make scripts it's important to understand wha
 | [Font Awesome](https://fontawesome.com/) | Icons |
 | [Mobx](https://mobx.js.org/) | State management |
 | [Blueboat](https://github.com/Gimkit/blueboat) | Networking for 1d games |
+| [howler.js](https://howlerjs.com/) | Audio |
 
 There are plenty of others for smaller tasks like encrypting strings or determining whether a color is light or dark, but those are the more important ones.
