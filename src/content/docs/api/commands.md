@@ -20,7 +20,7 @@ commands.addCommand("MyPlugin", {
        ]
    });
    const number = await context.number({
-      title: "Pick a number"
+      title: "Pick a number",
       min: 1,
       max: 10,
       decimal: true
