@@ -25,6 +25,27 @@ export default defineConfig({
                     property: "og:image",
                     content: "https://gimloader.github.io/icon.png"
                 }
+            },
+            {
+                tag: "meta",
+                attrs: {
+                    property: "og:image:width",
+                    content: "128"
+                }
+            },
+            {
+                tag: "meta",
+                attrs: {
+                    property: "og:image:height",
+                    content: "128"
+                }
+            },
+            {
+                tag: "meta",
+                attrs: {
+                    name: "og:image:alt",
+                    content: "The Gimloader logo"
+                }
             }
         ],
         plugins: [starlightSidebarTopics([
