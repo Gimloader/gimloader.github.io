@@ -18,6 +18,13 @@ export default defineConfig({
                     name: "google-site-verification",
                     content: "GBX_OqgXVVQhd3z1AjX5jnNND1-k9xX6NAhhTqh8hko"
                 }
+            },
+            {
+                tag: "meta",
+                attrs: {
+                    property: "og:image",
+                    content: "https://gimloader.github.io/icon.png"
+                }
             }
         ],
         plugins: [starlightSidebarTopics([
