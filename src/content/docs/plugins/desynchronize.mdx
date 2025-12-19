@@ -1,0 +1,16 @@
+---
+title: Desynchronize
+description: A Gimloader plugin that disables the client being snapped back by the server
+pluginDescription: Disables the client being snapped back by the server, others cannot see you move. Breaks most gamemodes.
+author: TheLazySquid
+downloadUrl: https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/plugins/Desynchronize.js
+---
+
+import ButtonInstall from "$components/install/ButtonInstall.svelte";
+import DesyncWarning from "$components/docs/DesyncWarning.astro";
+
+<DesyncWarning />
+
+Desynchronize prevents the server from snapping your player back, either due to plugins messing with its location or due to lag. Others will not be able to see you move, and most gamemodes will not work properly. The one exception to this is Don't Look Down, which has its logic re-implemented to accomodate speedrunning.
+
+<ButtonInstall client:only="svelte" name="Desynchronize" url="https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/plugins/Desynchronize.js" />
