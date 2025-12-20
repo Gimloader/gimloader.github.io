@@ -1,8 +1,8 @@
 <script lang="ts">
+    import type { ScriptHeaders } from 'src/lib/installer/types/headers';
     import Installer from 'src/lib/installer/installer.svelte';
-    import { parsePluginHeader } from 'src/lib/installer/parseHeader';
+    import { parseScriptHeaders } from 'src/lib/installer/parseHeader';
     import Port from 'src/lib/installer/port.svelte';
-    import type { PluginHeaders } from 'src/lib/installer/types/headers';
     import Highlight from 'svelte-highlight';
     import javascript from 'svelte-highlight/languages/javascript';
     import onedark from 'svelte-highlight/styles/onedark';
@@ -13,11 +13,11 @@
     const installUrl = searchParams.get('installUrl');
 
     function fetchScript() {
-        return new Promise<{ script: string, headers: PluginHeaders }>(async (res, rej) => {
+        return new Promise<{ script: string, headers: ScriptHeaders }>(async (res, rej) => {
             try {
                 let resp = await fetch(installUrl);
                 let script = await resp.text();
-                let headers = parsePluginHeader(script);
+                let headers = parseScriptHeaders(script);
 
                 res({ script, headers });
             } catch(e) {

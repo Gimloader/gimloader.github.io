@@ -1,7 +1,7 @@
 import { SvelteSet } from "svelte/reactivity";
 import Port from "./port.svelte";
 import type { Settings, State } from "./types/state";
-import { parsePluginHeader } from "./parseHeader";
+import { parseScriptHeaders } from "./parseHeader";
 
 export default new class Installer {
     plugins = new SvelteSet<string>();
@@ -25,7 +25,7 @@ export default new class Installer {
     }
 
     async install(code: string) {
-        let headers = parsePluginHeader(code);
+        let headers = parseScriptHeaders(code);
         let name = headers.name;
 
         await Port.sendAndRecieve("editOrCreate", { code, name });
