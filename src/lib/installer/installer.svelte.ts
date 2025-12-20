@@ -11,7 +11,7 @@ export default new class Installer {
     init() {
         Port.on("pluginCreate", ({ name }) => this.plugins.add(name));
         Port.on("pluginDelete", ({ name }) => this.plugins.delete(name));
-        Port.on("pluginsDeleteAll", () => this.plugins.clear());
+        Port.on("pluginDeleteAll", () => this.plugins.clear());
         Port.on("settingUpdate", ({ key, value }) => this.settings[key] = value);
 
         const onState = (state: State) => {
@@ -24,18 +24,10 @@ export default new class Installer {
         Port.init(onState, onState);
     }
 
-    async install(script: string) {
-        let headers = parsePluginHeader(script);
+    async install(code: string) {
+        let headers = parsePluginHeader(code);
         let name = headers.name;
 
-        if(this.settings.autoDownloadMissingLibs) {
-            await Port.sendAndRecieve("downloadLibraries", { libraries: headers.needsLib });
-        }
-
-        if(this.plugins.has(name)) {
-            Port.send("pluginEdit", { name, newName: name, script });
-        } else {
-            Port.send("pluginCreate", { name, script });
-        }     
+        await Port.sendAndRecieve("editOrCreate", { code, name });
     }
 }

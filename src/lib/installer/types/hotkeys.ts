@@ -22,3 +22,5 @@ export interface ConfigurableHotkeyOptions {
     preventDefault?: boolean;
     default?: HotkeyTrigger;
 }
+
+export type HotkeyCallback = (e: KeyboardEvent) => void;

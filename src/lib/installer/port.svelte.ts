@@ -86,7 +86,7 @@ export default new class Port extends EventEmitter {
 
             if(this.runtime.lastError) {
                 // extension is likely removed entirely (if reinstalled we can reconnect)
-                setTimeout(() => this.connectPort(), 10000);
+                setTimeout(() => this.connectPort(), 1000);
             } else {
                 this.connectPort();
             }

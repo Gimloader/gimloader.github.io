@@ -1,56 +1,116 @@
-import type { HotkeyTrigger } from "./hotkeys.js";
-import type { ConfigurableHotkeysState, CustomServerConfig, SavedState, State } from "./state.js";
+import type { HotkeyTrigger } from "./hotkeys";
+import type { ConfigurableHotkeysState, LibraryInfo, PluginInfo, SavedState, State } from "./state";
+
+export type ScriptType = "plugin" | "library";
+export type ScriptEdit = { name: string; newName: string; code: string; updated?: boolean };
+export type ScriptDelete = { name: string };
+export type ScriptArrange = { order: string[] };
 
 // These go both ways
 export interface StateMessages {
-    hotkeyUpdate: { id: string, trigger: HotkeyTrigger };
+    hotkeyUpdate: { id: string; trigger: HotkeyTrigger };
     hotkeysUpdate: { hotkeys: ConfigurableHotkeysState };
 
-    libraryEdit: { name: string, newName: string, script: string };
-    libraryDelete: { name: string };
-    librariesDeleteAll: void;
-    libraryCreate: { name: string, script: string };
-    librariesArrange: { order: string[] };
+    libraryDelete: ScriptDelete;
+    libraryDeleteAll: void;
+    libraryCreate: LibraryInfo;
+    libraryArrange: ScriptArrange;
 
-    pluginEdit: { name: string, newName: string, script: string };
-    pluginDelete: { name: string };
-    pluginsDeleteAll: void;
-    pluginCreate: { name: string, script: string };
-    pluginsArrange: { order: string[] };
-    pluginToggled: { name: string, enabled: boolean };
-    pluginsSetAll: { enabled: boolean };
+    pluginDelete: ScriptDelete;
+    pluginDeleteAll: void;
+    pluginCreate: PluginInfo;
+    pluginArrange: ScriptArrange;
+    pluginToggled: { name: string; enabled: boolean };
+    pluginSetAll: { enabled: boolean };
 
-    settingUpdate: { key: string, value: any };
+    settingUpdate: { key: string; value: any };
 
-    pluginValueUpdate: { id: string, key: string, value: string };
-    pluginValueDelete: { id: string, key: string };
-    pluginValuesDelete: { id: string };
+    pluginValueUpdate: { id: string; key: string; value: string };
+    pluginValueDelete: { id: string; key: string };
+    pluginSettingUpdate: { id: string; key: string; value: string };
+    clearPluginStorage: { id: string };
 
-    customServerUpdate: CustomServerConfig;
+    cacheInvalid: { invalid: boolean };
 }
 
 // These only go from the background to content
 export interface Messages extends StateMessages {
+    pluginEdit: ScriptEdit;
+    libraryEdit: ScriptEdit;
     setState: SavedState;
-    toast: { type: "success" | "error" | "normal", message: string };
+    toast: { type: "success" | "error" | "warning" | "normal"; message: string };
     availableUpdates: string[];
-    customServerUpdate: CustomServerConfig;
+}
+
+export interface ScriptTryDelete {
+    name: string;
+    confirmed?: boolean;
 }
 
 export interface OnceMessages {
     getState: void;
     setState: SavedState;
-    downloadLibraries: { libraries: string[] };
     applyUpdates: { apply: boolean };
     updateAll: void;
-    updateSingle: { type: "plugin" | "library", name: string };
+    updateSingle: { name: string };
+    showEditor: { type: ScriptType; name?: string };
+    pluginTryDelete: ScriptTryDelete;
+    libraryTryDelete: ScriptTryDelete;
+    tryDeleteAllLibraries: { confirmed?: boolean };
+    tryTogglePlugin: { name: string; enabled: boolean; confirmed?: boolean };
+    trySetAllPlugins: { enabled: boolean; confirmed?: boolean };
+    downloadScript: { url: string; confirmed?: boolean; type?: ScriptType };
+    editOrCreate: { code: string; name?: string; updated?: boolean };
 }
+
+interface Success {
+    status: "success";
+}
+
+interface DependencyError {
+    status: "dependencyError";
+    message: string;
+}
+
+interface DownloadError {
+    status: "downloadError";
+    message: string;
+}
+
+interface Confirm {
+    status: "confirm";
+    message: string;
+}
+
+interface MultipleDependencyError extends DependencyError {
+    scripts: string[];
+}
+
+interface MultipleConfirm extends Confirm {
+    scripts: string[];
+}
+
+interface DownloadSuccess extends Success {
+    name: string;
+}
+
+type ToggleResult = Success | DependencyError | DownloadError | Confirm;
+export type DeleteResult = Success | Confirm;
+type SetAllResult = Success | MultipleDependencyError | DownloadError | MultipleConfirm;
+type DownloadResult = DownloadSuccess | Confirm | DownloadError;
 
 export interface OnceResponses {
     getState: State;
     setState: void;
-    downloadLibraries: { allDownloaded: boolean, error?: string };
     applyUpdates: void;
     updateAll: string[];
-    updateSingle: { updated: boolean, failed?: boolean, version?: string };
+    updateSingle: { updated: boolean; failed?: boolean; version?: string };
+    showEditor: void;
+    pluginTryDelete: DeleteResult;
+    libraryTryDelete: DeleteResult;
+    tryDeleteAllLibraries: DeleteResult;
+    tryTogglePlugin: ToggleResult;
+    trySetAllPlugins: SetAllResult;
+    downloadScript: DownloadResult;
+    editOrCreate: void;
 }
