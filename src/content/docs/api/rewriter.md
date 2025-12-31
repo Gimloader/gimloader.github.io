@@ -12,7 +12,7 @@ will remain the same beteen updates.
 
 ### addParseHook()
 
-> **addParseHook**(`pluginName`, `prefix`, `callback`): () => `void`
+> **addParseHook**(`pluginName`, `prefix`, `modifier`): () => `void`
 
 Creates a hook that will modify the code of a script before it is run.
 This value is cached, so this hook may not run on subsequent page loads.
@@ -24,7 +24,7 @@ addParseHook should always be called in the top level of a script.
 | ------ | ------ | ------ |
 | `pluginName` | `string` | The name of the plugin creating the hook. |
 | `prefix` | `string` \| `boolean` | Limits the hook to only running on scripts beginning with this prefix. Passing `true` will only run on the index script, and passing `false` will run on all scripts. |
-| `callback` | (`code`) => `string` | The function that will modify the code. Should return the modified code. Cannot have side effects. |
+| `modifier` | (`code`) => `string` | A function that will modify the code, which should return the modified code. |
 
 #### Returns
 
@@ -58,11 +58,57 @@ A string representing the code to access the shared value.
 
 ***
 
+### exposeVar()
+
+> **exposeVar**(`pluginName`, `prefix`, `exposer`): () => `void`
+
+A utility function that exposes a variable based on regex to get its name.
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `pluginName` | `string` |
+| `prefix` | `string` \| `boolean` |
+| `exposer` | \{ `callback`: (`val`) => `void`; `check`: `string`; `find`: `RegExp`; `multiple`: `boolean`; \} |
+| `exposer.callback` | (`val`) => `void` |
+| `exposer.check`? | `string` |
+| `exposer.find` | `RegExp` |
+| `exposer.multiple`? | `boolean` |
+
+#### Returns
+
+`Function`
+
+##### Returns
+
+`void`
+
+***
+
 ### removeParseHooks()
 
 > **removeParseHooks**(`pluginName`): `void`
 
-Removes all hooks created by a certain plugin
+Removes all parse hooks created by a certain plugin
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `pluginName` | `string` |
+
+#### Returns
+
+`void`
+
+***
+
+### removeRunInScope()
+
+> **removeRunInScope**(`pluginName`): `void`
+
+Stops all hooks created by [runInScope](Rewriter#runinscope)
 
 #### Parameters
 
@@ -108,5 +154,30 @@ Removes the shared value with a certain id created by [createShared](Rewriter#cr
 | `id` | `string` |
 
 #### Returns
+
+`void`
+
+***
+
+### runInScope()
+
+> **runInScope**(`pluginName`, `prefix`, `callback`): () => `void`
+
+Runs code in the scope of modules when they are loaded, or when runInScope is called with them already loaded.
+Returning true from the callback will remove the hook.
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `pluginName` | `string` |
+| `prefix` | `string` \| `boolean` |
+| `callback` | (`code`, `run`) => `true` \| `void` |
+
+#### Returns
+
+`Function`
+
+##### Returns
 
 `void`

@@ -22,25 +22,31 @@ A list of all the libraries installed
 
 ### get()
 
-> **get**(`name`): `any`
+> **get**\<`T`\>(`name`): `Libraries`\[`T`\]
 
 Gets the exported values of a library
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` \| `number` |
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | `string` |
+| `name` | `T` |
 
 #### Returns
 
-`any`
+`Libraries`\[`T`\]
 
 ***
 
 ### getHeaders()
 
-> **getHeaders**(`name`): `object`
+> **getHeaders**(`name`): `ScriptHeaders`
 
 Gets the headers of a library, such as version, author, and description
 
@@ -52,65 +58,7 @@ Gets the headers of a library, such as version, author, and description
 
 #### Returns
 
-`object`
-
-##### author
-
-> **author**: `string`
-
-##### changelog
-
-> **changelog**: `string`[]
-
-##### deprecated
-
-> **deprecated**: `string`
-
-##### description
-
-> **description**: `string`
-
-##### downloadUrl
-
-> **downloadUrl**: `string`
-
-##### gamemode
-
-> **gamemode**: `string`[]
-
-##### hasSettings
-
-> **hasSettings**: `string`
-
-Only available for plugins
-
-##### isLibrary
-
-> **isLibrary**: `string`
-
-##### name
-
-> **name**: `string`
-
-##### needsLib
-
-> **needsLib**: `string`[]
-
-##### optionalLib
-
-> **optionalLib**: `string`[]
-
-##### reloadRequired
-
-> **reloadRequired**: `string`
-
-##### version
-
-> **version**: `string`
-
-##### webpage
-
-> **webpage**: `string`
+`ScriptHeaders`
 
 ***
 

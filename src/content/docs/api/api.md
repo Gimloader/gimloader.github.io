@@ -25,19 +25,25 @@ Functions to listen for key combinations
 
 ### lib()
 
-> `static` **lib**: (`name`) => `any`
+> `static` **lib**: \<`T`\>(`name`) => `Libraries`\[`T`\]
 
 Gets the exported values of a library
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` \| `number` |
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | `string` |
+| `name` | `T` |
 
 #### Returns
 
-`any`
+`Libraries`\[`T`\]
 
 ***
 
@@ -68,19 +74,25 @@ Functions for intercepting the arguments and return values of functions
 
 ### plugin()
 
-> `static` **plugin**: (`name`) => `any`
+> `static` **plugin**: \<`T`\>(`name`) => `Plugins`\[`T`\]
 
 Gets the exported values of a plugin, if it has been enabled
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` \| `number` |
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | `string` |
+| `name` | `T` |
 
 #### Returns
 
-`any`
+`Plugins`\[`T`\]
 
 ***
 
@@ -173,3 +185,6 @@ A variety of Gimkit internal objects available in 2d gamemodes
 ##### Returns
 
 `Stores`
+
+## Methods
+

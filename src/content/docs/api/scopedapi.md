@@ -25,19 +25,25 @@ Functions to listen for key combinations
 
 ### lib()
 
-> **lib**: (`name`) => `any` = `Api.libs.get`
+> **lib**: \<`T`\>(`name`) => `Libraries`\[`T`\] = `Api.libs.get`
 
 Gets the exported values of a library
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` \| `number` |
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | `string` |
+| `name` | `T` |
 
 #### Returns
 
-`any`
+`Libraries`\[`T`\]
 
 ***
 
@@ -62,7 +68,7 @@ and functions to send general requests
 
 > **onStop**: (`callback`) => `void`
 
-Run a callback when the plugin or library is disabled
+Run a callback when the script is disabled
 
 #### Parameters
 
@@ -106,19 +112,25 @@ Functions for intercepting the arguments and return values of functions
 
 ### plugin()
 
-> **plugin**: (`name`) => `any` = `Api.plugins.get`
+> **plugin**: \<`T`\>(`name`) => `Plugins`\[`T`\] = `Api.plugins.get`
 
 Gets the exported values of a plugin, if it has been enabled
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` \| `number` |
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | `string` |
+| `name` | `T` |
 
 #### Returns
 
-`any`
+`Plugins`\[`T`\]
 
 ***
 
