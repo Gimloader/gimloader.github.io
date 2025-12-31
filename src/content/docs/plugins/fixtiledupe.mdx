@@ -1,0 +1,15 @@
+---
+title: FixTileDupe
+description: A Gimloader plugin that fixes a duplication bug in tiles
+pluginDescription: Prevents you from placing a terrain twice on the same cell area, helpful in Dig It Up.
+author: retrozy
+downloadUrl: https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/plugins/FixTileDupe.js
+---
+
+import ButtonInstall from "$components/install/ButtonInstall.svelte";
+
+There's a bug in the Gimkit server where if you place a tile twice on the same cell, it will consume the tile in your inventory. This can be very annoying in gamemodes like Dig It Up when building to the mayor. FixTileDupe fixes this by tracking your placed blocks.
+
+This is not allowed in speedruns due to the unfair advantage.
+
+<ButtonInstall client:only="svelte" name="FixTileDupe" url="https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/plugins/FixTileDupe.js" />
