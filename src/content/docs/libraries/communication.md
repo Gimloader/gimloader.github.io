@@ -14,22 +14,23 @@ When you send a boolean or a positive integer that is less than 256, the message
  * @needsLib Communication | https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/libraries/Communication.js
  */
 
+const Communication = api.lib("Communication");
+
 api.net.onLoad(async () => {
-    const Communication = api.lib("Communication");
     // Communication converts this string to an identifier under the hood so different plugins don't get in the way of each other
-    const communication = new Communication("PluginName");
+    const comms = new Communication("PluginName");
 
     // Cleans up all the callbacks that were registered
-    api.onStop(communication.destroy);
+    api.onStop(comms.destroy);
 
-    communication.onMessage((message, player) => {
+    comms.onMessage((message, player) => {
         console.log(player.name, "sent a message:", message);
-    })
+    });
 
-    communication.onEnabled(() => {
+    comms.onEnabled(() => {
         console.log("Communication is enabled");
         // Send a message
-        communication.send("Hello world");
+        comms.send("Hello world");
     });
 
     // Static class property: enabled
@@ -38,8 +39,8 @@ api.net.onLoad(async () => {
     }
 
     // `send` is async
-    await communication.send(2);
-})
+    await comms.send(2);
+});
 ```
 
 ## Notes
