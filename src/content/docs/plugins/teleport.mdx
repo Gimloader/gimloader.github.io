@@ -1,0 +1,16 @@
+---
+title: Teleport
+description: A Gimloader plugin that lets you teleport to where you click or to other players
+pluginDescription: Ctrl+Click to teleport anywhere and a command to teleport to a player client-side
+author: TheLazySquid
+downloadUrl: https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/plugins/Teleport.js
+---
+
+import ButtonInstall from "$components/install/ButtonInstall.svelte";
+import DesyncWarning from "$components/docs/DesyncWarning.astro";
+
+<DesyncWarning />
+
+With Teleport installed, Ctrl+Click anywhere in 2d gamemodes to teleport to your character, or use the "[Teleport] Teleport to Player" Gimloader command to teleport to any other player. If you are in the creative editor this will be reflected for others.
+
+<ButtonInstall client:only="svelte" name="Teleport" url="https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/plugins/Teleport.js" />
