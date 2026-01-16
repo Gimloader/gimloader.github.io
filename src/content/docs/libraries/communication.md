@@ -5,7 +5,17 @@ description: A Gimloader library that allows multiple clients in a 2d room to se
 
 Communication is a runtime library that allows plugins to set up isolated messaging with other clients in the lobby. It does this by "aiming" your character (which fortunately works even when you don't have a projectile) and sending a long float that converts to 8 bytes. It's important to note that this method requires headers, identifiers, angle distribution and server approval waiting, so **it can be slow** and you should be mindful of how messages are sent.
 
-When you send a boolean or a positive integer that is less than 256, the message can be sent into a singular message. This should be the preferred message type whenever you can fit your data into it. Other messages you can send include any other type of number, a string, an array, or an object (stringified). The speed it takes to send is around `ping * (1 + (messageLength / 7))` - if the ping is 50, sending "Hello World, this is my new message" would take around 300 ms.
+Messages are either sent as a single angle, or carefully sent into multiple angles. Whenever you can, you want to send a message that fits into a single angle as it is much faster.
+
+The following are sent into a single angle:
+- A positive or negetive int24 number (-16,777,216 to 16,777,216)
+- A string that is 3 characters or less
+- A boolean
+
+Everything else is sent into multiple angles, and the time it takes to send is increases the more data you send:
+- An object/array
+- Any other number
+- A string over 3 characters
 
 ## Usage
 
@@ -20,17 +30,11 @@ api.net.onLoad(async () => {
     // Communication converts this string to an identifier under the hood so different plugins don't get in the way of each other
     const comms = new Communication("PluginName");
 
-    // Cleans up all the callbacks that were registered
+    // Removes up all onMessage and onEnabledChange callbacks
     api.onStop(comms.destroy);
 
     comms.onMessage((message, player) => {
         console.log(player.name, "sent a message:", message);
-    });
-
-    comms.onEnabled(() => {
-        console.log("Communication is enabled");
-        // Send a message
-        comms.send("Hello world");
     });
 
     // Static class property: enabled
@@ -38,7 +42,17 @@ api.net.onLoad(async () => {
         console.log("Communication is enabled initially");
     }
 
-    // `send` is async
+    // Runs a callback whenever Communication.enabled changes
+    comms.onEnabledChange(() => {
+        if(Communication.enabled) {
+            console.log("Communication is enabled")
+            comms.send("Hello world")
+        } else {
+            console.log("Communication got disabled")
+        }
+    })
+
+    // `send` is async. It resolves when the server has gotten the angle, and rejects if the game ended when it tried to send the angle
     await comms.send(2);
 });
 ```
