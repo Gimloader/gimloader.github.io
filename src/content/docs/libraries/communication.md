@@ -3,19 +3,19 @@ title: Communication
 description: A Gimloader library that allows multiple clients in a 2d room to send messages to each other
 ---
 
-Communication is a runtime library that allows plugins to set up isolated messaging with other clients in the lobby. It does this by "aiming" your character (which fortunately works even when you don't have a projectile) and sending a long float that converts to 8 bytes. It's important to note that this method requires headers, identifiers, angle distribution and server approval waiting, so **it can be slow** and you should be mindful of how messages are sent.
+Communication is a runtime library that allows plugins to set up isolated messaging with other clients in the lobby. It does this by "aiming" your character (which fortunately works even when you don't have a weapon) and sending a float that converts to 8 bytes. It's important to note that this method requires headers, identifiers, angle distribution and server approval waiting, so **it can be slow** and you should be mindful of how messages are sent.
 
-Messages are either sent as a single angle, or carefully sent into multiple angles. Whenever you can, you want to send a message that fits into a single angle as it is much faster.
+Messages are either sent as a single angle, or split into multiple angles. Whenever you can, you want to send a message that fits into as few angles as possible for speed.
 
 The following are sent into a single angle:
-- A positive or negetive int24 number (-16,777,216 to 16,777,216)
+- A positive or negative int24 number (-16,777,216 to 16,777,216)
 - A string that is 3 characters or less
 - A boolean
 
-Everything else is sent into multiple angles, and the time it takes to send is increases the more data you send:
-- An object/array
-- Any other number
-- A string over 3 characters
+Everything else is sent as multiple angles, and the time it takes to send depends on how much data you send:
+- Any other number (always takes 2 angles)
+- An object/array (stringified)
+- A string over 3 characters (takes roughly length/7 angles)
 
 ## Usage
 
@@ -61,6 +61,6 @@ api.net.onLoad(async () => {
 
 - You can unfortunately not send messages in the lobby, use `Comms.enabled` to determine if you are in the lobby.
 - Do not do `api.net.room.state.characters.onAdd(() => comms.send("Hello new player!"))` because `onAdd` is not necessarily the moment where the player can listen to messages. Instead, create a message for players to send once they have joined the lobby, and respond based on that message.
-- If multiple plugins send messages at the same time, a message queue will be put in place to avoid messages being dropped by the server, and messages may be delayed.
+- If multiple plugins send messages at the same time messages will be queued to avoid messages being dropped by the server, and messages may be delayed.
 - When sending strings, characters with codes larger than 255 will be filtered out.
 - You can create multiple instances of Communication with different names if you need multiple "channels".
