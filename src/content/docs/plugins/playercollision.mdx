@@ -1,0 +1,16 @@
+---
+title: PlayerCollision
+description: A Gimloader plugin that makes you collide with other players
+pluginDescription: Makes you collide with other players in 2d gamemodes
+author: retrozy
+downloadUrl: https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/plugins/PlayerCollision.js
+---
+
+import ButtonInstall from "$components/install/ButtonInstall.svelte";
+import DesyncWarning from "$components/docs/DesyncWarning.astro";
+
+<DesyncWarning />
+
+Normally players overlap with each other and don't have a hitbox to collide with others, but PlayerCollision makes you collide with others by putting an invisible wall on everyone. In platformer mode this means that you can jump on other players to do higher jumps, which is funny to play around with.
+
+<ButtonInstall client:only="svelte" name="PlayerCollision" url="https://raw.githubusercontent.com/Gimloader/client-plugins/main/build/plugins/PlayerCollision.js" />
