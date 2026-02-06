@@ -16,6 +16,7 @@ export const GET: APIRoute = () => {
         description: page.frontmatter.pluginDescription,
         author: page.frontmatter.author,
         downloadUrl: page.frontmatter.downloadUrl,
+        reloadRequired: page.frontmatter.reloadRequired ?? false,
         webpage: pathToUrl(page.file)
     }));
 
