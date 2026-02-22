@@ -12,40 +12,6 @@ To get started, make sure you have [Node.js](https://nodejs.org/) installed and 
 npm create @gimloader
 ```
 
-Then, fill out the questions asked, cd into the directory you provided, and you're good to go!
+Then, fill out the questions asked and cd into the directory you provided. There are two types of setups available: workspace, and single script. A workspace contains multiple plugins/libraries, while a single script only contains one.
 
-## Usage
-
-To build your script once, run `npx gl build`. To automatically rebuild the script whenever changes are made, run `npx gl serve`. This will also attempt to automatically install it on Gimloader if you enable "Poll for plugins/libraries being served locally" in settings and leave it open. Running `npx gl serve -m` acts the same, but rather than rebuilding whenever changes are made it will rebuild when you press enter in the terminal.
-
-## Configuration
-
-Configuration for the bundler is housed at `GL.config.js`. The following options are available:
-
-| Name | Required | Plugin Only? | Purpose |
-| ---- | -------- | ------------ | ------- |
-| input | Yes | No | Which file to input to the bundler, for example `src/index.js` |
-| name | Yes | No | The script's name |
-| description | Yes | No | A description of what the script does |
-| author | Yes | No | Who made the script |
-| version | No | No | The version of the script, used for updates |
-| downloadUrl | No | No | Where a raw version of the script be found, used for updates |
-| webpage | No | No | A webpage where users can get more information about the script. |
-| reloadRequired | No | No | Whether the page needs to reload after a script is installed for it to work. Set to `true` for always, set to `ingame` for only when a game is currently active. |
-| hasSettings | No | Yes | Whether a plugin has a settings menu, used to show it does when it's disabled |
-| libs | No | Yes | An array of libraries the plugin needs to be enabled to work, formatted like `[Name] \| [Url]` |
-| optionalLibs | No | Yes | The same as libs, but the plugin will still work without these and will not try to automatically download them |
-| isLibrary | No | No | Set to true when making a library |
-| plugins | No | No | An array of [esbuild](https://esbuild.github.io/) plugins to use |
-| esbuildOptions | No | No | Any additional settings to pass to esbuild |
-
-A `GL.config.js` file might look something like
-
-```js
-export default {
-    name: "MyPlugin",
-    description: "Does Something",
-    author: "Me",
-    version: "1.0.0"
-}
-```
+After creating a project, modify your `gimloader.config.js` file to your liking, and use `npx gimloader build` and `npx gimloader serve` to build the script. See the [Build Tools](https://github.com/Gimloader/build) for more information.

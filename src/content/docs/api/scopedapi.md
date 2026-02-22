@@ -174,22 +174,6 @@ Functions for interacting with the DOM
 
 ## Accessors
 
-### notification
-
-#### Get Signature
-
-> **get** **notification**(): `any`
-
-Gimkit's notification object, only available when joining or playing a game
-
-[https://ant.design/components/notification](https://ant.design/components/notification)
-
-##### Returns
-
-`any`
-
-***
-
 ### React
 
 #### Get Signature
@@ -229,3 +213,15 @@ A variety of gimkit internal objects available in 2d gamemodes
 ##### Returns
 
 `Stores`
+
+## Methods
+
+### requestReload()
+
+> **requestReload**(): `void`
+
+Display a modal to the user indicating that the script requires a reload
+
+#### Returns
+
+`void`

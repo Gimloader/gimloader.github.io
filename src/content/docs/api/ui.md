@@ -4,6 +4,54 @@ description: Documentation for the Global UI Api
 ---
 # [GL](/api/api).ui
 
+## Accessors
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): `AntdMessage`
+
+Gimkit's message object
+
+[https://ant.design/components/message#api](https://ant.design/components/message#api)
+
+##### Returns
+
+`AntdMessage`
+
+***
+
+### modal
+
+#### Get Signature
+
+> **get** **modal**(): `AntdModal`
+
+Gimkit's modal object
+
+[https://ant.design/components/modal#modalmethod](https://ant.design/components/modal#modalmethod)
+
+##### Returns
+
+`AntdModal`
+
+***
+
+### notification
+
+#### Get Signature
+
+> **get** **notification**(): `AntdNotification`
+
+Gimkit's notification object, only available when joining or playing a game
+
+[https://ant.design/components/notification#api](https://ant.design/components/notification#api)
+
+##### Returns
+
+`AntdNotification`
+
 ## Methods
 
 ### addStyles()

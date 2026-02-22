@@ -130,22 +130,6 @@ Functions for interacting with the DOM
 
 
 
-### notification
-
-#### Get Signature
-
-> **get** `static` **notification**(): `any`
-
-Gimkit's notification object, only available when joining or playing a game
-
-[https://ant.design/components/notification](https://ant.design/components/notification)
-
-##### Returns
-
-`any`
-
-***
-
 ### React
 
 #### Get Signature
