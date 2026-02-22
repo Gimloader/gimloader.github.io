@@ -1,21 +1,13 @@
 ---
-import type { MDXInstance } from "astro";
+import { readConfig, readScripts } from '$lib/scripts';
 
-const { type, prefix } = Astro.props;
 interface Props {
     type: "plugins" | "libraries";
-    prefix: string;
 }
 
-let pages: MDXInstance<Record<string, any>>[];
-
-if(type === "libraries") pages = Object.values(import.meta.glob(`../../content/docs/libraries/**.md`, { eager: true }));
-else pages = Object.values(import.meta.glob(`../../content/docs/plugins/**.mdx`, { eager: true }));
-if(pages.length === 0) throw new Error(`No pages found for type: ${type}`);
-
-const capitalize = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
+const { type } = Astro.props;
+const scripts = await readScripts(type);
+const configs = await Promise.all(scripts.map((script) => readConfig(type, script)));
 ---
 
 <table>
@@ -26,14 +18,14 @@ const capitalize = (str: string) => {
         </tr>
     </thead>
     <tbody>        
-        {pages.map((p) => (
+        {configs.map((script) => (
             <tr>
                 <td>
-                    <a href={`/${type}/${p.file.split("/").pop()?.replace(".mdx", "").replace(".md", "")}`}>
-                        {p.frontmatter.title}
+                    <a href={`/${type}/${script.name}`}>
+                        {script.name}
                     </a>
                 </td>
-                <td>{capitalize(p.frontmatter.description.replace(prefix, ""))}</td>
+                <td>{script.description}</td>
             </tr> 
         ))}
     </tbody>

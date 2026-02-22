@@ -5,6 +5,10 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import svelte from '@astrojs/svelte';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { readScripts } from './src/lib/scripts';
+
+const plugins = await readScripts("plugins");
+const libraries = await readScripts("libraries");
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,7 +39,10 @@ export default defineConfig({
                     },
                     {
                         label: "Official Plugins",
-                        autogenerate: { directory: "plugins" }
+                        items: plugins.map(plugin => ({
+                            label: plugin,
+                            link: `/plugins/${plugin}`
+                        }))
                     }
                 ]
             },
@@ -58,7 +65,10 @@ export default defineConfig({
                     {
                         label: "Official Libraries",
                         collapsed: true,
-                        autogenerate: { directory: "libraries" }
+                        items: libraries.map(library => ({
+                            label: library,
+                            link: `/libraries/${library}`
+                        }))
                     },
                     {
                         label: "Docs",

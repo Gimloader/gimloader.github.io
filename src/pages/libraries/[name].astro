@@ -1,0 +1,21 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { readConfig, readScripts } from "$lib/scripts";
+
+export async function getStaticPaths() {
+    const plugins = await readScripts("libraries");
+    return plugins.map((plugin) => ({ params: { name: plugin }}));
+}
+
+const { name } = Astro.params;
+const { Content } = await import(`../../../client-plugins/libraries/${name}/description.md`);
+const config = await readConfig("libraries", name);
+---
+
+<StarlightPage frontmatter={{
+    title: name,
+    description: config.description,
+    topic: "development"
+}}>
+    <Content />
+</StarlightPage>

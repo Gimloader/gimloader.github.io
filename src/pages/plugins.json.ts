@@ -1,23 +1,19 @@
-import type { APIRoute, MDXInstance } from "astro";
+import { readConfig, readScripts } from "$lib/scripts";
+import type { APIRoute } from "astro";
 
-const pathToUrl = (path: string) => {
-    const file = path.replaceAll("\\", "/").split('/').pop();
-    if (!file) return null;
+export const GET: APIRoute = async () => {
+    const plugins = await readScripts("plugins");
 
-    return `https://gimloader.github.io/plugins/${file.replace('.mdx', '')}`;
-}
-
-export const GET: APIRoute = () => {
-    const plugins: MDXInstance<Record<string, any>>[] =
-        Object.values(import.meta.glob('../content/docs/plugins/**.mdx', { eager: true }));
-
-    const value = plugins.map((page) => ({
-        title: page.frontmatter.title,
-        description: page.frontmatter.pluginDescription,
-        author: page.frontmatter.author,
-        downloadUrl: page.frontmatter.downloadUrl,
-        reloadRequired: page.frontmatter.reloadRequired ?? false,
-        webpage: pathToUrl(page.file)
+    const value = await Promise.all(plugins.map(async (plugin) => {
+        const config = await readConfig("plugins", plugin);
+        return {
+            title: plugin,
+            description: config.description,
+            author: config.author,
+            downloadUrl: config.downloadUrl,
+            reloadRequired: config.reloadRequired,
+            webpage: `https://gimloader.github.io/plugins/${plugin}`
+        }
     }));
 
     return Response.json(value);

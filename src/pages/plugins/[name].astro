@@ -1,0 +1,25 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { readConfig, readScripts } from "$lib/scripts";
+import ButtonInstall from "$components/install/ButtonInstall.svelte";
+import DesyncWarning from "$components/docs/DesyncWarning.astro";
+
+export async function getStaticPaths() {
+    const plugins = await readScripts("plugins");
+    return plugins.map((plugin) => ({ params: { name: plugin }}));
+}
+
+const { name } = Astro.params;
+const { Content } = await import(`../../../client-plugins/plugins/${name}/description.md`);
+const config = await readConfig("plugins", name);
+---
+
+<StarlightPage frontmatter={{
+    title: name,
+    description: config.description,
+    topic: "usage"
+}}>
+    {config.desyncs && <DesyncWarning />}
+    <Content />
+    <ButtonInstall client:only="svelte" name={name} url={config.downloadUrl} />
+</StarlightPage>
