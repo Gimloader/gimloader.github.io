@@ -10,6 +10,7 @@ In order to be able to effectively make scripts it's important to understand wha
 | Library | Purpose |
 | ------- | ------- |
 | [Phaser](https://phaser.io/) | Game framework |
+| [Rapier](https://rapier.rs/) | Physics engine for 2d gamemodes |
 | [Colyseus](https://colyseus.io/) | Networking for 2d gamemodes |
 | [Spine](https://esotericsoftware.com/) | Characters in 2d modes |
 | [Compress-Json](https://github.com/beenotung/compress-json) | Characters are compressed using this library |
