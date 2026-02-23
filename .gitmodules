@@ -1,4 +1,0 @@
-[submodule "client-plugins"]
-	path = client-plugins
-	url = https://github.com/Gimloader/client-plugins.git
-	branch = main
