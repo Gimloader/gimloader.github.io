@@ -16,7 +16,7 @@ const authorRegex = /author:\s*"([^"]+)"/;
 const reloadRequiredRegex = /reloadRequired:\s*(true|false|"[^"]+")/;
 const needsPluginsRegex = /needsPlugins:\s*\[([^\]]+)\]/;
 
-const baseDownloadUrl = "https://raw.githubusercontent.com/Gimloader/client-plugins/main/build";
+const baseDownloadUrl = "https://raw.githubusercontent.com/Gimloader/builds/main";
 
 export async function readConfig(category: ScriptCategory, name: string): Promise<Config> {
     const content = await readFile(`./client-plugins/${category}/${name}/gimloader.config.ts`, "utf-8");
