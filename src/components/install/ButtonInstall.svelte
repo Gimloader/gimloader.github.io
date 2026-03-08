@@ -30,11 +30,11 @@
 
 <div class="wrap pt-[65px]">
     {#if Port.disconnected}
-        <div class="action">
+        <div class="install-action">
             Gimloader extension disconnected, please reload the page to install.
         </div>
     {:else if Installer.ready}
-        <button class="action" onclick={install}>
+        <button class="install-action" onclick={install}>
             {#if installing}
                 {#await installing}
                     Installing...
@@ -52,23 +52,12 @@
             {/if}
         </button>
     {:else if Port.unavailable}
-        <a class="action" href={extensionLink} target="_blank">Gimloader extension not found</a>
+        <a class="install-action" href={extensionLink} target="_blank">
+            Gimloader extension not found
+        </a>
+    {:else}
+        <div class="install-action">
+            Waiting for Gimloader extension...
+        </div>
     {/if}
 </div>
-
-<style>
-    .action {
-        color: white;
-        font-size: 24px;
-        border: 1px solid hsl(224, 10%, 23%);
-        border-radius: 8px;
-        box-shadow: var(--sl-shadow-md);
-        width: 100%;
-        text-align: center;
-        display: block;
-    }
-
-    :global(.sl-flex .meta) {
-        display: none;
-    }
-</style>

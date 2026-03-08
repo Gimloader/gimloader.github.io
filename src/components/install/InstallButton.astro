@@ -1,0 +1,33 @@
+---
+import ButtonInstall from "./ButtonInstall.svelte";
+import type { Config } from "$lib/scripts";
+
+interface Props {
+    config: Config;
+}
+
+const { config } = Astro.props;
+---
+
+<ButtonInstall client:only="svelte" name={config.name} url={config.downloadUrl}>
+    <div slot="fallback" class="install-action">
+        Waiting for Gimloader extension...
+    </div>
+</ButtonInstall>
+
+<style is:global>
+    .install-action {
+        color: white;
+        font-size: 24px;
+        border: 1px solid hsl(224, 10%, 23%);
+        border-radius: 8px;
+        box-shadow: var(--sl-shadow-md);
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+
+    .sl-flex .meta {
+        display: none;
+    }
+</style>

@@ -2,7 +2,7 @@ import { readdir, readFile } from "node:fs/promises";
 
 type ScriptCategory = "plugins" | "libraries";
 
-interface Config {
+export interface Config {
     name: string;
     description: string;
     author: string;
