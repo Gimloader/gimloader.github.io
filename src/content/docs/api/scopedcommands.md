@@ -46,9 +46,9 @@ Adds a command to the user's command palette. Can request additional input withi
 
 | Parameter | Type |
 | ------ | ------ |
-| `options` | \{ `hidden`: () => `boolean`; `keywords`: `string`[]; `text`: `string` \| () => `string`; \} |
+| `options` | \{ `hidden`: () => `boolean`; `keywords`: readonly `string`[]; `text`: `string` \| () => `string`; \} |
 | `options.hidden`? | () => `boolean` |
-| `options.keywords`? | `string`[] |
+| `options.keywords`? | readonly `string`[] |
 | `options.text` | `string` \| () => `string` |
 | `callback` | (`context`) => `void` \| `Promise`\<`void`\> |
 

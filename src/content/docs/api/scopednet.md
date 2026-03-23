@@ -64,6 +64,20 @@ The room that the client is connected to, or null if there is no connection
 
 ***
 
+### state
+
+#### Get Signature
+
+> **get** **state**(): `GimkitSchema`
+
+Gimkit's internal Colyseus state
+
+##### Returns
+
+`GimkitSchema`
+
+***
+
 ### type
 
 #### Get Signature
@@ -136,7 +150,7 @@ If the @gamemode header is set the callback will only fire if the gamemode match
 | Parameter | Type |
 | ------ | ------ |
 | `callback` | (`type`, `gamemode`) => `void` |
-| `gamemode`? | `string` \| `string`[] |
+| `gamemode`? | `string` \| readonly `string`[] |
 
 #### Returns
 

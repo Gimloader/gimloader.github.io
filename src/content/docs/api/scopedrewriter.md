@@ -113,7 +113,7 @@ Returning true from the callback will remove the hook.
 | Parameter | Type |
 | ------ | ------ |
 | `prefix` | `string` \| `boolean` |
-| `callback` | (`code`, `run`) => `true` \| `void` |
+| `callback` | (`code`, `run`, `initial`) => `true` \| `void` |
 
 #### Returns
 

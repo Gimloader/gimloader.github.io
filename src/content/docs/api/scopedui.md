@@ -78,6 +78,18 @@ A function to remove the styles
 
 ***
 
+### forceReactUpdate()
+
+> **forceReactUpdate**(): `void`
+
+Forces Gimkit's react tree to fully rerender
+
+#### Returns
+
+`void`
+
+***
+
 ### showModal()
 
 > **showModal**(`element`, `options`): `void`
@@ -89,8 +101,8 @@ Shows a customizable modal to the user
 | Parameter | Type |
 | ------ | ------ |
 | `element` | `HTMLElement` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\> |
-| `options` | \{ `buttons`: `ModalButton`[]; `className`: `string`; `closeOnBackgroundClick`: `boolean`; `id`: `string`; `onClosed`: () => `void`; `style`: `string`; `title`: `string`; \} |
-| `options.buttons`? | `ModalButton`[] |
+| `options` | \{ `buttons`: readonly `ModalButton`[]; `className`: `string`; `closeOnBackgroundClick`: `boolean`; `id`: `string`; `onClosed`: () => `void`; `style`: `string`; `title`: `string`; \} |
+| `options.buttons`? | readonly `ModalButton`[] |
 | `options.className`? | `string` |
 | `options.closeOnBackgroundClick`? | `boolean` |
 | `options.id`? | `string` |

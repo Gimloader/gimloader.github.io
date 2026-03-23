@@ -172,7 +172,7 @@ Returning true from the callback will remove the hook.
 | ------ | ------ |
 | `pluginName` | `string` |
 | `prefix` | `string` \| `boolean` |
-| `callback` | (`code`, `run`) => `true` \| `void` |
+| `callback` | (`code`, `run`, `initial`) => `true` \| `void` |
 
 #### Returns
 

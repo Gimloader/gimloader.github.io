@@ -31,13 +31,13 @@ Adds a hotkey which can be changed by the user
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | `string` | A unique id for the hotkey, such as `myplugin-myhotkey` |
-| `options` | \{ `category`: `string`; `default`: \{ `alt`: `boolean`; `ctrl`: `boolean`; `key`: `string`; `keys`: `string`[]; `shift`: `boolean`; \}; `preventDefault`: `boolean`; `title`: `string`; \} | - |
+| `options` | \{ `category`: `string`; `default`: \{ `alt`: `boolean`; `ctrl`: `boolean`; `key`: `string`; `keys`: readonly `string`[]; `shift`: `boolean`; \}; `preventDefault`: `boolean`; `title`: `string`; \} | - |
 | `options.category` | `string` | - |
-| `options.default`? | \{ `alt`: `boolean`; `ctrl`: `boolean`; `key`: `string`; `keys`: `string`[]; `shift`: `boolean`; \} | - |
+| `options.default`? | \{ `alt`: `boolean`; `ctrl`: `boolean`; `key`: `string`; `keys`: readonly `string`[]; `shift`: `boolean`; \} | - |
 | `options.default.alt`? | `boolean` | - |
 | `options.default.ctrl`? | `boolean` | - |
 | `options.default.key`? | `string` | Should be a keyboardevent [code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) |
-| `options.default.keys`? | `string`[] | Should be keyboardevent [codes](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) |
+| `options.default.keys`? | readonly `string`[] | Should be keyboardevent [codes](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) |
 | `options.default.shift`? | `boolean` | - |
 | `options.preventDefault`? | `boolean` | - |
 | `options.title` | `string` | There should be no duplicate titles within a category |
@@ -66,11 +66,11 @@ Adds a hotkey with a given id
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | `string` | - |
-| `options` | \{ `alt`: `boolean`; `ctrl`: `boolean`; `key`: `string`; `keys`: `string`[]; `preventDefault`: `boolean`; `shift`: `boolean`; \} | - |
+| `options` | \{ `alt`: `boolean`; `ctrl`: `boolean`; `key`: `string`; `keys`: readonly `string`[]; `preventDefault`: `boolean`; `shift`: `boolean`; \} | - |
 | `options.alt`? | `boolean` | - |
 | `options.ctrl`? | `boolean` | - |
 | `options.key`? | `string` | Should be a keyboardevent [code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) |
-| `options.keys`? | `string`[] | Should be keyboardevent [codes](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) |
+| `options.keys`? | readonly `string`[] | Should be keyboardevent [codes](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) |
 | `options.preventDefault`? | `boolean` | - |
 | `options.shift`? | `boolean` | - |
 | `callback` | (`e`) => `void` | - |

@@ -49,7 +49,7 @@ Gets the exported values of a library
 
 ### libs
 
-> **libs**: `Readonly`\<[`LibsApi`](/api/libs)\> = `Api.libs`
+> **libs**: `Readonly`\<[`ScopedLibsApi`](/api/scopedlibs)\>
 
 Methods for getting info on libraries
 
@@ -136,7 +136,7 @@ Gets the exported values of a plugin, if it has been enabled
 
 ### plugins
 
-> **plugins**: `Readonly`\<[`PluginsApi`](/api/plugins)\> = `Api.plugins`
+> **plugins**: `Readonly`\<[`ScopedPluginsApi`](/api/scopedplugins)\>
 
 Methods for getting info on plugins
 
@@ -163,6 +163,15 @@ A utility for creating persistent settings menus, only available to plugins
 > **storage**: `Readonly`\<[`ScopedStorageApi`](/api/scopedstorage)\>
 
 Functions for persisting data between reloads
+
+***
+
+### svelte\_5\_43\_0
+
+> **svelte\_5\_43\_0**: [`SvelteExport`](../interfaces/SvelteExport.md) = `Svelte`
+
+The exports of svelte v5.43.0, used internally by Gimloader and exposed to make scripts smaller.
+Should never be used by hand.
 
 ***
 
