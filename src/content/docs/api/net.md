@@ -6,18 +6,19 @@ description: Documentation for the Global Net Api
 
 The net api extends [EventEmitter2](https://github.com/EventEmitter2/EventEmitter2)
 and uses wildcards with ":" as a delimiter.
-
-The following events are emitted:
-
-```ts
+```js
 // fired when data is recieved on a certain channel
-net.on("CHANNEL", (data, editFn) => {})
+GL.net.on("CHANNEL", (data, editFn) => {
+    editFn("new data"); // Replace the data with "new data" before Gimkit processes it
+});
 
 // fired when data is sent on a certain channel
-net.on("send:CHANNEL", (data, editFn) => {})
+GL.net.on("send:CHANNEL", (data, editFn) => {
+    editFn(null); // Cancel the data being sent
+});
 
 // you can also use wildcards, eg
-net.on("send:*", () => {})
+GL.net.on("send:*", () => {});
 ```
 
 ## Accessors
@@ -110,9 +111,22 @@ Runs a callback when a request is made that matches a certain path (can have wil
 
 `Function`
 
+A function to stop the modification
+
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+GL.net.modifyFetchRequest("MyPlugin", "/api/experiences", (request) => {
+    console.log(request.data);
+    request.data.modified = true;
+
+    return null; // Cancel the request
+});
+```
 
 ***
 
@@ -134,9 +148,20 @@ Runs a callback when a response is recieved for a request under a certain path (
 
 `Function`
 
+A function to stop the modification
+
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+GL.net.modifyFetchResponse("MyPlugin", "/api/experience/map/hooks", (data) => {
+    console.log(data);
+    return "modified data";
+});
+```
 
 ***
 

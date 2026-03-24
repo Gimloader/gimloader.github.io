@@ -52,6 +52,23 @@ A function to remove the hotkey
 
 `void`
 
+#### Example
+
+```js
+api.hotkeys.addConfigurableHotkey({
+    category: "My Plugin",
+    title: "Do a thing",
+    preventDefault: true,
+    default: {
+        key: "Digit1",
+        ctrl: true,
+        shift: true
+    }
+}, (e) => {
+    console.log("Configurable hotkey pressed", e.key);
+});
+```
+
 ***
 
 ### addHotkey()
@@ -82,6 +99,19 @@ A function to remove the hotkey
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+api.hotkeys.addHotkey({
+    key: "Digit1",
+    ctrl: true,
+    shift: true,
+    preventDefault: true
+}, (e) => {
+    console.log("Hotkey pressed", e.key);
+});
+```
 
 ***
 

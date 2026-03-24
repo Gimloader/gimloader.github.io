@@ -101,9 +101,20 @@ Adds a listener for when a plugin's stored value with a certain key changes
 
 `Function`
 
+a function that removes the listener when called
+
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+GL.storage.onChange("MyPlugin", "key", (value, remote) => {
+    console.log("Value is now", value);
+    console.log("Value was updated", remote ? "remotely" : "locally");
+});
+```
 
 ***
 

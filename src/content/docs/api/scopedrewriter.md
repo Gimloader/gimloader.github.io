@@ -29,9 +29,22 @@ addParseHook should always be called in the top level of a script.
 
 `Function`
 
+A function that removes the hook when called
+
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+api.rewriter.addParseHook("App", (code) => {
+    let index = code.indexOf("something");
+    code = code.slice(0, index) + `console.log("something else")` + code.slice(index);
+    code += "console.log(someVar)";
+    return code;
+});
+```
 
 ***
 
@@ -53,6 +66,16 @@ Creates a shared value that can be accessed from any script.
 `string`
 
 A string representing the code to access the shared value.
+
+#### Example
+
+```js
+const callback = api.rewriter.createShared("uniqueId", (val) => {
+    console.log(val);
+});
+
+eval(`${callback}("15")`); // Don't actually do this, but it logs 15
+```
 
 ***
 
@@ -77,9 +100,22 @@ A utility function that exposes a variable based on regex to get its name.
 
 `Function`
 
+A function that removes the hook when called
+
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+api.rewriter.exposeVar("App", {
+    check: "StringThatMustExistInFile",
+    find: /let (\w+) = something/g,
+    multiple: false,
+    callback: (var) => console.log(var)
+});
+```
 
 ***
 
@@ -119,6 +155,18 @@ Returning true from the callback will remove the hook.
 
 `Function`
 
+A function that removes the hook when called
+
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+api.rewriter.runInScope("App", (code, run, initial) => {
+    if(code.includes("something")) {
+        run(`someVar=15`);
+    }
+});
+```

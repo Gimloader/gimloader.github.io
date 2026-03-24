@@ -53,6 +53,23 @@ A function to remove the hotkey
 
 `void`
 
+#### Example
+
+```js
+GL.hotkeys.addConfigurableHotkey("MyPlugin-MyHotkey", {
+    category: "My Plugin",
+    title: "Do a thing",
+    preventDefault: true,
+    default: {
+        key: "Digit1",
+        ctrl: true,
+        shift: true
+    }
+}, (e) => {
+    console.log("Configurable hotkey pressed", e.key);
+});
+```
+
 ***
 
 ### addHotkey()
@@ -84,6 +101,19 @@ A function to remove the hotkey
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+GL.hotkeys.addHotkey("MyPlugin", {
+    key: "Digit1",
+    ctrl: true,
+    shift: true,
+    preventDefault: true
+}, (e) => {
+    console.log("Hotkey pressed", e.key);
+});
+```
 
 ***
 

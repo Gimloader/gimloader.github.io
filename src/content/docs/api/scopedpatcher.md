@@ -37,6 +37,17 @@ A function to remove the patch
 
 `void`
 
+#### Example
+
+```js
+const object = { method: () => 100 };
+api.patcher.after(object, "method", (thisVal, args, returnVal) => {
+    console.log("Came after:", returnVal);
+});
+
+object.method(); // Logs "Came after: 100"
+```
+
 ***
 
 ### before()
@@ -71,6 +82,17 @@ A function to remove the patch
 
 `void`
 
+#### Example
+
+```js
+const object = { method: (arg1, arg2) => 100 };
+api.patcher.before(object, "method", (thisVal, args) => {
+    console.log("Came before:", args);
+});
+
+object.method(5, 6); // Logs "Came before: [5, 6]"
+```
+
 ***
 
 ### instead()
@@ -104,6 +126,17 @@ A function to remove the patch
 
 `void`
 
+#### Example
+
+```js
+const object = { method: (arg1, arg2) => 100 };
+api.patcher.instead(object, "method", (thisVal, args) => {
+    return args[0] + args[1];
+});
+
+console.log(object.method(5, 6)); // Logs "11" instead of "100"
+```
+
 ***
 
 ### swap()
@@ -136,3 +169,14 @@ A function to remove the patch
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+const object = { method: (arg1, arg2) => 100 };
+api.patcher.swap(object, "method", (arg1, arg2) => {
+    return arg1 + arg2;
+});
+
+console.log(object.method(5, 6)); // Logs "11" instead of "100"
+```

@@ -76,6 +76,16 @@ A function to remove the styles
 
 `void`
 
+#### Example
+
+```js
+const styles = `#element {
+    color: red;
+}`;
+
+GL.UI.addStyles("MyPlugin", styles);
+```
+
 ***
 
 ### forceReactUpdate()
@@ -113,3 +123,24 @@ Shows a customizable modal to the user
 #### Returns
 
 `void`
+
+#### Example
+
+```js
+const element = document.createElement("div");
+element.textContent = "Hello, world!";
+
+GL.UI.showModal(element, {
+    id: "my-modal",
+    title: "My Modal",
+    style: "width: 300px;",
+    className: "someClass",
+    closeOnBackgroundClick: true,
+    onClosed: () => {},
+    buttons: [
+        { text: "OK", style: "primary", onClick: () => {} },
+        { text: "Cancel", style: "close" },
+        { text: "Revert", style: "danger", onClick: () => {} }
+    ]
+});
+```

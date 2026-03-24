@@ -38,6 +38,17 @@ A function to remove the patch
 
 `void`
 
+#### Example
+
+```js
+const object = { method: () => 100 };
+GL.patcher.after("MyPlugin", object, "method", (thisVal, args, returnVal) => {
+    console.log("Came after:", returnVal);
+});
+
+object.method(); // Logs "Came after: 100"
+```
+
 ***
 
 ### before()
@@ -73,6 +84,17 @@ A function to remove the patch
 
 `void`
 
+#### Example
+
+```js
+const object = { method: (arg1, arg2) => 100 };
+GL.patcher.before("MyPlugin", object, "method", (thisVal, args) => {
+    console.log("Came before:", args);
+});
+
+object.method(5, 6); // Logs "Came before: [5, 6]"
+```
+
 ***
 
 ### instead()
@@ -107,6 +129,17 @@ A function to remove the patch
 
 `void`
 
+#### Example
+
+```js
+const object = { method: (arg1, arg2) => 100 };
+GL.patcher.instead("MyPlugin", object, "method", (thisVal, args) => {
+    return args[0] + args[1];
+});
+
+console.log(object.method(5, 6)); // Logs "11" instead of "100"
+```
+
 ***
 
 ### swap()
@@ -140,6 +173,17 @@ A function to remove the patch
 ##### Returns
 
 `void`
+
+#### Example
+
+```js
+const object = { method: (arg1, arg2) => 100 };
+GL.patcher.swap("MyPlugin", object, "method", (arg1, arg2) => {
+    return arg1 + arg2;
+});
+
+console.log(object.method(5, 6)); // Logs "11" instead of "100"
+```
 
 ***
 
