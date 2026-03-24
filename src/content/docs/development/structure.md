@@ -50,7 +50,7 @@ All scripts must begin with a header to declare things such as name, description
 
 ## The @gamemode header
 
-Whenever a game loads Gimloader will attempt to determine an id for the gamemode that is being played. The rules are as follows:
+Whenever a game loads, Gimloader will attempt to determine an id for the gamemode that is being played. The rules are as follows:
 
 1. The gamemode id is sent by the server for 1d modes
 2. The gamemode id is determined based off the music file path for official 2d modes

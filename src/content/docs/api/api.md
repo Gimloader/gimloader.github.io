@@ -122,7 +122,7 @@ Functions for persisting data between reloads
 
 ### svelte\_5\_43\_0
 
-> `static` **svelte\_5\_43\_0**: [`SvelteExport`](../interfaces/SvelteExport.md) = `Svelte`
+> `static` **svelte\_5\_43\_0**: `Svelte`
 
 The exports of svelte v5.43.0, used internally by Gimloader and exposed to make scripts smaller.
 Should never be used by hand.

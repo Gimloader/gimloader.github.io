@@ -24,7 +24,7 @@ api.UI.addStyles("#thing { color: red }")
 When using the scoped api, rather than exporting `onStop` and `openSettingsMenu` it is recommended that you use `api.onStop` and `api.openSettingsMenu`, like so:
 ```js
 api.onStop(() => console.log("Stopping!"));
-api.openSettingsMenu(() => api.UI.showModal(...))
+api.openSettingsMenu(() => api.UI.showModal(...));
 ```
 
 ## Important API Elements
@@ -51,6 +51,6 @@ The world manager is responsible for several things, notably devices. Plugins ar
 
 This contains a variety of things, but one of the more important ones is the player's inventory at `me.inventory`.
 
-### GL.net.room.state
+### GL.net.state
 
 Once again, this is only available in 2d modes. The `state` contains everything that is synchronised between the client and the server. Gimkit uses [Colyseus.js](https://colyseus.io) for this, and information on listening to changes can be found in their [docs](https://docs.colyseus.io/state/schema-callbacks/). For example, `state.session.phase` shows whether the game is currently active or in the lobby.

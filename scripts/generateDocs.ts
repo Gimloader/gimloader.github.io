@@ -24,6 +24,7 @@ const inheritedRegex = /\n#### Inherited from\n\n.*\n/g;
 for(let page of pages) {
     let text = fs.readFileSync(join(dir, page)).toString();
     text = text.replace("PluginSettings", "[`Pluginsettings`](/api/settings)");
+    text = text.replaceAll("[`SvelteExport`](../interfaces/SvelteExport.md) = ", "");
 
     // remove the constructor/extends message
     while(text.includes("\n## Extends") || text.includes("\n## Constructors")) {
