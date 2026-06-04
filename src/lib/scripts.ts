@@ -5,14 +5,12 @@ type ScriptCategory = "plugins" | "libraries";
 export interface Config {
     name: string;
     description: string;
-    author: string;
     downloadUrl: string;
     reloadRequired: string | boolean;
     desyncs: boolean;
 }
 
 const descriptionRegex = /description:\s*"([^"]+)"/;
-const authorRegex = /author:\s*"([^"]+)"/;
 const reloadRequiredRegex = /reloadRequired:\s*(true|false|"[^"]+")/;
 const needsPluginsRegex = /needsPlugins:\s*\[([^\]]+)\]/;
 
@@ -22,10 +20,9 @@ export async function readConfig(category: ScriptCategory, name: string): Promis
     const content = await readFile(`./client-plugins/${category}/${name}/gimloader.config.ts`, "utf-8");
     
     const descriptionMatch = content.match(descriptionRegex);
-    const authorMatch = content.match(authorRegex);
     const reloadRequiredMatch = content.match(reloadRequiredRegex);
     const needsPluginsMatch = content.match(needsPluginsRegex);
-    if(!descriptionMatch || !authorMatch) throw new Error(`Invalid config for ${category} ${name}`);
+    if(!descriptionMatch) throw new Error(`Invalid config for ${category} ${name}`);
 
     // Convert reloadRequired to a boolean or string
     let reloadRequired: string | boolean = false;
@@ -42,7 +39,6 @@ export async function readConfig(category: ScriptCategory, name: string): Promis
     return {
         name,
         description: descriptionMatch[1],
-        author: authorMatch[1],
         downloadUrl: `${baseDownloadUrl}/${category}/${name}.js`,
         reloadRequired,
         desyncs

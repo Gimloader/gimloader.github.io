@@ -9,7 +9,6 @@ export const GET: APIRoute = async () => {
         return {
             title: plugin,
             description: config.description,
-            author: config.author,
             downloadUrl: config.downloadUrl,
             reloadRequired: config.reloadRequired,
             webpage: `https://gimloader.github.io/plugins/${plugin}`
