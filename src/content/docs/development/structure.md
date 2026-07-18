@@ -17,6 +17,7 @@ All scripts must begin with a header to declare things such as name, description
 | webpage | No | No | A webpage where users can get more information about the script. |
 | reloadRequired | No | No | Whether the page needs to reload after a script is installed for it to work. Set to `true` for always, set to `ingame` for only when a game is currently active. |
 | hasSettings | No | Yes | Whether a plugin has a settings menu, used to show it does when it's disabled. |
+| needsPlugin | No | Yes | Any other plugins the plugin needs to be enabled to work. Formatted like `[Name] \| [Url]`, can be repeated. |
 | needsLib | No | No | Any libraries the script needs to be enabled to work. Formatted like `[Name] \| [Url]`, can be repeated. |
 | optionalLib | No | No | The same as needsLib, but the script will still work without these and will not try to automatically download them. |
 | gamemode | No | No | Automatically limits `api.net.onLoad` to only firing in certain gamemodes by default. See below for details on gamemode ids. Case insensitive, can be repeated. |

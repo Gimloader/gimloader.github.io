@@ -3,7 +3,15 @@ title: Bundling Scripts
 description: An explanation of how to use a bundler with Gimloader
 ---
 
-Sometimes you are going to want to make larger scripts spanning multiple files, or you may want to use external dependencies from npm. In that case, you're going to want to bundle your script. Gimloader provides a preconfigured bundler at `@gimloader/build`. Even if you don't intend to use a bundler you can still get better intellisense by creating a node project and installing `@types/gimloader`.
+Sometimes you are going to want to make larger scripts spanning multiple files, or you may want to use external dependencies from npm. In that case, you're going to want to bundle your script. Gimloader provides a preconfigured bundler at `@gimloader/build`. Even if you don't intend to use a bundler you can still get better intellisense by creating a node project and installing `@gimloader/types`, then adding the following to your tsconfig/jsconfig.
+
+```json
+{
+    "compilerOptions": {
+        "types": ["@gimloader/types"]
+    }
+}
+```
 
 ## Quickstart
 To get started, make sure you have [Node.js](https://nodejs.org/) installed and then run this command wherever you want to make your project.
