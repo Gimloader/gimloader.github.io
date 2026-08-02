@@ -83,7 +83,7 @@ const styles = `#element {
     color: red;
 }`;
 
-GL.UI.addStyles("MyPlugin", styles);
+api.UI.addStyles(styles);
 ```
 
 ***
@@ -97,6 +97,43 @@ Forces Gimkit's react tree to fully rerender
 #### Returns
 
 `void`
+
+***
+
+### onComponentLoad()
+
+> **onComponentLoad**\<`K`\>(`type`, `callback`): `undefined` \| () => `void`
+
+Waits for a component to load, and calls the callback with the component as an argument.
+If the component has already loaded the callback will be fired immediately.
+The available components are "notification", "message", and "modal".
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `K` *extends* `"message"` \| `"notification"` \| `"modal"` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `type` | `K` |
+| `callback` | (`component`) => `void` |
+
+#### Returns
+
+`undefined` \| () => `void`
+
+A function that cancels waiting
+
+#### Example
+
+```js
+api.UI.onComponentLoad("message", (message) => {
+    message.success({ content: "This is a message!" });
+});
+```
 
 ***
 

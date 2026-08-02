@@ -15,6 +15,22 @@ Functions for adding commands to the command palette
 
 ***
 
+### Components
+
+> **Components**: [`SvelteComponents`](../interfaces/SvelteComponents.md)
+
+Useful svelte components which can be used by scripts
+
+***
+
+### headers
+
+> **headers**: `Readonly`\<`ScriptHeaders`\>
+
+The headers containing this script's metadata
+
+***
+
 ### hotkeys
 
 > **hotkeys**: `Readonly`\<[`ScopedHotkeysApi`](/api/scopedhotkeys)\>
@@ -55,6 +71,14 @@ Methods for getting info on libraries
 
 ***
 
+### logger
+
+> **logger**: `Readonly`\<[`LoggerApi`](/api/logger)\>
+
+Utilities for pretty logs with a tag showing they are from this script
+
+***
+
 ### net
 
 > **net**: `Readonly`\<[`ScopedNetApi`](/api/scopednet)\>
@@ -68,7 +92,7 @@ and functions to send general requests
 
 > **onStop**: (`callback`) => `void`
 
-Run a callback when the script is disabled
+Run a callback when this script is disabled
 
 #### Parameters
 
@@ -86,7 +110,7 @@ Run a callback when the script is disabled
 
 > **openSettingsMenu**: (`callback`) => `void`
 
-Run a callback when the plugin's settings menu button is clicked
+Run a callback when this plugin's settings menu button is clicked
 
 This function is not available for libraries
 
@@ -183,6 +207,34 @@ Functions for interacting with the DOM
 
 ## Accessors
 
+### classicStores
+
+#### Get Signature
+
+> **get** **classicStores**(): `ClassicStores`
+
+A variety of gimkit internal objects available in 1d gamemodes
+
+##### Returns
+
+`ClassicStores`
+
+***
+
+### platformerPhysics
+
+#### Get Signature
+
+> **get** **platformerPhysics**(): `any`
+
+Physics variables available in platformer gamemodes
+
+##### Returns
+
+`any`
+
+***
+
 ### React
 
 #### Get Signature
@@ -227,10 +279,10 @@ A variety of gimkit internal objects available in 2d gamemodes
 
 ### requestReload()
 
-> **requestReload**(): `void`
+> **requestReload**(): `any`
 
-Display a modal to the user indicating that the script requires a reload
+Display a modal to the user indicating that this script requires a reload
 
 #### Returns
 
-`void`
+`any`

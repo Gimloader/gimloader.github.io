@@ -23,17 +23,31 @@ GL.net.on("send:*", () => {});
 
 ## Accessors
 
+### Callbacks
+
+#### Get Signature
+
+> **get** **Callbacks**(): `any`
+
+Colyseus's Callbacks function for listening to state changes
+
+##### Returns
+
+`any`
+
+***
+
 ### gamemode
 
 #### Get Signature
 
-> **get** **gamemode**(): `string`
+> **get** **gamemode**(): `null` \| `string`
 
 The id of the gamemode the player is currently playing
 
 ##### Returns
 
-`string`
+`null` \| `string`
 
 ***
 
@@ -92,6 +106,203 @@ Which type of server the client is currently connected to
 `ConnectionType`
 
 ## Methods
+
+### addListener()
+
+> **addListener**(`event`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `listener` | (...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
+### emit()
+
+> **emit**(`event`, ...`args`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| ...`args` | `any`[] |
+
+#### Returns
+
+`void`
+
+***
+
+### emitAsync()
+
+> **emitAsync**(`event`, ...`args`): `Promise`\<`any`[]\>
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| ...`args` | `any`[] |
+
+#### Returns
+
+`Promise`\<`any`[]\>
+
+***
+
+### eventNames()
+
+> **eventNames**(`nsAsArray`?): (`string` \| `symbol` \| `event`[])[]
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `nsAsArray`? | `boolean` |
+
+#### Returns
+
+(`string` \| `symbol` \| `event`[])[]
+
+***
+
+### getMaxListeners()
+
+> **getMaxListeners**(): `number`
+
+#### Returns
+
+`number`
+
+***
+
+### hasListeners()
+
+> **hasListeners**(`event`): `Boolean`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+
+#### Returns
+
+`Boolean`
+
+***
+
+### listenerCount()
+
+> **listenerCount**(`event`): `number`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+
+#### Returns
+
+`number`
+
+***
+
+### listeners()
+
+> **listeners**(`event`): `ListenerFn`[]
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+
+#### Returns
+
+`ListenerFn`[]
+
+***
+
+### listenersAny()
+
+> **listenersAny**(): `ListenerFn`[]
+
+#### Returns
+
+`ListenerFn`[]
+
+***
+
+### listenTo()
+
+#### Call Signature
+
+> **listenTo**(`target`, `events`, `options`?): `EventEmitter2`
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `target` | `GeneralEventEmitter` |
+| `events` | `string` \| `string`[] |
+| `options`? | `ListenToOptions` |
+
+##### Returns
+
+`EventEmitter2`
+
+##### Inherited from
+
+`BaseNetApi.listenTo`
+
+#### Call Signature
+
+> **listenTo**(`target`, `events`, `options`?): `EventEmitter2`
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `target` | `GeneralEventEmitter` |
+| `events` | `Record`\<`string`, `string`\> |
+| `options`? | `ListenToOptions` |
+
+##### Returns
+
+`EventEmitter2`
+
+##### Inherited from
+
+`BaseNetApi.listenTo`
+
+***
+
+### many()
+
+> **many**(`event`, `timesToListen`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `timesToListen` | `number` |
+| `listener` | (...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
 
 ### modifyFetchRequest()
 
@@ -165,6 +376,39 @@ GL.net.modifyFetchResponse("MyPlugin", "/api/experience/map/hooks", (data) => {
 
 ***
 
+### off()
+
+> **off**(`event`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `listener` | (...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
+### offAny()
+
+> **offAny**(`listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | (`event`, ...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
 ### offLoad()
 
 > **offLoad**(`id`): `void`
@@ -176,6 +420,56 @@ Cancels any calls to [onLoad](Net#onload) with the same id
 | Parameter | Type |
 | ------ | ------ |
 | `id` | `string` |
+
+#### Returns
+
+`void`
+
+***
+
+### on()
+
+> **on**(`event`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `listener` | (...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
+### onAny()
+
+> **onAny**(`listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | (`event`, ...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
+### once()
+
+> **once**(`event`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `listener` | (...`data`) => `void` |
 
 #### Returns
 
@@ -209,6 +503,107 @@ A function to cancel waiting for load
 
 ***
 
+### prependAny()
+
+> **prependAny**(`listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | (`event`, ...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
+### prependListener()
+
+> **prependListener**(`event`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `listener` | (...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
+### prependMany()
+
+> **prependMany**(`event`, `timesToListen`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `timesToListen` | `number` |
+| `listener` | (...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
+### prependOnceListener()
+
+> **prependOnceListener**(`event`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `listener` | (...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
+### removeAllListeners()
+
+> **removeAllListeners**(`event`?): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event`? | `string` \| `string`[] |
+
+#### Returns
+
+`void`
+
+***
+
+### removeListener()
+
+> **removeListener**(`event`, `listener`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `listener` | (...`data`) => `void` |
+
+#### Returns
+
+`void`
+
+***
+
 ### send()
 
 > **send**(`channel`, `message`?): `void`
@@ -225,6 +620,39 @@ Sends a message to the server on a specific channel
 #### Returns
 
 `void`
+
+***
+
+### setMaxListeners()
+
+> **setMaxListeners**(`amount`): `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `amount` | `number` |
+
+#### Returns
+
+`void`
+
+***
+
+### stopListeningTo()
+
+> **stopListeningTo**(`target`, `event`?): `Boolean`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `target` | `GeneralEventEmitter` |
+| `event`? | `string` \| `string`[] |
+
+#### Returns
+
+`Boolean`
 
 ***
 
@@ -261,3 +689,64 @@ Stops any modifications made by [modifyFetchResponse](Net#modifyfetchresponse) w
 #### Returns
 
 `void`
+
+***
+
+### waitFor()
+
+#### Call Signature
+
+> **waitFor**(`event`, `timeout`?): `CancelablePromise`\<`any`[]\>
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `timeout`? | `number` |
+
+##### Returns
+
+`CancelablePromise`\<`any`[]\>
+
+##### Inherited from
+
+`BaseNetApi.waitFor`
+
+#### Call Signature
+
+> **waitFor**(`event`, `filter`?): `CancelablePromise`\<`any`[]\>
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `filter`? | `WaitForFilter` |
+
+##### Returns
+
+`CancelablePromise`\<`any`[]\>
+
+##### Inherited from
+
+`BaseNetApi.waitFor`
+
+#### Call Signature
+
+> **waitFor**(`event`, `options`?): `CancelablePromise`\<`any`[]\>
+
+##### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | `string` \| `string`[] |
+| `options`? | `WaitForOptions` |
+
+##### Returns
+
+`CancelablePromise`\<`any`[]\>
+
+##### Inherited from
+
+`BaseNetApi.waitFor`

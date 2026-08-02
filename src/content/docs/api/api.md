@@ -15,6 +15,14 @@ Functions for adding commands to the command palette
 
 ***
 
+### Components
+
+> `static` **Components**: [`SvelteComponents`](../interfaces/SvelteComponents.md)
+
+Useful svelte components which can be used by scripts
+
+***
+
 ### hotkeys
 
 > `static` **hotkeys**: `Readonly`\<[`HotkeysApi`](/api/hotkeys)\>
@@ -138,6 +146,34 @@ Functions for interacting with the DOM
 ## Accessors
 
 
+
+### classicStores
+
+#### Get Signature
+
+> **get** `static` **classicStores**(): `ClassicStores`
+
+A variety of gimkit internal objects available in 1d gamemodes
+
+##### Returns
+
+`ClassicStores`
+
+***
+
+### platformerPhysics
+
+#### Get Signature
+
+> **get** `static` **platformerPhysics**(): `any`
+
+Physics variables available in platformer gamemodes
+
+##### Returns
+
+`any`
+
+***
 
 ### React
 

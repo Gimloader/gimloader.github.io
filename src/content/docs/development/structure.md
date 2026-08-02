@@ -62,7 +62,7 @@ There are also special ids, such as "2d" and "1d" for all 2d/1d gamemodes respec
 
 ## Exports
 
-Plugins and libraries can export things using the normal esm syntax. These exported values can then be imported by other plugins and libraries through `GL.lib(name)` and `GL.plugin(name)`. This is especially helpful for libraries, since they will typically be exporting functions that will be used by other plugins. Exporting something from a library and importing it in a plugin might look something like this:
+Plugins and libraries can export things using the normal esm syntax. These exported values can then be imported by other plugins and libraries through `api.lib(name)` and `api.plugin(name)`. This is especially helpful for libraries, since they will typically be exporting functions that will be used by other plugins. Exporting something from a library and importing it in a plugin might look something like this:
 
 #### The library
 ```js

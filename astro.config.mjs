@@ -86,7 +86,8 @@ export default defineConfig({
                                     'api/settings',
                                     'api/scopedcommands',
                                     'api/scopedlibs',
-                                    'api/scopedplugins'
+                                    'api/scopedplugins',
+                                    'api/logger'
                                 ]
                             },
                             {

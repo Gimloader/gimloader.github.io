@@ -46,7 +46,7 @@ Gets the exported values of a plugin, if it has been enabled
 
 ### getHeaders()
 
-> **getHeaders**(`name`): `ScriptHeaders`
+> **getHeaders**(`name`): `null` \| `ScriptHeaders`
 
 Gets the headers of a plugin, such as version, author, and description
 
@@ -58,7 +58,7 @@ Gets the headers of a plugin, such as version, author, and description
 
 #### Returns
 
-`ScriptHeaders`
+`null` \| `ScriptHeaders`
 
 ***
 

@@ -113,7 +113,7 @@ for(let page of pages) {
         }
     } else {
         let name = page.toLowerCase().replace("scoped", "").replace(".md", "");
-        if(page.startsWith("Scoped")) {
+        if(page.startsWith("Scoped") || page.startsWith("Logger")) {
             text = `# [ScopedApi](/api/scopedapi).${name}` + 
                 text.slice(text.indexOf("\n"));
         } else {
@@ -122,7 +122,7 @@ for(let page of pages) {
         }
 
         title = page.replace(".md", "") + " Api";
-        if(!title.includes("Scoped")) title = "Global " + title;
+        if(!title.includes("Scoped") && !title.startsWith("Logger")) title = "Global " + title;
         else title = title.replace("Scoped", "");
     }
 

@@ -18,10 +18,10 @@ Adds a command to the user's command palette. Can request additional input withi
 
 | Parameter | Type |
 | ------ | ------ |
-| `options` | \{ `hidden`: () => `boolean`; `keywords`: readonly `string`[]; `text`: `string` \| () => `string`; \} |
-| `options.hidden`? | () => `boolean` |
+| `options` | \{ `keywords`: readonly `string`[]; `text`: `string` \| () => `string`; `hidden`: `boolean`; \} |
 | `options.keywords`? | readonly `string`[] |
 | `options.text` | `string` \| () => `string` |
+| `options.hidden`? |
 | `callback` | (`context`) => `void` \| `Promise`\<`void`\> |
 
 #### Returns
