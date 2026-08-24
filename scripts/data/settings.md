@@ -74,4 +74,6 @@ The "custom" and "customsection" settings require a `render` function, which loo
 
 #### Returns
 
-`void`
+A reference to api.settings, with inferred types if `@gimloader/types` is installed
+
+`Settings`
