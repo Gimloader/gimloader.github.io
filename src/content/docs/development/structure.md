@@ -85,5 +85,3 @@ const myLib = api.lib("MyLib");
 
 myLib.sayHi();
 ```
-
-There are also two exports with special meaning- `onStop` and `openSettingsMenu`. As the name implies, `onStop` is called when the user disables the script, and `openSettingsMenu` is called when the user clicks the button to open a plugin's setting menu (this does nothing special when used in a library). However, it is discouraged to use these. If possible, use the scoped api's `onStop` and `openSettingsMenu` methods instead.

@@ -3,7 +3,47 @@ title: The Gimloader Api
 description: An overview of the Gimloader api
 ---
 
-The Gimloader API is accessible through the script-specific `api` variable. It contains many tools that are useful for making scripts. There is also a global api available through the global `GL` variable, which is primarily for debugging and should not be used in scripts.
+The Gimloader API is accessible through the script-specific `api` variable, and contains many tools that are useful for making scripts. There is also a global `GL` variable which contains an instance of the api for debugging.
+
+## Cleanup
+
+Because the api is scoped to a specific script, functions will generally automatically clean themselves up when the script is disabled. They can also typically be manually cleaned up by running the callback returned by the function.
+
+```js
+// These styles will automatically be removed when this script is turned off
+api.UI.addStyles("#thing { color: red }");
+
+// These styles will manually be removed after 5 seconds
+const cleanup = api.UI.addStyles("#thing2 { color: blue }");
+setTimeout(() => cleanup(), 5000);
+```
+
+Certain changes you make might also need to be manually cleaned up. For this, you can use `api.onStop`, which runs one or more callbacks when the script is disabled.
+
+```js
+window.myThingExists = true;
+api.onStop(() => window.myThingExists = false);
+```
+
+## Settings Menus
+
+Only plugins are allowed to have settings menus, since users generally should not interact with libraries directly. Settings menus can be created in two ways: `api.openSettingsMenu` or `api.settings`. The former runs a callback when the user clicks the settings icon, and the latter is a utility which easily creates settings menus which automatically persist data. `api.settings` is generally preferred since it makes settings consistent between plugins. See the [docs](/api/settings) for more information.
+
+```js
+const settings = api.settings.create([
+    {
+        id: "test",
+        type: "toggle",
+        title: "Do something",
+        description: "Hello",
+        default: false,
+        onChange: (value) => console.log(value)
+    }
+]);
+
+console.log(settings.test); // false by default
+console.log(api.settings.test); // this works too
+```
 
 ## Important API Elements
 
