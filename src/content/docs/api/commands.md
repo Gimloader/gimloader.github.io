@@ -1,16 +1,17 @@
 ---
-title: Global Commands Api
-description: Documentation for the Global Commands Api
+title: Commands Api
+description: Documentation for Gimloader's Commands Api
 ---
-# [GL](/api/api).commands
 
-An API for adding commands to the command palette
+# [api](/api/api).commands
+
+Functions for adding commands to the command palette
 
 ## Methods
 
 ### addCommand()
 
-> **addCommand**(`id`, `options`, `callback`): () => `void`
+> **addCommand**(`options`, `callback`): () => `void`
 
 Adds a command to the user's command palette. Can request additional input within the callback.
 
@@ -18,27 +19,22 @@ Adds a command to the user's command palette. Can request additional input withi
 
 | Parameter | Type |
 | ------ | ------ |
-| `id` | `string` |
-| `options` | \{ `keywords`: readonly `string`[]; `text`: `string` \| () => `string`; `hidden`: `boolean`; \} |
-| `options.keywords`? | readonly `string`[] |
-| `options.text` | `string` \| () => `string` |
-| `options.hidden`? |
+| `options` | \{ `keywords?`: readonly `string`[]; `text`: `string` \| (() => `string`); `hidden?`: `boolean`; \} |
+| `options.keywords?` | readonly `string`[] |
+| `options.text` | `string` \| (() => `string`) |
+| `options.hidden?` |
 | `callback` | (`context`) => `void` \| `Promise`\<`void`\> |
 
 #### Returns
 
-`Function`
-
 A function to remove the command
 
-##### Returns
-
-`void`
+() => `void`
 
 #### Example
 
 ```js
-GL.commands.addCommand("MyPlugin", {
+api.commands.addCommand({
     text: "Do a thing",
     keywords: ["execute", "run"],
     hidden: () => false
@@ -48,7 +44,7 @@ GL.commands.addCommand("MyPlugin", {
         options: [
             { label: "Option 1", value: "one" },
             { label: "Option 2", value: "two" }
-         ]
+        ]
     });
     const number = await context.number({
         title: "Pick a number"
@@ -64,21 +60,3 @@ GL.commands.addCommand("MyPlugin", {
     console.log("User chose:", { choice, number, string });
 });
 ```
-
-***
-
-### removeCommands()
-
-> **removeCommands**(`id`): `void`
-
-Removes all commands that were added with the same id
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `id` | `string` |
-
-#### Returns
-
-`void`

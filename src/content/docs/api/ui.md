@@ -1,8 +1,19 @@
 ---
-title: Global UI Api
-description: Documentation for the Global UI Api
+title: UI Api
+description: Documentation for Gimloader's UI Api
 ---
-# [GL](/api/api).ui
+
+# [api](/api/api).UI
+
+Functions for interacting with user interfaces
+
+## Properties
+
+### toast
+
+> **toast**: `ToastType`
+
+The toast api exposed by svelte-sonner
 
 ## Accessors
 
@@ -56,7 +67,7 @@ Gimkit's notification object, only available when joining or playing a game
 
 ### addStyles()
 
-> **addStyles**(`id`, `style`): () => `void`
+> **addStyles**(`style`): () => `void`
 
 Adds a style to the DOM
 
@@ -64,18 +75,13 @@ Adds a style to the DOM
 
 | Parameter | Type |
 | ------ | ------ |
-| `id` | `string` |
 | `style` | `string` |
 
 #### Returns
 
-`Function`
-
 A function to remove the styles
 
-##### Returns
-
-`void`
+() => `void`
 
 #### Example
 
@@ -84,7 +90,7 @@ const styles = `#element {
     color: red;
 }`;
 
-GL.UI.addStyles("MyPlugin", styles);
+api.UI.addStyles(styles);
 ```
 
 ***
@@ -101,27 +107,9 @@ Forces Gimkit's react tree to fully rerender
 
 ***
 
-### offComponentLoad()
-
-> **offComponentLoad**(`id`): `void`
-
-Cancels any calls made to [onComponentLoad](UI#oncomponentload) with the same id
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `id` | `string` |
-
-#### Returns
-
-`void`
-
-***
-
 ### onComponentLoad()
 
-> **onComponentLoad**\<`K`\>(`id`, `type`, `callback`): `undefined` \| () => `void`
+> **onComponentLoad**\<`K`\>(`type`, `callback`): () => `void`
 
 Waits for a component to load, and calls the callback with the component as an argument.
 If the component has already loaded the callback will be fired immediately.
@@ -137,47 +125,28 @@ The available components are "notification", "message", and "modal".
 
 | Parameter | Type |
 | ------ | ------ |
-| `id` | `string` |
 | `type` | `K` |
 | `callback` | (`component`) => `void` |
 
 #### Returns
 
-`undefined` \| () => `void`
-
 A function that cancels waiting
+
+() => `void`
 
 #### Example
 
 ```js
-GL.UI.onComponentLoad("MyPlugin", "message", (message) => {
+api.UI.onComponentLoad("message", (message) => {
     message.success({ content: "This is a message!" });
 });
 ```
 
 ***
 
-### removeStyles()
-
-> **removeStyles**(`id`): `void`
-
-Remove all styles with a given id
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `id` | `string` |
-
-#### Returns
-
-`void`
-
-***
-
 ### showModal()
 
-> **showModal**(`element`, `options`): `void`
+> **showModal**(`element`, `options?`): `void`
 
 Shows a customizable modal to the user
 
@@ -186,14 +155,14 @@ Shows a customizable modal to the user
 | Parameter | Type |
 | ------ | ------ |
 | `element` | `HTMLElement` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\> |
-| `options` | \{ `buttons`: readonly `ModalButton`[]; `className`: `string`; `closeOnBackgroundClick`: `boolean`; `id`: `string`; `onClosed`: () => `void`; `style`: `string`; `title`: `string`; \} |
-| `options.buttons`? | readonly `ModalButton`[] |
-| `options.className`? | `string` |
-| `options.closeOnBackgroundClick`? | `boolean` |
-| `options.id`? | `string` |
-| `options.onClosed`? | () => `void` |
-| `options.style`? | `string` |
-| `options.title`? | `string` |
+| `options` | \{ `buttons?`: readonly `ModalButton`[]; `className?`: `string`; `closeOnBackgroundClick?`: `boolean`; `id?`: `string`; `onClosed?`: () => `void`; `style?`: `string`; `title?`: `string`; \} |
+| `options.buttons?` | readonly `ModalButton`[] |
+| `options.className?` | `string` |
+| `options.closeOnBackgroundClick?` | `boolean` |
+| `options.id?` | `string` |
+| `options.onClosed?` | () => `void` |
+| `options.style?` | `string` |
+| `options.title?` | `string` |
 
 #### Returns
 
@@ -205,7 +174,7 @@ Shows a customizable modal to the user
 const element = document.createElement("div");
 element.textContent = "Hello, world!";
 
-GL.UI.showModal(element, {
+api.UI.showModal(element, {
     id: "my-modal",
     title: "My Modal",
     style: "width: 300px;",

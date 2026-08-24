@@ -1,14 +1,17 @@
 ---
-title: Global Storage Api
-description: Documentation for the Global Storage Api
+title: Storage Api
+description: Documentation for Gimloader's Storage Api
 ---
-# [GL](/api/api).storage
+
+# [api](/api/api).storage
+
+Functions for persisting data between reloads
 
 ## Methods
 
 ### deleteValue()
 
-> **deleteValue**(`pluginName`, `key`): `void`
+> **deleteValue**(`key`): `void`
 
 Removes a value which has been saved
 
@@ -16,7 +19,6 @@ Removes a value which has been saved
 
 | Parameter | Type |
 | ------ | ------ |
-| `pluginName` | `string` |
 | `key` | `string` |
 
 #### Returns
@@ -27,7 +29,7 @@ Removes a value which has been saved
 
 ### getValue()
 
-> **getValue**(`pluginName`, `key`, `defaultValue`?): `any`
+> **getValue**(`key`, `defaultValue?`): `any`
 
 Gets a value that has previously been saved
 
@@ -35,9 +37,8 @@ Gets a value that has previously been saved
 
 | Parameter | Type |
 | ------ | ------ |
-| `pluginName` | `string` |
 | `key` | `string` |
-| `defaultValue`? | `any` |
+| `defaultValue?` | `any` |
 
 #### Returns
 
@@ -45,72 +46,29 @@ Gets a value that has previously been saved
 
 ***
 
-### offAllChanges()
-
-> **offAllChanges**(`pluginName`): `void`
-
-Removes all listeners added by onChange for a certain plugin
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `pluginName` | `string` |
-
-#### Returns
-
-`void`
-
-***
-
-### offChange()
-
-> **offChange**(`pluginName`, `key`, `callback`): `void`
-
-Removes a listener added by onChange
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `pluginName` | `string` |
-| `key` | `string` |
-| `callback` | (`value`, `remote`) => `void` |
-
-#### Returns
-
-`void`
-
-***
-
 ### onChange()
 
-> **onChange**(`pluginName`, `key`, `callback`): () => `void`
+> **onChange**(`key`, `callback`): () => `void`
 
-Adds a listener for when a plugin's stored value with a certain key changes
+Adds a listener for when a stored value with a certain key changes
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `pluginName` | `string` |
 | `key` | `string` |
 | `callback` | (`value`, `remote`) => `void` |
 
 #### Returns
-
-`Function`
 
 a function that removes the listener when called
 
-##### Returns
-
-`void`
+() => `void`
 
 #### Example
 
 ```js
-GL.storage.onChange("MyPlugin", "key", (value, remote) => {
+api.storage.onChange("key", (value, remote) => {
     console.log("Value is now", value);
     console.log("Value was updated", remote ? "remotely" : "locally");
 });
@@ -120,15 +78,14 @@ GL.storage.onChange("MyPlugin", "key", (value, remote) => {
 
 ### setValue()
 
-> **setValue**(`pluginName`, `key`, `value`): `void`
+> **setValue**(`key`, `value`): `void`
 
-Sets a value which can be retrieved later, through reloads
+Sets a value which can be retrieved later, persisting through reloads
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `pluginName` | `string` |
 | `key` | `string` |
 | `value` | `any` |
 

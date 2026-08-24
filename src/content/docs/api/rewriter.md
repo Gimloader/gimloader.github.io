@@ -1,10 +1,11 @@
 ---
-title: Global Rewriter Api
-description: Documentation for the Global Rewriter Api
+title: Rewriter Api
+description: Documentation for Gimloader's Rewriter Api
 ---
-# [GL](/api/api).rewriter
 
-The rewriter API allows you to modify the bundled code of Gimkit in order to expose values
+# [api](/api/api).rewriter
+
+The rewriter API allows you to modify the bundled code of Gimkit in order to alter behavior
 or change certain behaviors. Due to the unpredictable nature of bundling, you cannot assume that variable names
 will remain the same beteen updates.
 
@@ -12,7 +13,7 @@ will remain the same beteen updates.
 
 ### addParseHook()
 
-> **addParseHook**(`pluginName`, `prefix`, `modifier`): () => `void`
+> **addParseHook**(`prefix`, `modifier`): () => `void`
 
 Creates a hook that will modify the code of a script before it is run.
 This value is cached, so this hook may not run on subsequent page loads.
@@ -22,24 +23,19 @@ addParseHook should always be called in the top level of a script.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `pluginName` | `string` | The name of the plugin creating the hook. |
 | `prefix` | `string` \| `boolean` | Limits the hook to only running on scripts beginning with this prefix. Passing `true` will only run on the index script, and passing `false` will run on all scripts. |
 | `modifier` | (`code`) => `string` | A function that will modify the code, which should return the modified code. |
 
 #### Returns
 
-`Function`
-
 A function that removes the hook when called
 
-##### Returns
-
-`void`
+() => `void`
 
 #### Example
 
 ```js
-GL.rewriter.addParseHook("MyPlugin", "App", (code) => {
+api.rewriter.addParseHook("App", (code) => {
     let index = code.indexOf("something");
     code = code.slice(0, index) + `console.log("something else")` + code.slice(index);
     code += "console.log(someVar)";
@@ -51,7 +47,7 @@ GL.rewriter.addParseHook("MyPlugin", "App", (code) => {
 
 ### createShared()
 
-> **createShared**(`pluginName`, `id`, `value`): `string`
+> **createShared**(`id`, `value`): `string`
 
 Creates a shared value that can be accessed from any script.
 
@@ -59,7 +55,6 @@ Creates a shared value that can be accessed from any script.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `pluginName` | `string` | The name of the plugin creating the shared value. |
 | `id` | `string` | A unique identifier for the shared value. |
 | `value` | `any` | The value to be shared. |
 
@@ -72,7 +67,7 @@ A string representing the code to access the shared value.
 #### Example
 
 ```js
-const callback = GL.rewriter.createShared("MyPlugin", "uniqueId", (val) => {
+const callback = api.rewriter.createShared("uniqueId", (val) => {
     console.log(val);
 });
 
@@ -83,7 +78,7 @@ eval(`${callback}("15")`); // Don't actually do this, but it logs 15
 
 ### exposeVar()
 
-> **exposeVar**(`pluginName`, `prefix`, `exposer`): () => `void`
+> **exposeVar**(`prefix`, `exposer`): () => `void`
 
 A utility function that exposes a variable based on regex to get its name.
 
@@ -91,28 +86,23 @@ A utility function that exposes a variable based on regex to get its name.
 
 | Parameter | Type |
 | ------ | ------ |
-| `pluginName` | `string` |
 | `prefix` | `string` \| `boolean` |
-| `exposer` | \{ `callback`: (`val`) => `void`; `check`: `string`; `find`: `RegExp`; `multiple`: `boolean`; \} |
+| `exposer` | \{ `callback`: (`val`) => `void`; `check?`: `string`; `find`: `RegExp`; `multiple?`: `boolean`; \} |
 | `exposer.callback` | (`val`) => `void` |
-| `exposer.check`? | `string` |
+| `exposer.check?` | `string` |
 | `exposer.find` | `RegExp` |
-| `exposer.multiple`? | `boolean` |
+| `exposer.multiple?` | `boolean` |
 
 #### Returns
 
-`Function`
-
 A function that removes the hook when called
 
-##### Returns
-
-`void`
+() => `void`
 
 #### Example
 
 ```js
-GL.rewriter.exposeVar("MyPlugin", "App", {
+api.rewriter.exposeVar("App", {
     check: "StringThatMustExistInFile",
     find: /let (\w+) = something/g,
     multiple: false,
@@ -122,71 +112,16 @@ GL.rewriter.exposeVar("MyPlugin", "App", {
 
 ***
 
-### removeParseHooks()
-
-> **removeParseHooks**(`pluginName`): `void`
-
-Removes all parse hooks created by a certain plugin
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `pluginName` | `string` |
-
-#### Returns
-
-`void`
-
-***
-
-### removeRunInScope()
-
-> **removeRunInScope**(`pluginName`): `void`
-
-Stops all hooks created by [runInScope](Rewriter#runinscope)
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `pluginName` | `string` |
-
-#### Returns
-
-`void`
-
-***
-
-### removeShared()
-
-> **removeShared**(`pluginName`): `void`
-
-Removes all values created by [createShared](Rewriter#createshared) by a certain plugin
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `pluginName` | `string` |
-
-#### Returns
-
-`void`
-
-***
-
 ### removeSharedById()
 
-> **removeSharedById**(`pluginName`, `id`): `void`
+> **removeSharedById**(`id`): `void`
 
-Removes the shared value with a certain id created by [createShared](Rewriter#createshared)
+Removes the shared value with a certain id created by [createShared](/api/rewriter.md#createshared)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `pluginName` | `string` |
 | `id` | `string` |
 
 #### Returns
@@ -197,7 +132,7 @@ Removes the shared value with a certain id created by [createShared](Rewriter#cr
 
 ### runInScope()
 
-> **runInScope**(`pluginName`, `prefix`, `callback`): () => `void`
+> **runInScope**(`prefix`, `callback`): () => `void`
 
 Runs code in the scope of modules when they are loaded, or when runInScope is called with them already loaded.
 Returning true from the callback will remove the hook.
@@ -206,24 +141,19 @@ Returning true from the callback will remove the hook.
 
 | Parameter | Type |
 | ------ | ------ |
-| `pluginName` | `string` |
 | `prefix` | `string` \| `boolean` |
 | `callback` | (`code`, `run`, `initial`) => `true` \| `void` |
 
 #### Returns
 
-`Function`
-
 A function that removes the hook when called
 
-##### Returns
-
-`void`
+() => `void`
 
 #### Example
 
 ```js
-GL.rewriter.runInScope("MyPlugin", "App", (code, run, initial) => {
+api.rewriter.runInScope("App", (code, run, initial) => {
     if(code.includes("something")) {
         run(`someVar=15`);
     }

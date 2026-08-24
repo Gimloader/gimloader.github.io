@@ -1,16 +1,21 @@
 {
     "plugin": [
         "typedoc-plugin-merge-modules",
-        "typedoc-plugin-markdown"
+        "typedoc-plugin-markdown",
+        "./scripts/docs-plugin.ts"
     ],
-    "out": "./tmp",
-    "entryPoints": ["../Gimloader/src/content/api/**.ts"],
-    "mergeModulesRenameDefaults": true,
+    "out": "./src/content/docs/api",
+    "entryPoints": [
+        "../Gimloader/src/content/api/*.ts"
+    ],
+    "entryFileName": "index",
     "readme": "none",
     "tsconfig": "../Gimloader/tsconfig.json",
-    "disableSources": true,
-    "hideBreadcrumbs": true,
     "hidePageHeader": true,
+    "hideBreadcrumbs": true,
+    "disableSources": true,
+    "router": "structure",
     "parametersFormat": "table",
-    "excludeExternals": true
+    "excludeExternals": true,
+    "publicPath": "/api"
 }

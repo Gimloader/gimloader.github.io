@@ -5,7 +5,9 @@ import { topicSchema } from 'starlight-sidebar-topics/schema';
 
 export const collections = {
 	docs: defineCollection({
-		loader: docsLoader(),
+		loader: docsLoader({
+			generateId: ({ entry }) => entry.replace(/\..+$/, ""),
+		}),
 		schema: docsSchema({
 			extend: topicSchema
 		})

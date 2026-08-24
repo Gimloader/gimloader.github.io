@@ -1,15 +1,18 @@
 ---
-title: Unscoped Api
-description: Documentation for the Unscoped Api
+title: Script Api
+description: Documentation for Gimloader's Script Api
 ---
-The api is accessible via the global variable `GL`. Scripts are also encouraged to use the [scoped API](/api/scopedapi) which automatically handles cleanup. The scoped api is available with the script-specific `api` variable.
+
+# Script Api
+
+The Gimloader api which is exposed to scripts via the `api` variable.
+Contains many utilities for things like interacting with Gimkit and user interaction.
+
 ## Properties
-
-
 
 ### commands
 
-> `static` **commands**: `Readonly`\<[`CommandsApi`](/api/commands)\>
+> **commands**: `Readonly`\<[`commands`](/api/commands)\>
 
 Functions for adding commands to the command palette
 
@@ -17,23 +20,31 @@ Functions for adding commands to the command palette
 
 ### Components
 
-> `static` **Components**: [`SvelteComponents`](../interfaces/SvelteComponents.md)
+> **Components**: [`SvelteComponents`](/api/SvelteComponents)
 
 Useful svelte components which can be used by scripts
 
 ***
 
+### headers
+
+> **headers**: `Readonly`\<[`ScriptHeaders`](/api/ScriptHeaders)\>
+
+The headers containing this script's metadata
+
+***
+
 ### hotkeys
 
-> `static` **hotkeys**: `Readonly`\<[`HotkeysApi`](/api/hotkeys)\>
+> **hotkeys**: `Readonly`\<[`hotkeys`](/api/hotkeys)\>
 
 Functions to listen for key combinations
 
 ***
 
-### lib()
+### lib
 
-> `static` **lib**: \<`T`\>(`name`) => `Libraries`\[`T`\]
+> **lib**: \<`T`\>(`name`) => `Libraries`\[`T`\]
 
 Gets the exported values of a library
 
@@ -57,32 +68,59 @@ Gets the exported values of a library
 
 ### libs
 
-> `static` **libs**: `Readonly`\<[`LibsApi`](/api/libs)\>
+> **libs**: `Readonly`\<[`libs`](/api/libs)\>
 
 Methods for getting info on libraries
 
 ***
 
+### logger
+
+> **logger**: `Readonly`\<[`logger`](/api/logger)\>
+
+Utilities for pretty logs with a tag showing they are from this script
+
+***
+
 ### net
 
-> `static` **net**: `Readonly`\<[`NetApi`](/api/net)\>
+> **net**: `Readonly`\<[`net`](/api/net)\>
 
-Ways to interact with the current connection to the server,
-and functions to send general requests
+Functions to interact with the current connection to the server
+
+***
+
+### openSettingsMenu
+
+> **openSettingsMenu**: (...`callbacks`) => `void`
+
+Run a callback when this plugin's settings menu button is clicked
+
+This function is not available for libraries
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`callbacks` | () => `void`[] |
+
+#### Returns
+
+`void`
 
 ***
 
 ### patcher
 
-> `static` **patcher**: `Readonly`\<[`PatcherApi`](/api/patcher)\>
+> **patcher**: `Readonly`\<[`patcher`](/api/patcher)\>
 
 Functions for intercepting the arguments and return values of functions
 
 ***
 
-### plugin()
+### plugin
 
-> `static` **plugin**: \<`T`\>(`name`) => `Plugins`\[`T`\]
+> **plugin**: \<`T`\>(`name`) => `Plugins`\[`T`\]
 
 Gets the exported values of a plugin, if it has been enabled
 
@@ -106,7 +144,7 @@ Gets the exported values of a plugin, if it has been enabled
 
 ### plugins
 
-> `static` **plugins**: `Readonly`\<[`PluginsApi`](/api/plugins)\>
+> **plugins**: `Readonly`\<[`plugins`](/api/plugins)\>
 
 Methods for getting info on plugins
 
@@ -114,15 +152,23 @@ Methods for getting info on plugins
 
 ### rewriter
 
-> `static` **rewriter**: `Readonly`\<[`RewriterApi`](/api/rewriter)\>
+> **rewriter**: `Readonly`\<[`rewriter`](/api/rewriter)\>
 
-Functions to edit Gimkit's code
+Functions to edit Gimkit's code or to expose internals
+
+***
+
+### settings
+
+> **settings**: [`settings`](/api/settings)
+
+A utility for creating persistent settings menus, only available to plugins
 
 ***
 
 ### storage
 
-> `static` **storage**: `Readonly`\<[`StorageApi`](/api/storage)\>
+> **storage**: `Readonly`\<[`storage`](/api/storage)\>
 
 Functions for persisting data between reloads
 
@@ -130,7 +176,7 @@ Functions for persisting data between reloads
 
 ### svelte\_5\_43\_0
 
-> `static` **svelte\_5\_43\_0**: `Svelte`
+> **svelte\_5\_43\_0**: `SvelteExport`
 
 The exports of svelte v5.43.0, used internally by Gimloader and exposed to make scripts smaller.
 Should never be used by hand.
@@ -139,19 +185,17 @@ Should never be used by hand.
 
 ### UI
 
-> `static` **UI**: `Readonly`\<[`UIApi`](/api/ui)\>
+> **UI**: `Readonly`\<[`UI`](/api/UI)\>
 
-Functions for interacting with the DOM
+Functions for interacting with user interfaces
 
 ## Accessors
-
-
 
 ### classicStores
 
 #### Get Signature
 
-> **get** `static` **classicStores**(): `ClassicStores`
+> **get** **classicStores**(): `ClassicStores`
 
 A variety of gimkit internal objects available in 1d gamemodes
 
@@ -165,7 +209,7 @@ A variety of gimkit internal objects available in 1d gamemodes
 
 #### Get Signature
 
-> **get** `static` **platformerPhysics**(): `any`
+> **get** **platformerPhysics**(): `any`
 
 Physics variables available in platformer gamemodes
 
@@ -179,7 +223,7 @@ Physics variables available in platformer gamemodes
 
 #### Get Signature
 
-> **get** `static` **React**(): *typeof* `React`
+> **get** **React**(): *typeof* `React`
 
 Gimkit's internal react instance
 
@@ -193,7 +237,7 @@ Gimkit's internal react instance
 
 #### Get Signature
 
-> **get** `static` **ReactDOM**(): `__module`
+> **get** **ReactDOM**(): `__module`
 
 Gimkit's internal reactDom instance
 
@@ -207,9 +251,9 @@ Gimkit's internal reactDom instance
 
 #### Get Signature
 
-> **get** `static` **stores**(): `Stores`
+> **get** **stores**(): `Stores`
 
-A variety of Gimkit internal objects available in 2d gamemodes
+A variety of gimkit internal objects available in 2d gamemodes
 
 ##### Returns
 
@@ -217,3 +261,42 @@ A variety of Gimkit internal objects available in 2d gamemodes
 
 ## Methods
 
+### cleanup()
+
+> **cleanup**(): `void`
+
+Cleans up everything performed through this script's api
+
+#### Returns
+
+`void`
+
+***
+
+### onStop()
+
+> **onStop**(...`callbacks`): `void`
+
+Run a callback when this script is disabled
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`callbacks` | () => `void`[] |
+
+#### Returns
+
+`void`
+
+***
+
+### requestReload()
+
+> **requestReload**(): `any`
+
+Display a modal to the user indicating that this script requires a reload
+
+#### Returns
+
+`any`

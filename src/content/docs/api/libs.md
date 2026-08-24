@@ -1,8 +1,11 @@
 ---
-title: Global Libs Api
-description: Documentation for the Global Libs Api
+title: Libs Api
+description: Documentation for Gimloader's Libs Api
 ---
-# [GL](/api/api).libs
+
+# [api](/api/api).libs
+
+Methods for getting info on libraries
 
 ## Accessors
 
@@ -46,7 +49,7 @@ Gets the exported values of a library
 
 ### getHeaders()
 
-> **getHeaders**(`name`): `null` \| `ScriptHeaders`
+> **getHeaders**(`name`): [`ScriptHeaders`](/api/ScriptHeaders) \| `null`
 
 Gets the headers of a library, such as version, author, and description
 
@@ -58,7 +61,7 @@ Gets the headers of a library, such as version, author, and description
 
 #### Returns
 
-`null` \| `ScriptHeaders`
+[`ScriptHeaders`](/api/ScriptHeaders) \| `null`
 
 ***
 
@@ -77,3 +80,34 @@ Gets whether or not a plugin is installed and enabled
 #### Returns
 
 `boolean`
+
+***
+
+### require()
+
+> **require**\<`T`\>(`name`, `downloadUrl?`): `Promise`\<`Libraries`\[`T`\]\>
+
+Gets a library by name, prompting the user to enable/download it if necessary. Returns a promise with its exports.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` \| `number` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `T` |
+| `downloadUrl?` | `string` |
+
+#### Returns
+
+`Promise`\<`Libraries`\[`T`\]\>
+
+#### Example
+
+```js
+api.libs.require("Communication", "https://raw.githubusercontent.com/Gimloader/builds/main/libraries/Communication.js");
+```

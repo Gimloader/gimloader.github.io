@@ -13,7 +13,6 @@ const libraries = await readScripts("libraries");
 // https://astro.build/config
 export default defineConfig({
     site: 'https://gimloader.github.io',
-
     integrations: [starlight({
         head: [
             {
@@ -74,37 +73,9 @@ export default defineConfig({
                         label: "Docs",
                         items: [
                             {
-                                label: 'Scoped Api',
-                                items: [
-                                    'api/scopedapi',
-                                    'api/scopedhotkeys',
-                                    'api/scopednet',
-                                    'api/scopedui',
-                                    'api/scopedstorage',
-                                    'api/scopedpatcher',
-                                    'api/scopedrewriter',
-                                    'api/settings',
-                                    'api/scopedcommands',
-                                    'api/scopedlibs',
-                                    'api/scopedplugins',
-                                    'api/logger'
-                                ]
-                            },
-                            {
-                                label: 'Unscoped Api',
-                                collapsed: true,
-                                items: [
-                                    'api/api',
-                                    'api/hotkeys',
-                                    'api/net',
-                                    'api/ui',
-                                    'api/storage',
-                                    'api/patcher',
-                                    'api/rewriter',
-                                    'api/commands',
-                                    'api/libs',
-                                    'api/plugins'
-                                ]
+                                autogenerate: {
+                                    directory: "api"
+                                }
                             }
                         ]
                     }

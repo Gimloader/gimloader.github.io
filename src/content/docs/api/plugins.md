@@ -1,8 +1,11 @@
 ---
-title: Global Plugins Api
-description: Documentation for the Global Plugins Api
+title: Plugins Api
+description: Documentation for Gimloader's Plugins Api
 ---
-# [GL](/api/api).plugins
+
+# [api](/api/api).plugins
+
+Methods for getting info on plugins
 
 ## Accessors
 
@@ -46,7 +49,7 @@ Gets the exported values of a plugin, if it has been enabled
 
 ### getHeaders()
 
-> **getHeaders**(`name`): `null` \| `ScriptHeaders`
+> **getHeaders**(`name`): [`ScriptHeaders`](/api/ScriptHeaders) \| `null`
 
 Gets the headers of a plugin, such as version, author, and description
 
@@ -58,7 +61,7 @@ Gets the headers of a plugin, such as version, author, and description
 
 #### Returns
 
-`null` \| `ScriptHeaders`
+[`ScriptHeaders`](/api/ScriptHeaders) \| `null`
 
 ***
 
@@ -77,3 +80,34 @@ Whether a plugin exists and is enabled
 #### Returns
 
 `boolean`
+
+***
+
+### require()
+
+> **require**\<`T`\>(`name`, `downloadUrl?`): `Promise`\<`Plugins`\[`T`\]\>
+
+Gets a plugin by name, prompting the user to enable/download it if necessary. Returns a promise with its exports
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` \| `number` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `T` |
+| `downloadUrl?` | `string` |
+
+#### Returns
+
+`Promise`\<`Plugins`\[`T`\]\>
+
+#### Example
+
+```js
+api.libs.require("Desynchronize", "https://raw.githubusercontent.com/Gimloader/builds/main/plugins/Desynchronize.js");
+```

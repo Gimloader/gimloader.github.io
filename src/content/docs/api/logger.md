@@ -1,8 +1,11 @@
 ---
 title: Logger Api
-description: Documentation for the Logger Api
+description: Documentation for Gimloader's Logger Api
 ---
-# [ScopedApi](/api/scopedapi).logger
+
+# [api](/api/api).logger
+
+Utilities for pretty logs with a tag showing they are from this script
 
 ## Methods
 

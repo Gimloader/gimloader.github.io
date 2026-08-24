@@ -47,7 +47,7 @@ console.log(api.settings.test); // this works too
 
 ## Important API Elements
 
-Obviously, the entire API can't be included here. See the the [api docs](/api/scopedapi) if you want that. Below are some of the things that will be most useful to a new dev.
+Obviously, the entire API can't be included here. See the the [api docs](/api/api) if you want that. Below are some of the things that will be most useful to a new dev.
 
 ### api.stores
 
