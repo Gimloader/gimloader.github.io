@@ -1,4 +1,5 @@
 client-plugins/
+scripts/createCorsKeys.ts
 
 # build output
 dist/
