@@ -15,8 +15,8 @@
 
         installing = new Promise<void>(async (res, rej) => {
             try {
-                let resp = await fetch(url);
-                let script = await resp.text();
+                const resp = await fetch(url);
+                const script = await resp.text();
 
                 await Installer.install(script);
 
