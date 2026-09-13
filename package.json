@@ -15,7 +15,7 @@
     "@astrojs/sitemap": "3.7.3",
     "@astrojs/starlight": "0.41.6",
     "@astrojs/svelte": "9.0.1",
-    "@gimloader/ipc": "../ipc",
+    "@gimloader/ipc": "github:Gimloader/ipc#e67be9bcbaf320fffcee08e154e02040332c5ede",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "7.1.6",
     "eventemitter2": "^6.4.9",
@@ -24,7 +24,7 @@
     "svelte": "^5.17.5",
     "svelte-highlight": "^7.8.2",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5.7.3"
+    "typescript": "^6"
   },
   "devDependencies": {
     "@internationalized/date": "^3.8.1",
