@@ -1,8 +1,17 @@
 <script lang="ts">
-    import Installer from "src/lib/installer/installer.svelte";
-    import Port from "src/lib/installer/port.svelte";
+    import Port from "@gimloader/ipc/port";
+    import { StateManager } from "@gimloader/ipc";
 
-    Installer.init();
+    let ready = $state(false);
+    StateManager.events.on("init", () => ready = true);
+
+    let disconnected = $state(false);
+    Port.disconnected.bind(() => disconnected, (val) => disconnected = val);
+    
+    let unavailable = $state(false);
+    Port.unavailable.bind(() => unavailable, (val) => unavailable = val);
+
+    Port.init();
 
     let { name, url }: { name: string, url: string } = $props();
     let installing: Promise<void> | null = $state(null);
@@ -10,15 +19,15 @@
         ? "https://addons.mozilla.org/en-US/firefox/addon/gimloader/"
         : "https://chromewebstore.google.com/detail/gimloader/ngbhofnofkggjbpkpnogcdfdgjkpmgka";
 
-    function install() {
-        if(!Installer.ready || installing) return;
+    async function install() {
+        if(!ready || installing) return;
 
         installing = new Promise<void>(async (res, rej) => {
             try {
                 const resp = await fetch(url);
                 const script = await resp.text();
 
-                await Installer.install(script);
+                await StateManager.allScripts.editOrCreate(script, null);
 
                 res();
             } catch {
@@ -29,11 +38,11 @@
 </script>
 
 <div class="wrap pt-[65px]">
-    {#if Port.disconnected}
+    {#if disconnected}
         <div class="install-action">
             Gimloader extension disconnected, please reload the page to install.
         </div>
-    {:else if Installer.ready}
+    {:else if ready}
         <button class="install-action" onclick={install}>
             {#if installing}
                 {#await installing}
@@ -44,14 +53,14 @@
                     Error installing
                 {/await}
             {:else}
-                {#if Installer.plugins.has(name)}
+                {#if StateManager.plugin.scripts.value.some((s) => s.name === name)}
                     Reinstall Plugin
                 {:else}
                     Install Plugin
                 {/if}
             {/if}
         </button>
-    {:else if Port.unavailable}
+    {:else if unavailable}
         <a class="install-action" href={extensionLink} target="_blank">
             Gimloader extension not found
         </a>

@@ -15,6 +15,7 @@
     "@astrojs/sitemap": "3.7.3",
     "@astrojs/starlight": "0.41.6",
     "@astrojs/svelte": "9.0.1",
+    "@gimloader/ipc": "../ipc",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "7.1.6",
     "eventemitter2": "^6.4.9",

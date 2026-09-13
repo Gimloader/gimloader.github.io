@@ -1,16 +1,25 @@
 <script lang="ts">
-    import type { ScriptHeaders } from 'src/lib/installer/types/headers';
-    import Installer from 'src/lib/installer/installer.svelte';
-    import { parseScriptHeaders } from 'src/lib/installer/parseHeader';
-    import Port from 'src/lib/installer/port.svelte';
-    import Highlight from 'svelte-highlight';
-    import javascript from 'svelte-highlight/languages/javascript';
-    import onedark from 'svelte-highlight/styles/onedark';
+    import type { ScriptHeaders } from "@gimloader/ipc";
+    import { parseScriptHeaders } from "@gimloader/ipc";
+    import Highlight from "svelte-highlight";
+    import javascript from "svelte-highlight/languages/javascript";
+    import onedark from "svelte-highlight/styles/onedark";
+    import Port from "@gimloader/ipc/port";
+    import { StateManager } from "@gimloader/ipc";
 
-    Installer.init();
+    let ready = $state(false);
+    StateManager.events.on("init", () => ready = true);
+
+    let disconnected = $state(false);
+    Port.disconnected.bind(() => disconnected, (val) => disconnected = val);
+    
+    let unavailable = $state(false);
+    Port.unavailable.bind(() => unavailable, (val) => unavailable = val);
+
+    Port.init();
 
     const searchParams = new URLSearchParams(window.location.search);
-    const installUrl = searchParams.get('installUrl');
+    const installUrl = searchParams.get("installUrl");
 
     function fetchScript() {
         return new Promise<{ script: string, headers: ScriptHeaders }>(async (res, rej) => {
@@ -31,7 +40,7 @@
     let installError = $state("");
 
     function install(script: string) {
-        installing = Installer.install(script)
+        installing = StateManager.allScripts.editOrCreate(script, null)
             .then(() => installComplete = true)
             .catch((e) => installError = e.message);
     }
@@ -72,7 +81,7 @@
                         {#await fetchScript()}
                             <p>Loading script...</p>
                         {:then { script, headers }}
-                            {#if !Installer.ready}
+                            {#if !ready}
                                 <p>Waiting for Gimloader...</p>
                             {:else}
                                 <div class="flex flex-col h-full">
@@ -98,7 +107,7 @@
                                                 Installing...
                                             {/await}
                                         {:else}
-                                            {Installer.plugins.has(headers.name) ? "Reinstall" : "Install"}
+                                            {StateManager.plugin.scripts.value.some((s) => s.name === headers.name) ? "Reinstall" : "Install"}
                                         {/if}
                                     </button>
                                 </div>
