@@ -8,7 +8,7 @@
         "@astrojs/sitemap": "3.7.3",
         "@astrojs/starlight": "0.41.6",
         "@astrojs/svelte": "9.0.1",
-        "@gimloader/ipc": "github:Gimloader/ipc#e67be9bcbaf320fffcee08e154e02040332c5ede",
+        "@gimloader/ipc": "github:Gimloader/ipc#c5e9334eafa62cac5f9c89fff7c5569f5fc959a9",
         "@tailwindcss/vite": "^4.1.13",
         "astro": "7.1.6",
         "eventemitter2": "^6.4.9",
@@ -184,7 +184,7 @@
 
     "@gerrit0/mini-shiki": ["@gerrit0/mini-shiki@3.23.0", "", { "dependencies": { "@shikijs/engine-oniguruma": "^3.23.0", "@shikijs/langs": "^3.23.0", "@shikijs/themes": "^3.23.0", "@shikijs/types": "^3.23.0", "@shikijs/vscode-textmate": "^10.0.2" } }, "sha512-bEMORlG0cqdjVyCEuU0cDQbORWX+kYCeo0kV1lbxF5bt4r7SID2l9bqsxJEM0zndaxpOUT7riCyIVEuqq/Ynxg=="],
 
-    "@gimloader/ipc": ["@gimloader/ipc@github:Gimloader/ipc#e67be9b", { "dependencies": { "eventemitter2": "^6.4.9" }, "peerDependencies": { "svelte": "5.43.0", "typescript": "^6" } }, "Gimloader-ipc-e67be9b"],
+    "@gimloader/ipc": ["@gimloader/ipc@github:Gimloader/ipc#c5e9334", { "dependencies": { "eventemitter2": "^6.4.9" }, "peerDependencies": { "svelte": "5.43.0", "typescript": "^6" } }, "Gimloader-ipc-c5e9334"],
 
     "@img/colour": ["@img/colour@1.0.0", "", {}, "sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw=="],
 
