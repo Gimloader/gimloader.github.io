@@ -6,11 +6,11 @@
     ],
     "out": "./src/content/docs/api",
     "entryPoints": [
-        "../Gimloader/src/content/api/*.ts"
+        "./gimloader-source/src/content/api/*.ts"
     ],
     "entryFileName": "index",
     "readme": "none",
-    "tsconfig": "../Gimloader/tsconfig.json",
+    "tsconfig": "./gimloader-source/tsconfig.json",
     "hidePageHeader": true,
     "hideBreadcrumbs": true,
     "disableSources": true,

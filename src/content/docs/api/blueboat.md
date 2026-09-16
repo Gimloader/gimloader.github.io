@@ -6,8 +6,6 @@ description: Documentation for Gimloader's Blueboat Api
 # [api](/api/api).[net](/api/net).blueboat
 
 The colyseus api is for sending and recieving data in non-2d (classic) modes.
-It extends [EventEmitter2](https://github.com/EventEmitter2/EventEmitter2)
-and uses wildcards with ":" as a delimiter.
 ```js
 // fired when data is recieved on a certain channel
 api.net.blueboat.on("CHANNEL", (data, editFn) => {
@@ -36,9 +34,11 @@ The blueboat room that the client is connected to, or null if there is no connec
 
 ## Methods
 
-### on()
+### off()
 
-> **on**\<`C`\>(`channel`, `listener`): `Listener` \| `BlueboatApi`
+> **off**\<`C`\>(`channel`, `listener`): `void`
+
+Removes a listener added by on or once
 
 #### Type Parameters
 
@@ -51,27 +51,97 @@ The blueboat room that the client is connected to, or null if there is no connec
 | Parameter | Type |
 | ------ | ------ |
 | `channel` | `C` |
-| `listener` | (`data`, `editFn`) => `void` |
+| `listener` | `Listener`\<`Messages1d`\[`C`\]\> |
 
 #### Returns
 
-`Listener` \| `BlueboatApi`
+`void`
 
 ***
 
-### onAny()
+### offAny()
 
-> **onAny**(`listener`): `BlueboatApi`
+> **offAny**(`listener`): `void`
+
+Removes a listener added by onAny
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `listener` | (`channel`, `data`, `editFn`) => `void` |
+| `listener` | `OnAnyListener` |
 
 #### Returns
 
-`BlueboatApi`
+`void`
+
+***
+
+### on()
+
+> **on**\<`C`\>(`channel`, `listener`): `void`
+
+Listens for an incoming or outgoing message on a specific channel
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `C` *extends* keyof `Messages1d` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `channel` | `C` |
+| `listener` | `Listener`\<`Messages1d`\[`C`\]\> |
+
+#### Returns
+
+`void`
+
+***
+
+### onAny()
+
+> **onAny**(`listener`): `void`
+
+Listens for any messages on any channel
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | `OnAnyListener` |
+
+#### Returns
+
+`void`
+
+***
+
+### once()
+
+> **once**\<`C`\>(`channel`, `listener`): `void`
+
+Listens for the next incoming or outgoing message on a specific channel
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `C` *extends* keyof `Messages1d` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `channel` | `C` |
+| `listener` | `Listener`\<`Messages1d`\[`C`\]\> |
+
+#### Returns
+
+`void`
 
 ***
 
@@ -80,6 +150,31 @@ The blueboat room that the client is connected to, or null if there is no connec
 > **send**\<`C`\>(`channel`, ...`args`): `void`
 
 Sends a message to the server on a specific channel
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `C` *extends* keyof `SentMessages1d` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `channel` | `C` |
+| `data` | `any` |
+
+#### Returns
+
+`void`
+
+***
+
+### sendDirect()
+
+> **sendDirect**\<`C`\>(`channel`, ...`args`): `void`
+
+Sends a message to the server on a specific channel, bypassing listeners added by plugins
 
 #### Type Parameters
 

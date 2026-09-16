@@ -1,0 +1,3 @@
+[submodule "gimloader-source"]
+	path = gimloader-source
+	url = https://github.com/Gimloader/Gimloader.git

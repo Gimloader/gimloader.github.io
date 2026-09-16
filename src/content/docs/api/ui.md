@@ -95,6 +95,58 @@ api.UI.addStyles(styles);
 
 ***
 
+### alert()
+
+> **alert**(`title`, `text?`): `Promise`\<`void`\>
+
+Shows an alert message. Resolves once the message is dismissed.
+
+#### Parameters
+
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `title` | `string` | `undefined` |
+| `text` | `string` | `""` |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Example
+
+```js
+api.UI.alert("Something happened", "This is an alert")
+    .then(() => console.log("Alert dismissed"));
+```
+
+***
+
+### confirm()
+
+> **confirm**(`title`, `text?`): `Promise`\<`boolean`\>
+
+Shows a prompt asking the user to confirm an action. Resolves to a boolean containing their choice.
+
+#### Parameters
+
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `title` | `string` | `undefined` |
+| `text` | `string` | `""` |
+
+#### Returns
+
+`Promise`\<`boolean`\>
+
+#### Example
+
+```js
+api.UI.confirm("Are you sure?", "This cannot be undone")
+    .then((confirmed) => console.log("Confirmation:", confirmed));
+```
+
+***
+
 ### forceReactUpdate()
 
 > **forceReactUpdate**(): `void`
@@ -139,6 +191,38 @@ A function that cancels waiting
 ```js
 api.UI.onComponentLoad("message", (message) => {
     message.success({ content: "This is a message!" });
+});
+```
+
+***
+
+### prompt()
+
+> **prompt**(`title`, `options?`): `Promise`\<`string` \| `null`\>
+
+Shows a prompt asking for user input. Resolves to null if cancelled.
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `title` | `string` |
+| `options?` | `PromptOptions` |
+
+#### Returns
+
+`Promise`\<`string` \| `null`\>
+
+#### Example
+
+```js
+api.UI.prompt("Name your character", {
+    text: "This can be changed later",
+    placeholder: "Character name",
+    defaultVal: "Player"
+}).then((name) => {
+    if(name === null) console.log("User cancelled");
+    else console.log("User entered:", name);
 });
 ```
 

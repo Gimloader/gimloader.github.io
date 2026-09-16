@@ -1,7 +1,8 @@
 import { MarkdownPageEvent, type MarkdownApplication } from "typedoc-plugin-markdown";
 import { join, basename } from "node:path";
 import { Converter, ReflectionKind } from "typedoc";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
+import { execSync } from "node:child_process";
 
 const inheritedRegex = /\n#### Inherited from\n\n.*\n/g;
 const constructorRegex = /\n## Constructors[\S\s]+?\n#### Returns\n\n.+\n/g;
@@ -14,6 +15,12 @@ const classRegex = /^# Class: .+\n/g;
 const propertyRegex = /\n> \*\*(.+)\*\*: `.+`\n/g;
 
 export function load(app: MarkdownApplication) {
+    // Make sure that gimloader-source has its node_modules installed
+    if(!existsSync(join("gimloader-source", "node_modules"))) {
+        console.log("Installing dependencies for gimloader-source...");
+        execSync("bun i --frozen-lockfile", { cwd: "gimloader-source", stdio: "inherit" });
+    }
+
     app.converter.on(Converter.EVENT_RESOLVE_BEGIN, (context) => {
         const classes = context.project.getReflectionsByKind(ReflectionKind.Class);
         for(const reflection of classes) {

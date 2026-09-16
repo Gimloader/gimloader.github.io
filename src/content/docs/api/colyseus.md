@@ -6,8 +6,6 @@ description: Documentation for Gimloader's Colyseus Api
 # [api](/api/api).[net](/api/net).colyseus
 
 The colyseus api is for sending and recieving data in 2d modes.
-It extends [EventEmitter2](https://github.com/EventEmitter2/EventEmitter2)
-and uses wildcards with ":" as a delimiter.
 ```js
 // fired when data is recieved on a certain channel
 api.net.colyseus.on("CHANNEL", (data, editFn) => {
@@ -50,9 +48,11 @@ Gimkit's internal Colyseus state
 
 ## Methods
 
-### on()
+### off()
 
-> **on**\<`C`\>(`channel`, `listener`): `Listener` \| `ColyseusApi`
+> **off**\<`C`\>(`channel`, `listener`): `void`
+
+Removes a listener added by on or once
 
 #### Type Parameters
 
@@ -65,27 +65,97 @@ Gimkit's internal Colyseus state
 | Parameter | Type |
 | ------ | ------ |
 | `channel` | `C` |
-| `listener` | (`data`, `editFn`) => `void` |
+| `listener` | `Listener`\<`Messages2d`\[`C`\]\> |
 
 #### Returns
 
-`Listener` \| `ColyseusApi`
+`void`
 
 ***
 
-### onAny()
+### offAny()
 
-> **onAny**(`listener`): `ColyseusApi`
+> **offAny**(`listener`): `void`
+
+Removes a listener added by onAny
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `listener` | (`channel`, `data`, `editFn`) => `void` |
+| `listener` | `OnAnyListener` |
 
 #### Returns
 
-`ColyseusApi`
+`void`
+
+***
+
+### on()
+
+> **on**\<`C`\>(`channel`, `listener`): `void`
+
+Listens for an incoming or outgoing message on a specific channel
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `C` *extends* keyof `Messages2d` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `channel` | `C` |
+| `listener` | `Listener`\<`Messages2d`\[`C`\]\> |
+
+#### Returns
+
+`void`
+
+***
+
+### onAny()
+
+> **onAny**(`listener`): `void`
+
+Listens for any messages on any channel
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | `OnAnyListener` |
+
+#### Returns
+
+`void`
+
+***
+
+### once()
+
+> **once**\<`C`\>(`channel`, `listener`): `void`
+
+Listens for the next incoming or outgoing message on a specific channel
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `C` *extends* keyof `Messages2d` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `channel` | `C` |
+| `listener` | `Listener`\<`Messages2d`\[`C`\]\> |
+
+#### Returns
+
+`void`
 
 ***
 
@@ -94,6 +164,31 @@ Gimkit's internal Colyseus state
 > **send**\<`C`\>(`channel`, ...`args`): `void`
 
 Sends a message to the server on a specific channel
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `C` *extends* keyof `SentMessages2d` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `channel` | `C` |
+| `data` | `any` |
+
+#### Returns
+
+`void`
+
+***
+
+### sendDirect()
+
+> **sendDirect**\<`C`\>(`channel`, ...`args`): `void`
+
+Sends a message to the server on a specific channel, bypassing listeners added by plugins
 
 #### Type Parameters
 

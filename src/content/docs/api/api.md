@@ -273,6 +273,30 @@ Cleans up everything performed through this script's api
 
 ***
 
+### noCleanup()
+
+> **noCleanup**\<`T`\>(`fn`): `T`
+
+Runs the function provided immediately, with functions inside not being automatically cleaned up
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `fn` | () => `T` |
+
+#### Returns
+
+`T`
+
+***
+
 ### onStop()
 
 > **onStop**(...`callbacks`): `void`
