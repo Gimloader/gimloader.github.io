@@ -5,16 +5,16 @@ description: Documentation for Gimloader's Blueboat Api
 
 # [api](/api/api).[net](/api/net).blueboat
 
-The colyseus api is for sending and recieving data in non-2d (classic) modes.
+The blueboat api is for sending and recieving data in non-2d (classic) modes.
 ```js
 // fired when data is recieved on a certain channel
-api.net.blueboat.on("CHANNEL", (data, editFn) => {
-    editFn("new data"); // Replace the data with "new data" before Gimkit processes it
+api.net.blueboat.on("CHANNEL", (data) => {
+    return "new data"; // Replace the data with "new data" before Gimkit processes it
 });
 
 // fired when data is sent on a certain channel
-api.net.blueboat.on("send:CHANNEL", (data, editFn) => {
-    editFn(null); // Cancel the data being sent
+api.net.blueboat.on("send:CHANNEL", (data) => {
+    return null; // Cancel the data being sent
 });
 ```
 
@@ -51,7 +51,7 @@ Removes a listener added by on or once
 | Parameter | Type |
 | ------ | ------ |
 | `channel` | `C` |
-| `listener` | `Listener`\<`Messages1d`\[`C`\]\> |
+| `listener` | (`data`) => `void` \| `Messages1d`\[`C`\] \| `null` |
 
 #### Returns
 
@@ -69,7 +69,7 @@ Removes a listener added by onAny
 
 | Parameter | Type |
 | ------ | ------ |
-| `listener` | `OnAnyListener` |
+| `listener` | (`channel`, `data`) => `any` |
 
 #### Returns
 
@@ -81,7 +81,9 @@ Removes a listener added by onAny
 
 > **on**\<`C`\>(`channel`, `listener`): `void`
 
-Listens for an incoming or outgoing message on a specific channel
+Listens for an incoming or outgoing message on a specific channel.
+Returning a value from the listener updates what is received.
+Returning null cancels the message entirely.
 
 #### Type Parameters
 
@@ -94,7 +96,7 @@ Listens for an incoming or outgoing message on a specific channel
 | Parameter | Type |
 | ------ | ------ |
 | `channel` | `C` |
-| `listener` | `Listener`\<`Messages1d`\[`C`\]\> |
+| `listener` | (`data`) => `void` \| `Messages1d`\[`C`\] \| `null` |
 
 #### Returns
 
@@ -106,13 +108,15 @@ Listens for an incoming or outgoing message on a specific channel
 
 > **onAny**(`listener`): `void`
 
-Listens for any messages on any channel
+Listens for any messages on any channel.
+Returning a value from the listener updates what is sent.
+Returning null cancels the message entirely.
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `listener` | `OnAnyListener` |
+| `listener` | (`channel`, `data`) => `any` |
 
 #### Returns
 
@@ -124,7 +128,9 @@ Listens for any messages on any channel
 
 > **once**\<`C`\>(`channel`, `listener`): `void`
 
-Listens for the next incoming or outgoing message on a specific channel
+Listens for the next incoming or outgoing message on a specific channel.
+Returning a value from the listener updates what is received.
+Returning null cancels the message entirely.
 
 #### Type Parameters
 
@@ -137,7 +143,7 @@ Listens for the next incoming or outgoing message on a specific channel
 | Parameter | Type |
 | ------ | ------ |
 | `channel` | `C` |
-| `listener` | `Listener`\<`Messages1d`\[`C`\]\> |
+| `listener` | (`data`) => `void` \| `Messages1d`\[`C`\] \| `null` |
 
 #### Returns
 

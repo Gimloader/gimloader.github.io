@@ -8,13 +8,13 @@ description: Documentation for Gimloader's Colyseus Api
 The colyseus api is for sending and recieving data in 2d modes.
 ```js
 // fired when data is recieved on a certain channel
-api.net.colyseus.on("CHANNEL", (data, editFn) => {
-    editFn("new data"); // Replace the data with "new data" before Gimkit processes it
+api.net.colyseus.on("CHANNEL", (data) => {
+    return "new data"; // Replace the data with "new data" before Gimkit processes it
 });
 
 // fired when data is sent on a certain channel
-api.net.colyseus.on("send:CHANNEL", (data, editFn) => {
-    editFn(null); // Cancel the data being sent
+api.net.colyseus.on("send:CHANNEL", (data) => {
+    return null; // Cancel the data being sent
 });
 ```
 
@@ -65,7 +65,7 @@ Removes a listener added by on or once
 | Parameter | Type |
 | ------ | ------ |
 | `channel` | `C` |
-| `listener` | `Listener`\<`Messages2d`\[`C`\]\> |
+| `listener` | (`data`) => `void` \| `Messages2d`\[`C`\] \| `null` |
 
 #### Returns
 
@@ -83,7 +83,7 @@ Removes a listener added by onAny
 
 | Parameter | Type |
 | ------ | ------ |
-| `listener` | `OnAnyListener` |
+| `listener` | (`channel`, `data`) => `any` |
 
 #### Returns
 
@@ -95,7 +95,9 @@ Removes a listener added by onAny
 
 > **on**\<`C`\>(`channel`, `listener`): `void`
 
-Listens for an incoming or outgoing message on a specific channel
+Listens for an incoming or outgoing message on a specific channel.
+Returning a value from the listener updates what is received.
+Returning null cancels the message entirely.
 
 #### Type Parameters
 
@@ -108,7 +110,7 @@ Listens for an incoming or outgoing message on a specific channel
 | Parameter | Type |
 | ------ | ------ |
 | `channel` | `C` |
-| `listener` | `Listener`\<`Messages2d`\[`C`\]\> |
+| `listener` | (`data`) => `void` \| `Messages2d`\[`C`\] \| `null` |
 
 #### Returns
 
@@ -120,13 +122,15 @@ Listens for an incoming or outgoing message on a specific channel
 
 > **onAny**(`listener`): `void`
 
-Listens for any messages on any channel
+Listens for any messages on any channel.
+Returning a value from the listener updates what is sent.
+Returning null cancels the message entirely.
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `listener` | `OnAnyListener` |
+| `listener` | (`channel`, `data`) => `any` |
 
 #### Returns
 
@@ -138,7 +142,9 @@ Listens for any messages on any channel
 
 > **once**\<`C`\>(`channel`, `listener`): `void`
 
-Listens for the next incoming or outgoing message on a specific channel
+Listens for the next incoming or outgoing message on a specific channel.
+Returning a value from the listener updates what is received.
+Returning null cancels the message entirely.
 
 #### Type Parameters
 
@@ -151,7 +157,7 @@ Listens for the next incoming or outgoing message on a specific channel
 | Parameter | Type |
 | ------ | ------ |
 | `channel` | `C` |
-| `listener` | `Listener`\<`Messages2d`\[`C`\]\> |
+| `listener` | (`data`) => `void` \| `Messages2d`\[`C`\] \| `null` |
 
 #### Returns
 

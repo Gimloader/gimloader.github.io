@@ -53,6 +53,9 @@ export function load(app: MarkdownApplication) {
         page.contents = page.contents.replace(overridesRegex, "");
         page.contents = page.contents.replace(linkRegex, "($1)");
         
+        // Hide deprecated things
+        page.contents = page.contents.replaceAll(", `editFn`", "");
+        
         if(isRootApi) {
             page.contents = page.contents.replace(classRegex, `# Script Api\n`);
         } else if(filename === "blueboat" || filename === "colyseus") {
