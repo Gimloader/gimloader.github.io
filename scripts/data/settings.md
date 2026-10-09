@@ -46,7 +46,7 @@ Initializes the settings menu for the script
 
 #### Settings
 
-All settings (aside from "custom" and "group") inherit these properties.
+All settings (aside from "custom", "group", and "transclude") inherit these properties.
 
 | Property | Type | Description |
 | ------ | ------ | ----- |
@@ -58,19 +58,23 @@ All settings (aside from "custom" and "group") inherit these properties.
 
 | Setting | Type | Options | Notes |
 | ----- | ----- | ----- | ------ |
-| dropdown | `string` | `options`: `{ label: string; value: string }[]`<br>`allowNone`?: `boolean` |
-| multiselect | `string[]` | `options`: `{ label: string; value: string }[]` |
-| number | `number` | `min`?: `number`<br>`max`?: `number`<br>`step`?: `number` |
-| toggle | `boolean` |
-| text | `string` | `placeholder`?: `string`<br>`maxLength`?: `number` |
-| slider | `number` | `min`: `number`<br>`max`: `number`<br>`step`?: `number`<br>`ticks`?: `number[]`<br>`formatter`?: `(value: number) => string` | Ticks are placed at the start and end by default |
-| radio | `string` | `options`: `{ label: string; value: string }[]` |
-| color | `string` | `rgba`?: `boolean` | When rgba is true, the value takes the form `rgba(100,120,140,0.5)`. Otherwise it is a hex code. |
-| custom | `any` | `render`: `SettingRenderer` |
-| customsection | `any` | `render`: `SettingRenderer` | Custom sections do not have a built-in title or description. |
-| group | `N/A` | `title`: `string`<br>`settings`: `PluginSetting[]` |
+| `dropdown` | `string` | `options`: `{ label: string; value: string }[]`<br>`allowNone`?: `boolean` |
+| `multiselect` | `string[]` | `options`: `{ label: string; value: string }[]` |
+| `number` | `number` | `min`?: `number`<br>`max`?: `number`<br>`step`?: `number` |
+| `toggle` | `boolean` |
+| `text` | `string` | `placeholder`?: `string`<br>`maxLength`?: `number` |
+| `slider` | `number` | `min`: `number`<br>`max`: `number`<br>`step`?: `number`<br>`ticks`?: `number[]`<br>`formatter`?: `(value: number) => string` | Ticks are placed at the start and end by default |
+| `radio` | `string` | `options`: `{ label: string; value: string }[]` |
+| `color` | `string` | `rgba`?: `boolean` | When rgba is true, the value takes the form `rgba(100,120,140,0.5)`. Otherwise it is a hex code. |
+| `custom` | `any` | `render`: `SettingRenderer` |
+| `customsection` | `any` | `render`: `SettingRenderer` | Custom sections do not have a built-in title or description. |
+| `group` | `N/A` | `id`?: `string`<br>`title`: `string`<br>`description`?: `string`<br>`settings`: `PluginSetting[]` |
+| `togglegroup` | `boolean` | `settings`: `PluginSetting[]` |
+| `transclude` | `N/A` | `fromPlugin`: `string`<br>`id`: `string`<br>`label`?: `string`<br>`hideIfMissing`?: `boolean` |
 
 The "custom" and "customsection" settings require a `render` function, which looks like so: `(container: HTMLElement, currentValue: any, update: (newValue: any) => void) => (() => void) | void`. The function can return a callback to be run when the element is unmounted.
+
+The "transclude" setting shows a setting from the plugin specified by `fromPlugin` with the `id` given. This can include groups/togglegroups but not other transclude settings. Changing the transcluded setting will trigger the relevant listeners in the plugin it is coming from.
 
 #### Returns
 
