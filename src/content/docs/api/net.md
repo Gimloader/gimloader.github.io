@@ -25,20 +25,6 @@ Tools for sending and receiving data and interacting with state in 2d modes
 
 ## Accessors
 
-### Callbacks
-
-#### Get Signature
-
-> **get** **Callbacks**(): `any`
-
-Colyseus's Callbacks function for listening to state changes
-
-##### Returns
-
-`any`
-
-***
-
 ### gamemode
 
 #### Get Signature

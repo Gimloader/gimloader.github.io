@@ -78,7 +78,7 @@ eval(`${callback}("15")`); // Don't actually do this, but it logs 15
 
 ### exposeVar()
 
-> **exposeVar**(`prefix`, `exposer`): () => `void`
+> **exposeVar**(`prefix`, `options`): () => `void`
 
 A utility function that exposes a variable based on regex to get its name.
 
@@ -87,11 +87,11 @@ A utility function that exposes a variable based on regex to get its name.
 | Parameter | Type |
 | ------ | ------ |
 | `prefix` | `string` \| `boolean` |
-| `exposer` | \{ `callback`: (`val`) => `void`; `check?`: `string`; `find`: `RegExp`; `multiple?`: `boolean`; \} |
-| `exposer.callback` | (`val`) => `void` |
-| `exposer.check?` | `string` |
-| `exposer.find` | `RegExp` |
-| `exposer.multiple?` | `boolean` |
+| `options` | \{ `callback`: (`val`, `initial`) => `void`; `check?`: `string`; `find`: `RegExp`; `multiple?`: `boolean`; \} |
+| `options.callback` | (`val`, `initial`) => `void` |
+| `options.check?` | `string` |
+| `options.find` | `RegExp` |
+| `options.multiple?` | `boolean` |
 
 #### Returns
 
@@ -105,8 +105,7 @@ A function that removes the hook when called
 api.rewriter.exposeVar("App", {
     check: "StringThatMustExistInFile",
     find: /let (\w+) = something/g,
-    multiple: false,
-    callback: (var) => console.log(var)
+    callback: (val) => console.log(val)
 });
 ```
 
@@ -156,6 +155,43 @@ A function that removes the hook when called
 api.rewriter.runInScope("App", (code, run, initial) => {
     if(code.includes("something")) {
         run(`someVar=15`);
+    }
+});
+```
+
+***
+
+### swapVar()
+
+> **swapVar**(`prefix`, `options`): () => `void`
+
+A utility function that exposes a variable based on regex to get its name.
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `prefix` | `string` \| `boolean` |
+| `options` | \{ `callback`: (`val`, `initial`) => `any`; `check?`: `string`; `evalNew?`: `boolean`; `find`: `RegExp`; \} |
+| `options.callback` | (`val`, `initial`) => `any` |
+| `options.check?` | `string` |
+| `options.evalNew?` | `boolean` |
+| `options.find` | `RegExp` |
+
+#### Returns
+
+A function that removes the hook when called
+
+() => `void`
+
+#### Example
+
+```js
+api.rewriter.swapVar("App", {
+    check: "StringThatMustExistInFile",
+    find: /let (\w+) = something/g,
+    callback: (val) => {
+        return "newValue";
     }
 });
 ```

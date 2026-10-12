@@ -205,20 +205,6 @@ A variety of gimkit internal objects available in 1d gamemodes
 
 ***
 
-### platformerPhysics
-
-#### Get Signature
-
-> **get** **platformerPhysics**(): `any`
-
-Physics variables available in platformer gamemodes
-
-##### Returns
-
-`any`
-
-***
-
 ### React
 
 #### Get Signature
