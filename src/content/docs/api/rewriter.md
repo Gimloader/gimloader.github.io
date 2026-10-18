@@ -104,7 +104,7 @@ A function that removes the hook when called
 ```js
 api.rewriter.exposeVar("App", {
     check: "StringThatMustExistInFile",
-    find: /let (\w+) = something/g,
+    find: /let (\w+) = something/,
     callback: (val) => console.log(val)
 });
 ```
@@ -189,7 +189,7 @@ A function that removes the hook when called
 ```js
 api.rewriter.swapVar("App", {
     check: "StringThatMustExistInFile",
-    find: /let (\w+) = something/g,
+    find: /let (\w+) = something/,
     callback: (val) => {
         return "newValue";
     }
