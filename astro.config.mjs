@@ -54,9 +54,11 @@ export default defineConfig({
                         label: 'Development',
                         items: [
                             'development/overview',
+                            'development/devtools',
                             'development/internals',
                             'development/structure',
                             'development/api',
+                            'development/react',
                             'development/bundling',
                             'development/nextsteps'
                         ]
