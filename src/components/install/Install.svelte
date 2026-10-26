@@ -10,9 +10,6 @@
     let ready = $state(false);
     StateManager.events.on("init", () => ready = true);
 
-    let disconnected = $state(false);
-    Port.disconnected.bind(() => disconnected, (val) => disconnected = val);
-    
     let unavailable = $state(false);
     Port.unavailable.bind(() => unavailable, (val) => unavailable = val);
 
@@ -65,7 +62,7 @@
                 <pre>{installError}</pre>
             {:else}
                 {#if installUrl}
-                    {#if Port.unavailable}
+                    {#if unavailable}
                         <h1 class="text-5xl font-bold w-full text-center">
                             Gimloader Not Found
                         </h1>
