@@ -155,13 +155,10 @@
 {#snippet installInstructions()}
     To use this in game, first make sure you have
     <a href="https://gimloader.github.io/usage/installation/" class="underline">Gimloader Installed</a>.
-    Then, download the CharacterCustomization plugin from
-    <a class="underline" target="_blank"
-    href="https://gimloader.github.io/plugins/charactercustomization/">
-        here
-    </a>. Next, open Gimkit and hit alt + c to open the customization menu.
-    Underneath "skin" select "custom skin" and then click the "upload" button to upload the texture you just edited.
-    Afterwards, just load into a 2d game and you should see your custom Gim!
+    Then, download the CharacterCustomization plugin from the official plugins menu.
+    Next, open the Gimloader menu and click CharacterCustomization's settings menu.
+    Underneath "Gim" select "New" and then "Custom Skin". Upload the texture you just created.
+    Afterwards, load into a 2d game and you should see your custom Gim.
 {/snippet}
 
 {#if userImage}
@@ -191,11 +188,11 @@
     <Resizable.Pane minSize={15}>
         <div class="flex flex-col items-center border-l border-white h-full overflow-y-auto">
             <div class="flex w-full border-b border-b-white">
-                <button onclick={() => setMode('basic')} class="flex-grow p-2"
+                <button onclick={() => setMode('basic')} class="grow p-2"
                     class:bg-primary-foreground={mode === 'basic'}>
                     Basic
                 </button>
-                <button onclick={() => setMode('normal')} class="flex-grow p-2"
+                <button onclick={() => setMode('normal')} class="grow p-2"
                     class:bg-primary-foreground={mode === 'normal'}>
                     Normal
                 </button>
