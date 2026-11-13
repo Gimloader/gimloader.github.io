@@ -19,8 +19,8 @@ Runs a callback after a function on an object has been run
 
 | Type Parameter |
 | ------ |
-| `O` *extends* `object` |
-| `K` *extends* `string` \| `number` \| `symbol` |
+| <a id="aftero"></a> `O` *extends* `object` |
+| <a id="afterk"></a> `K` *extends* `string` \| `number` \| `symbol` |
 
 #### Parameters
 
@@ -60,7 +60,7 @@ Runs a callback after a React component has been run without changing the refere
 
 | Type Parameter |
 | ------ |
-| `F` *extends* (...`args`) => `any` |
+| <a id="afterreactf"></a> `F` *extends* (...`args`) => `any` |
 
 #### Parameters
 
@@ -98,8 +98,8 @@ Return true from the callback to prevent the function from running
 
 | Type Parameter |
 | ------ |
-| `O` *extends* `object` |
-| `K` *extends* `string` \| `number` \| `symbol` |
+| <a id="beforeo"></a> `O` *extends* `object` |
+| <a id="beforek"></a> `K` *extends* `string` \| `number` \| `symbol` |
 
 #### Parameters
 
@@ -140,7 +140,7 @@ Return true from the callback to prevent the component from running
 
 | Type Parameter |
 | ------ |
-| `F` *extends* (...`args`) => `any` |
+| <a id="beforereactf"></a> `F` *extends* (...`args`) => `any` |
 
 #### Parameters
 
@@ -177,8 +177,8 @@ Runs a function instead of a function on an object
 
 | Type Parameter |
 | ------ |
-| `O` *extends* `object` |
-| `K` *extends* `string` \| `number` \| `symbol` |
+| <a id="insteado"></a> `O` *extends* `object` |
+| <a id="insteadk"></a> `K` *extends* `string` \| `number` \| `symbol` |
 
 #### Parameters
 
@@ -218,7 +218,7 @@ Runs a callback instead of a React component without changing the reference to t
 
 | Type Parameter |
 | ------ |
-| `F` *extends* (...`args`) => `any` |
+| <a id="insteadreactf"></a> `F` *extends* (...`args`) => `any` |
 
 #### Parameters
 
@@ -255,8 +255,8 @@ Replaces a function on an object with another function
 
 | Type Parameter |
 | ------ |
-| `O` *extends* `object` |
-| `K` *extends* `string` \| `number` \| `symbol` |
+| <a id="swapo"></a> `O` *extends* `object` |
+| <a id="swapk"></a> `K` *extends* `string` \| `number` \| `symbol` |
 
 #### Parameters
 
@@ -296,7 +296,7 @@ Swaps a React component with another React component without changing the refere
 
 | Type Parameter |
 | ------ |
-| `F` *extends* (...`args`) => `any` |
+| <a id="swapreactf"></a> `F` *extends* (...`args`) => `any` |
 
 #### Parameters
 

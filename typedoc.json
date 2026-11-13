@@ -16,6 +16,6 @@
     "disableSources": true,
     "router": "structure",
     "parametersFormat": "table",
-    "excludeExternals": true,
+    "excludeExternals": false,
     "publicPath": "/api"
 }

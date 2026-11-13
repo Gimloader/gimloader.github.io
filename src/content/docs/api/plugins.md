@@ -33,7 +33,7 @@ Gets the exported values of a plugin, if it has been enabled
 
 | Type Parameter |
 | ------ |
-| `T` *extends* `string` \| `number` |
+| <a id="gett"></a> `T` *extends* `string` \| `number` |
 
 #### Parameters
 
@@ -93,7 +93,7 @@ Gets a plugin by name, prompting the user to enable/download it if necessary. Re
 
 | Type Parameter |
 | ------ |
-| `T` *extends* `string` \| `number` |
+| <a id="requiret"></a> `T` *extends* `string` \| `number` |
 
 #### Parameters
 

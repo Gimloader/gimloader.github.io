@@ -102,7 +102,7 @@ This function is not available for libraries
 
 | Parameter | Type |
 | ------ | ------ |
-| ...`callbacks` | () => `void`[] |
+| ...`callbacks` | (() => `void`)[] |
 
 #### Returns
 
@@ -269,7 +269,7 @@ Runs the function provided immediately, with functions inside not being automati
 
 | Type Parameter |
 | ------ |
-| `T` |
+| <a id="nocleanupt"></a> `T` |
 
 #### Parameters
 
@@ -293,7 +293,7 @@ Run a callback when this script is disabled
 
 | Parameter | Type |
 | ------ | ------ |
-| ...`callbacks` | () => `void`[] |
+| ...`callbacks` | (() => `void`)[] |
 
 #### Returns
 

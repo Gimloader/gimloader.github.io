@@ -46,6 +46,86 @@ Gets a value that has previously been saved
 
 ***
 
+### idbClear()
+
+> **idbClear**(): `Promise`\<`void`\>
+
+Clears the script's IndexedDB storage
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### idbDelete()
+
+> **idbDelete**(`key`): `Promise`\<`void`\>
+
+Deletes a value from the script's IndexedDB store
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `any` |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### idbGet()
+
+> **idbGet**(`key`): `Promise`\<`any`\>
+
+Gets a value from the script's IndexedDB store
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `any` |
+
+#### Returns
+
+`Promise`\<`any`\>
+
+***
+
+### idbKeys()
+
+> **idbKeys**(): `Promise`\<`any`[]\>
+
+Gets all keys from the script's IndexedDB storage
+
+#### Returns
+
+`Promise`\<`any`[]\>
+
+***
+
+### idbSet()
+
+> **idbSet**(`key`, `value`): `Promise`\<`void`\>
+
+Sets a value in the script's IndexedDB store. Can be anything which is structured-clonable,
+including files, objects, arrays, etc.
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `any` |
+| `value` | `any` |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
 ### onChange()
 
 > **onChange**(`key`, `callback`): () => `void`
@@ -56,7 +136,7 @@ Adds a listener for when a stored value with a certain key changes
 
 | Parameter | Type |
 | ------ | ------ |
-| `key` | `string` |
+| `key` | `any` |
 | `callback` | (`value`, `remote`) => `void` |
 
 #### Returns

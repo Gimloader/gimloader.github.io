@@ -106,7 +106,7 @@ Shows an alert message. Resolves once the message is dismissed.
 | Parameter | Type | Default value |
 | ------ | ------ | ------ |
 | `title` | `string` | `undefined` |
-| `text` | `string` | `""` |
+| `text?` | `string` | `""` |
 
 #### Returns
 
@@ -132,7 +132,7 @@ Shows a prompt asking the user to confirm an action. Resolves to a boolean conta
 | Parameter | Type | Default value |
 | ------ | ------ | ------ |
 | `title` | `string` | `undefined` |
-| `text` | `string` | `""` |
+| `text?` | `string` | `""` |
 
 #### Returns
 
@@ -171,7 +171,7 @@ The available components are "notification", "message", and "modal".
 
 | Type Parameter |
 | ------ |
-| `K` *extends* `"message"` \| `"notification"` \| `"modal"` |
+| <a id="oncomponentloadk"></a> `K` *extends* `"message"` \| `"notification"` \| `"modal"` |
 
 #### Parameters
 
@@ -239,7 +239,7 @@ Shows a customizable modal to the user
 | Parameter | Type |
 | ------ | ------ |
 | `element` | `HTMLElement` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\> |
-| `options` | \{ `buttons?`: readonly `ModalButton`[]; `className?`: `string`; `closeOnBackgroundClick?`: `boolean`; `id?`: `string`; `onClosed?`: () => `void`; `style?`: `string`; `title?`: `string`; \} |
+| `options?` | \{ `buttons?`: readonly `ModalButton`[]; `className?`: `string`; `closeOnBackgroundClick?`: `boolean`; `id?`: `string`; `onClosed?`: () => `void`; `style?`: `string`; `title?`: `string`; \} |
 | `options.buttons?` | readonly `ModalButton`[] |
 | `options.className?` | `string` |
 | `options.closeOnBackgroundClick?` | `boolean` |

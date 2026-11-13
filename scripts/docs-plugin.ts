@@ -13,6 +13,7 @@ const sendArgsRegex = /\.\.\.`args` \| `SentMessages.+ \|/g;
 const linkRegex = /\((\/api\/.+)\.md\)/g;
 const classRegex = /^# Class: .+\n/g;
 const propertyRegex = /\n> \*\*(.+)\*\*: `.+`\n/g;
+const colorPickerRegex = /> \*\*ColorPicker\*\*: .+\n/g;
 
 export function load(app: MarkdownApplication) {
     // Make sure that gimloader-source has its node_modules installed
@@ -76,6 +77,8 @@ export function load(app: MarkdownApplication) {
                 const link = `https://shadcn-svelte.com/docs/components/${camelToKebabCase(name)}`;
                 return `\n> **${name}**: [\`${name}\`](${link})\n`;
             });
+
+            page.contents = page.contents.replace(colorPickerRegex, "\n> **ColorPicker**: [\`ColorPicker\`](https://svelte-awesome-color-picker.vercel.app/)\n")
         }
 
         // Add a header

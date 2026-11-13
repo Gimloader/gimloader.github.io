@@ -28,6 +28,19 @@ sidebar:
 
 ***
 
+### ColorPicker
+
+
+> **ColorPicker**: [`ColorPicker`](https://svelte-awesome-color-picker.vercel.app/)
+
+***
+
+### ContextMenu
+
+> **ContextMenu**: [`ContextMenu`](https://shadcn-svelte.com/docs/components/context-menu)
+
+***
+
 ### Dialog
 
 > **Dialog**: [`Dialog`](https://shadcn-svelte.com/docs/components/dialog)
