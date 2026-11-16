@@ -61,7 +61,7 @@ All settings (aside from "custom", "group", and "transclude") inherit these prop
 | `dropdown` | `string` | `options`: `{ label: string; value: string }[]`<br>`allowNone`?: `boolean` |
 | `multiselect` | `string[]` | `options`: `{ label: string; value: string }[]` |
 | `number` | `number` | `min`?: `number`<br>`max`?: `number`<br>`step`?: `number` |
-| `toggle` | `boolean` |
+| `toggle` | `boolean` | `needsLibs`?: `string[]`<br>`needsPlugins`?: `string[]` |
 | `text` | `string` | `placeholder`?: `string`<br>`maxLength`?: `number` |
 | `slider` | `number` | `min`: `number`<br>`max`: `number`<br>`step`?: `number`<br>`ticks`?: `number[]`<br>`formatter`?: `(value: number) => string` | Ticks are placed at the start and end by default |
 | `radio` | `string` | `options`: `{ label: string; value: string }[]` |
