@@ -12,12 +12,12 @@
     "postinstall": "bun run scripts/clonePlugins.ts"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.7.3",
-    "@astrojs/starlight": "0.41.6",
-    "@astrojs/svelte": "9.0.1",
+    "@astrojs/sitemap": "^3.7.6",
+    "@astrojs/starlight": "^0.43.1",
+    "@astrojs/svelte": "^9.1.6",
     "@gimloader/ipc": "github:Gimloader/ipc#4e82d18b3fe0edccd31121c9008963a4a73ead49",
     "@tailwindcss/vite": "^4.1.13",
-    "astro": "7.1.6",
+    "astro": "^7.4.13",
     "eventemitter2": "^6.4.9",
     "phaser": "^3.90.0",
     "starlight-sidebar-topics": "^0.6.1",
