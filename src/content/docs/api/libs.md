@@ -33,7 +33,7 @@ Gets the exported values of a library
 
 | Type Parameter |
 | ------ |
-| <a id="gett"></a> `T` *extends* `string` \| `number` |
+| `T` *extends* `string` \| `number` |
 
 #### Parameters
 
@@ -93,7 +93,7 @@ Gets a library by name, prompting the user to enable/download it if necessary. R
 
 | Type Parameter |
 | ------ |
-| <a id="requiret"></a> `T` *extends* `string` \| `number` |
+| `T` *extends* `string` \| `number` |
 
 #### Parameters
 

@@ -171,7 +171,7 @@ The available components are "notification", "message", and "modal".
 
 | Type Parameter |
 | ------ |
-| <a id="oncomponentloadk"></a> `K` *extends* `"message"` \| `"notification"` \| `"modal"` |
+| `K` *extends* `"message"` \| `"notification"` \| `"modal"` |
 
 #### Parameters
 

@@ -269,7 +269,7 @@ Runs the function provided immediately, with functions inside not being automati
 
 | Type Parameter |
 | ------ |
-| <a id="nocleanupt"></a> `T` |
+| `T` |
 
 #### Parameters
 

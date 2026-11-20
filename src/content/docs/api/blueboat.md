@@ -44,7 +44,7 @@ Removes a listener added by on or once
 
 | Type Parameter |
 | ------ |
-| <a id="offc"></a> `C` *extends* keyof `Messages1d` |
+| `C` *extends* keyof `Messages1d` |
 
 #### Parameters
 
@@ -89,7 +89,7 @@ Returning null cancels the message entirely.
 
 | Type Parameter |
 | ------ |
-| <a id="onc"></a> `C` *extends* keyof `Messages1d` |
+| `C` *extends* keyof `Messages1d` |
 
 #### Parameters
 
@@ -136,7 +136,7 @@ Returning null cancels the message entirely.
 
 | Type Parameter |
 | ------ |
-| <a id="oncec"></a> `C` *extends* keyof `Messages1d` |
+| `C` *extends* keyof `Messages1d` |
 
 #### Parameters
 
@@ -161,7 +161,7 @@ Sends a message to the server on a specific channel
 
 | Type Parameter |
 | ------ |
-| <a id="sendc"></a> `C` *extends* keyof `SentMessages1d` |
+| `C` *extends* keyof `SentMessages1d` |
 
 #### Parameters
 
@@ -186,7 +186,7 @@ Sends a message to the server on a specific channel, bypassing listeners added b
 
 | Type Parameter |
 | ------ |
-| <a id="senddirectc"></a> `C` *extends* keyof `SentMessages1d` |
+| `C` *extends* keyof `SentMessages1d` |
 
 #### Parameters
 

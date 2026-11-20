@@ -8,6 +8,7 @@ const inheritedRegex = /\n#### Inherited from\n\n.*\n/g;
 const constructorRegex = /\n## Constructors[\S\s]+?\n#### Returns\n\n.+\n/g;
 const extendsRegex = /\n## Extends\n\n-.+\n/g;
 const overridesRegex = /\n#### Overrides\n\n.+\n/g;
+const emptyLinkRegex = /\| <a id=".+"><\/a>/g;
 const onExtendsRegex = /\*extends\* `"send:.+ \|/g;
 const sendArgsRegex = /\.\.\.`args` \| `SentMessages.+ \|/g;
 const linkRegex = /\((\/api\/.+)\.md\)/g;
@@ -53,6 +54,7 @@ export function load(app: MarkdownApplication) {
         page.contents = page.contents.replace(extendsRegex, "");
         page.contents = page.contents.replace(overridesRegex, "");
         page.contents = page.contents.replace(linkRegex, "($1)");
+        page.contents = page.contents.replace(emptyLinkRegex, "|");
         
         // Hide deprecated things
         page.contents = page.contents.replaceAll(", `editFn`", "");
